@@ -4,7 +4,7 @@ Google Java Style
 --------------
 ## この文書について
 
-本文書は、 [Google Java Style]{http://google-styleguide.googlecode.com/svn/trunk/javaguide.html} の非公式和訳です。
+本文書は、 [Google Java Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) の非公式和訳です。
 技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。
 誤訳、誤植の指摘を歓迎いたします。
 
