@@ -1,8 +1,8 @@
-Google Java Style (日本語訳)
-============================
+h1.　Google Java Style (日本語訳)
+
 
 --------------
-## この文書について
+h1. この文書について
 
 本文書は、 [Google Java Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) の非公式和訳です。
 技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。
@@ -12,7 +12,7 @@ Google Java Style (日本語訳)
 --------------
 
 
-## 1 導入
+h2. 1 導入
 
 この文書はJavaプログラミング言語のソースコードのGoogleのコーディング標準の完全な定義を提供する。
 下記のルールに従うJavaソースファイルのみが、Googleスタイルであるとみなされる。
@@ -29,7 +29,7 @@ Like other programming style guides, the issues covered span not only aesthetic 
 （人間でもマシンでも）明確に実施できない助言をすることを避けている。
 
 
-### 1.1 用語についての注記
+h3. 1.1 用語についての注記
 
 
 In this document, unless otherwise clarified:
