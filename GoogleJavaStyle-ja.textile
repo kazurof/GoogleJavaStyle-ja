@@ -223,7 +223,7 @@ TODO 要推敲
 
 例：
 
-```java
+<pre><code class="java">
 return new MyClass() {
   @Override public void method() {
     if (condition()) {
@@ -235,7 +235,7 @@ return new MyClass() {
     }
   }
 };
-```
+</code></pre>
 
 列挙型でのいくつかの例外はセクション4.8.1 列挙型にて示される。
 
@@ -253,9 +253,9 @@ An empty block or block-like construct may be closed immediately after it is ope
 
 例：
 
-```java
-void doNothing() {}
-```
+<pre>
+void doNothing() {} 
+</pre>
 
 
 ### 4.2 ブロックのインデントは空白2個である。
