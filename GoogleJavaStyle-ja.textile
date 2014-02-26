@@ -1,8 +1,8 @@
-h1.　Google Java Style (日本語訳)
+h1. Google Java Style (日本語訳)
 
 
 --------------
-h1. この文書について
+h2. この文書について
 
 本文書は、 [Google Java Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) の非公式和訳です。
 技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。
@@ -53,7 +53,7 @@ Other "terminology notes" will appear occasionally throughout the document.
 
 
 
-### 1.2 ガイドについての注記
+h3. 1.2 ガイドについての注記
 
 Example code in this document is non-normative. 
 That is, while the examples are in Google Style, they may not illustrate the only 
@@ -67,9 +67,9 @@ Optional formatting choices made in examples should not be enforced as rules.
 
 （ TODO 約見直し）
 
-## 2 ソースファイルの基本
+h2. 2 ソースファイルの基本
 
-### 2.1 ファイル名
+h3.  2.1 ファイル名
 
 
 
@@ -315,7 +315,7 @@ catch節でのパイプ記号 (catch (FooException | BarException e)).といっ�
 3. メソッドやコンストラクタ名に続く開始括弧（(）は改行されません。
 4. カンマ(,)はそれの前のトークンに続いて書かれます。改行されません。
 
-#### 4.5.2 インデントが続く行は最低4個の空白です。
+h4. 4.5.2 インデントが続く行は最低4個の空白です。
 
 改行の際、連続する先頭行後の各行は少なくとも空白4個分元からインデントされます。
 
@@ -329,9 +329,9 @@ catch節でのパイプ記号 (catch (FooException | BarException e)).といっ�
 もっとわけわかめ
 
 
-### 4.6 空白
+h3. 4.6 空白
 
-#### 4.6.1 垂直の空白
+h4. 4.6.1 垂直の空白
 
 単一の空行が生成される状況は以下のとおり。
 
@@ -345,7 +345,7 @@ catch節でのパイプ記号 (catch (FooException | BarException e)).といっ�
 複数の連続した空行を入れて良いが、必須でも推奨でもない。
 
 
-#### 4.6.2 水平の空白
+h4. 4.6.2 水平の空白
 
 
 
@@ -362,12 +362,65 @@ catch節でのパイプ記号 (catch (FooException | BarException e)).といっ�
 * 連続する型パラメータ間のアンパサンド。　<T extends Foo & Bar>
 
 
+h4. 4.6.3 Horizontal alignment: never required 
+
+水平位置の揃え　全く不要
 
 
 
 
+Terminology Note: Horizontal alignment is the practice of adding a variable number of additional spaces in your code with the goal of making certain tokens appear directly below certain other tokens on previous lines.
+用語の注釈
+水平位置の揃えは前の行のあるトークンの真下にトークンが来るようにコードに追加のすペースを幾つか入れるやり方のことです。　　実践ノ事です
 
 
+
+This practice is permitted, but is never required by Google Style. It is not even required to maintain horizontal alignment in places where it was already used.
+これはやって良いがGoogleスタイルでは要求されない。すでに為されているところをそのように維持することすら求めれられない
+
+
+
+
+Here is an example without alignment, then using alignment:
+これはやっている例とやっていない例です。
+
+private int x; // this is fine
+private Color color; // this too
+
+これはok  これも
+
+private int   x;      // permitted, but future edits
+private Color color;  // may leave it unaligned
+
+やって良いがあとで直されるかもしれない
+
+Tip: Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is allowed.
+調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときをかんがえてほしい
+この変更は以前のきれいな並びをおかしくする。そしてそうなる
+
+
+
+
+More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. このことはコーダー多分君に近くの行に同様になおせと求める。そして修正範囲の拡大を引き起こす
+
+
+
+That one-line change now has a "blast radius." This can at worst result in pointless busywork, but at best it still corrupts version history information, slows down reviewers and exacerbates merge conflicts.
+一行の偏向が核爆発に為る。最悪意味のない作業になる。良くても変更履歴を汚くする。レビューがおそく成り、マージの衝突が激増する。
+
+
+
+h3. 4.7 Grouping parentheses: recommended 
+
+グループ化の括弧　　推奨
+
+Optional grouping parentheses are omitted only when author and reviewer agree that there is no reasonable 
+chance the code will be misinterpreted without them, nor would they have made the code easier to read. 
+It is not reasonable to assume that every reader has the entire Java operator precedence table memorized.
+
+追加のグループ化の括弧は作者とレビュアーが括弧なしでもコードは誤解される余地がないと
+認めるか、コードを読みやすく書いた時のみなくすことが出来ます。すべての読者がJava演算子の優先度表を
+記憶していると仮定するのは合理的でありません。
 
 
 
