@@ -430,9 +430,11 @@ It is not reasonable to assume that every reader has the entire Java operator pr
 
 
 h3. 4.8 Specific constructs 
+
 各構造物
 
 h4. 4.8.1 Enum classes 
+
 列挙型
 
 After each comma that follows an enum constant, a line-break is optional.
@@ -445,14 +447,20 @@ An enum class with no methods and no documentation on its constants may optional
 private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 Since enum classes are classes, all other rules for formatting classes apply.
 列挙型はclassであるのでクラスに適用されるほかのルールが適用される。
+
 h4. 4.8.2 Variable declarations 
+
 値の宣言
+
 h5. 4.8.2.1 One variable per declaration 
+
 宣言ごとに一個の変数
 
 Every variable declaration (field or local) declares only one variable: declarations such as int a, b; are not used.
 フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。　　のような宣言は使われない。
+
 h5. 4.8.2.2 Declared when needed, initialized as soon as possible 
+
 必要なときに宣言して
 速やかに初期化する
 Local variables are not habitually declared at the start of their containing block or block-like construct. Instead, local variables are declared close to the point they are first used (within reason), to minimize their scope.
@@ -464,12 +472,15 @@ Local variables are not habitually declared at the start of their containing blo
 ローカル変数宣言は形式的に初期化子がある。あるいは宣言直後に初期化される。
 
 h4. 4.8.3 Arrays 
+
 配列
+
 h5. 4.8.3.1 Array initializers: can be "block-like" 
 配列の初期化はブロックのようにやって良い。
 Any array initializer may optionally be formatted as if it were a "block-like construct." For example, the following are all valid (not an exhaustive list):
 配列の初期化はあたかもブロック構造物のようにやって良い。例えば以下の例は総べて有効である。網羅的なリストでは無い。
 
+<pre>
 new int[] {           new int[] {
   0, 1, 2, 3            0,
 }                       1,
@@ -479,6 +490,8 @@ new int[] {             3,
   2, 3
 }                     new int[]
                           {0, 1, 2, 3}
+</pre>
+
 
 h5. 4.8.3.2 No C-style array declarations 
 Cのような宣言は禁止
