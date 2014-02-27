@@ -1,4 +1,3 @@
-
 h1. Google Java Style (和訳)
 
 
@@ -502,6 +501,75 @@ The square brackets form a part of the type, not the variable: String[] args, no
 
 h4. 4.8.4 Switch statements 
 スイッチ文
+
+Terminology Note: Inside the braces of a switch block are one or more statement 
+
+groups. Each statement group consists of one or more switch labels (either case FOO: 
+
+or default:), followed by one or more statements.
+
+用語についての注釈　　スイッチブロックの括弧のなかは一個以上の文グループです。
+
+各文グループは一個以上のスイッチラベルと続く一個以上の文です。
+
+h5. 4.8.4.1 Indentation
+
+インデンテーション
+
+As with any other block, the contents of a switch block are indented +2.
+
+他のブロックがそうであるように、スイッチブロックのインデントは2です
+
+After a switch label, a newline appears, and the indentation level is increased +2, 
+
+exactly as if a block were being opened. The following switch label returns to the 
+
+previous indentation level, as if a block had been closed.
+
+スイッチラベルの後インデントレベルは2上がります。ちょうどブロックが開始したの
+
+と同じようにです。
+
+次のスイッチラベルはあたかもブロックの終わったように、前のインデンテーションレ
+
+ベルに戻ります
+
+h5. 4.8.4.2 Fall-through: commented 
+フォールスルー　コメントを入れる
+
+
+スイッチブロック内では、各ステートメントグループは突然止まる（break でかcontinue , return か例外スローか）か
+実行が次のステートメントグループに進むようなコメントが付けられるかのみです。
+フォールスルーということを示すどんなコメントも効果的です。// fall through　など。
+この特別なコメントは、最後のステートメントグループには必要ありません。
+
+例えば：
+<pre>
+switch (input) {
+ case 1:
+ case 2:
+ prepareOneOrTwo();
+ // fall through
+ case 3:
+ handleOneTwoOrThree();
+ break;
+ default:
+ handleLargeNumber(input);
+}
+</pre>
+
+h5. 4.8.4.3 default 節は必要
+
+各スイッチ文はデフォルトステートメントグループがたとえコードがなかったとしても必要です。
+
+h4. 4.8.5 アノテーション
+
+
+
+
+
+
+
 
 
 
