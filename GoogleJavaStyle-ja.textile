@@ -1,4 +1,5 @@
-h1. Google Java Style (日本語訳)
+
+h1. Google Java Style (和訳)
 
 
 --------------
@@ -428,6 +429,66 @@ It is not reasonable to assume that every reader has the entire Java operator pr
 
 
 
+h3. 4.8 Specific constructs 
+各構造物
+
+h4. 4.8.1 Enum classes 
+列挙型
+
+After each comma that follows an enum constant, a line-break is optional.
+列挙定数値後のカンマの後ろの改行は任意である
+
+
+An enum class with no methods and no documentation on its constants may optionally be formatted as if it were an array initializer:
+定数値にメソッドもドキュメンテーションもない列挙型は任意に配列の初期化と同じやり方で整形してよい。
+
+private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
+Since enum classes are classes, all other rules for formatting classes apply.
+列挙型はclassであるのでクラスに適用されるほかのルールが適用される。
+h4. 4.8.2 Variable declarations 
+値の宣言
+h5. 4.8.2.1 One variable per declaration 
+宣言ごとに一個の変数
+
+Every variable declaration (field or local) declares only one variable: declarations such as int a, b; are not used.
+フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。　　のような宣言は使われない。
+h5. 4.8.2.2 Declared when needed, initialized as soon as possible 
+必要なときに宣言して
+速やかに初期化する
+Local variables are not habitually declared at the start of their containing block or block-like construct. Instead, local variables are declared close to the point they are first used (within reason), to minimize their scope.
+ローカル変数はそれを含むブロックやブロック構造物の先頭でハビチュアリに宣言されてはならない。代わりに、ローカル変数はそのスコープを最小化するために最初に使う場所(理由がある)の近くで宣言される。
+
+
+ Local variable declarations typically have initializers, or are initialized immediately after declaration.
+
+ローカル変数宣言は形式的に初期化子がある。あるいは宣言直後に初期化される。
+
+h4. 4.8.3 Arrays 
+配列
+h5. 4.8.3.1 Array initializers: can be "block-like" 
+配列の初期化はブロックのようにやって良い。
+Any array initializer may optionally be formatted as if it were a "block-like construct." For example, the following are all valid (not an exhaustive list):
+配列の初期化はあたかもブロック構造物のようにやって良い。例えば以下の例は総べて有効である。網羅的なリストでは無い。
+
+new int[] {           new int[] {
+  0, 1, 2, 3            0,
+}                       1,
+                        2,
+new int[] {             3,
+  0, 1,               }
+  2, 3
+}                     new int[]
+                          {0, 1, 2, 3}
+
+h5. 4.8.3.2 No C-style array declarations 
+Cのような宣言は禁止
+
+The square brackets form a part of the type, not the variable: String[] args, not String args[].
+角括弧は型の一部を為すが、変数には当てはまらない。　String[] args は良い。 String args[]　はダメ。
+
+
+h4. 4.8.4 Switch statements 
+スイッチ文
 
 
 
