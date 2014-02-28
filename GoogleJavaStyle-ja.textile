@@ -198,12 +198,12 @@ TODO 要推敲
 間に別のメンバーを入れてはならない。
 
 
-## 4 フォーマット
+h2. 4 フォーマット
 
 用語についての注釈：ブロックのような構造物とは、クラス、メソッド、コンストラクタの本体を指す。
 すべての配列は必要に応じてブロックのような構造物とみなされて良い。4.8.3.1節 配列初期化子を参照。
 
-### 4.1 中括弧
+h3. 4.1 中括弧
 
 #### 4.1.1 使えるところでは中括弧は使う
 
@@ -379,18 +379,20 @@ This practice is permitted, but is never required by Google Style. It is not eve
 これはやって良いがGoogleスタイルでは要求されない。すでに為されているところをそのように維持することすら求めれられない
 
 
-
-
 Here is an example without alignment, then using alignment:
 これはやっている例とやっていない例です。
 
+<pre>
 private int x; // this is fine
 private Color color; // this too
+</pre>
 
 これはok  これも
 
+<pre>
 private int   x;      // permitted, but future edits
 private Color color;  // may leave it unaligned
+</pre>
 
 やって良いがあとで直されるかもしれない
 
@@ -598,7 +600,44 @@ h4. 4.8.6 コメント
 
 
 
+h5. 4.8.6.1 Block comment style 
+ブロックコメントスタイル
 
+Block comments are indented at the same level as the surrounding code. They may be in /* ... */ style or // ... style. For multi-line /* ... */ comments, subsequent lines must start with * aligned with the * on the previous line.
+ブロックコメントは周りのコードと同じレベルにインデントされる。/**/でも　　//でも良い。複数行/**/コメントについては*の位置を先頭行の米と同じに揃えなくてはならない。
+
+<pre>
+/*
+ * This is          // And so           /* Or you can
+ * okay.            // is this.          * even do this. */
+ */
+</pre>
+
+Comments are not enclosed in boxes drawn with asterisks or other characters.
+コメントはアスタリスクや他の文字で描かれた箱で囲われることは無い。
+
+
+Tip: When writing multi-line comments, use the /* ... */ style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in // ... style comment blocks.
+Tip: 複数行コメントを書く際必要に応じ自動フォーマット機能で行折り返ししたい場合は/**/スタイルを使うと良い。多くのフォーマッタは//　スタイルのコメントの改行を直さない。
+
+4.8.7 Modifiers 
+修飾子
+
+Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
+クラスやメンバの修飾子はJava言語仕様が推奨する順序で出現しなくてはならない。
+public protected private abstract static final transient volatile synchronized native strictfp
+
+4.8.8 Numeric Literals 
+数値リテラル
+
+long-valued integer literals use an uppercase L suffix, never lowercase (to avoid confusion with the digit 1). For example, 3000000000L rather than 3000000000l.
+長い数値リテラルは大文字のLを末尾に使う。小文字は使わない。数値1との混乱を避ける。例えば　　3000000l ではなく300000Lを使う。
+
+h2. 5 Naming 
+命名
+
+h3. 5.1 Rules common to all identifiers 
+すべての識別子への共通ルール
 
 
 
