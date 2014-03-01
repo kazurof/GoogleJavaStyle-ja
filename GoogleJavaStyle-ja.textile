@@ -625,7 +625,11 @@ Tip: 複数行コメントを書く際必要に応じ自動フォーマット機
 
 Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
 クラスやメンバの修飾子はJava言語仕様が推奨する順序で出現しなくてはならない。
+
+<pre>
 public protected private abstract static final transient volatile synchronized native strictfp
+</pre>
+
 
 4.8.8 Numeric Literals 
 数値リテラル
@@ -638,6 +642,108 @@ h2. 5 Naming
 
 h3. 5.1 Rules common to all identifiers 
 すべての識別子への共通ルール
+
+
+識別子はASCII文字のみを使い、数字と大文字小文字とアンダースコアである。
+それゆえ、有効な識別子名は正規表現　\w+にマッチする。
+
+
+Googleスタイルでは、name_, mName, s_name や kName といったような特別な接尾辞・接頭辞は使われない。
+
+
+h3. 5.2 識別子の種類ごとのルール
+
+h4. 5.2.1 パッケージ名
+
+
+パッケージ名はすべて小文字で連続する単語をそのまま繋げる。アンダースコアは使わない。
+例えば、
+com.example.deepspace,
+であって、
+com.example.deepSpace や com.example.deep_space
+は使わない。
+
+
+h4. 5.2.2 クラス名
+
+
+クラス名は大文字キャメルケースで命名する。
+
+クラス名は大抵名詞か名詞句です。例えば、Character や、ImmutableList です。
+インターフェース名も名詞か名詞句です。例えば List です。
+しかし、場合によっては形容詞や形容詞句になります。例えば、Readable です。
+
+アノテーション型に対する特定のルールや確立した規約はありません。
+
+
+テストクラスはテスト対象クラス名で始まり、Testで終わるよう命名されます。
+例えばHashTest や、 HashIntegrationTest です。
+
+
+h4. 5.2.3 メソッド名
+
+
+メソッド名は、小文字キャメルケースで命名されます。
+
+
+メソッド名は大抵動詞か動詞句です。例えば、sendMessage や stopです。
+
+アンダースコアはJUnitのメソッド名で、論理的コンポーネント名を分離する場合で使ってよいです。
+典型的なパターンは　test<MethodUnderTest>_<state>　で、例えば testPop_emptyStackです。
+テストメソッドを命名する正しい唯一の方法はありません。
+
+
+h4. 5.2.4 定数名
+
+定数は コンスタントケースで命名します。すべて大文字で、各単語をアンダースコアで区切ります。
+しかし定数とは何でしょう？いいですか？
+
+すべての定数はstatic finalなフィールドです。しかし、すべてのstatic finalなフィールドが定数であるとは限りません。
+コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか考えてみましょう。例えば、
+そのインスタンスの可視な状態が変更できるならば、殆どの場合定数ではありません。
+決して変更されないオブジェクトの振りをするだけでは大抵不十分です。例えば、
+
+<pre>
+// 定数である
+static final int NUMBER = 5;
+static final ImmutableList<String> NAMES = ImmutableList.of("Ed", "Ann");
+static final Joiner COMMA_JOINER = Joiner.on(',');  // Joiner は不変であるので。
+static final SomeMutableType[] EMPTY_ARRAY = {};
+enum SomeEnum { ENUM_CONSTANT }
+
+// 定数でない
+static String nonFinal = "non-final";
+final String nonStatic = "non-static";
+static final Set<String> mutableCollection = new HashSet<String>();
+static final ImmutableSet<SomeMutableType> mutableElements = ImmutableSet.of(mutable);
+static final Logger logger = Logger.getLogger(MyClass.getName());
+static final String[] nonEmptyArray = {"these", "can", "change"};
+</pre>
+
+これらの名前は大抵名詞か名詞句です。
+
+
+
+
+h4. 5.2.5 定数でないフィールド名
+
+
+定数でないフィールド名（staticであってもなくても）は小文字キャメルケースで命名されます。
+
+
+これらの名前は大抵名詞か名詞句です。例えば computedValues や index です。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
