@@ -727,20 +727,49 @@ static final String[] nonEmptyArray = {"these", "can", "change"};
 
 h4. 5.2.5 定数でないフィールド名
 
-
 定数でないフィールド名（staticであってもなくても）は小文字キャメルケースで命名されます。
-
 
 これらの名前は大抵名詞か名詞句です。例えば computedValues や index です。
 
 
+h4. 5.2.6 パラメータ名
 
 
+Parameter names are written in lowerCamelCase.
+パラメータ名は小文字のキャメルケースです。
+One-character parameter names should be avoided.
+一文字のパラメータ名は避けるべきです。
 
+5.2.7 Local variable names 
+ローカル変数名
 
+Local variable names are written in lowerCamelCase, and can be abbreviated more liberally than other types of names.
+ローカル変数名は小文字キャメルケースで命名されます。
+他の種類の命名よりも自由に短縮されます。
+However, one-character names should be avoided, except for temporary and looping variables.
+しかしながら一文字の名前は一時的なループ変数を除いて避けるべきです。
+Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
+finalで不変であってもローカル変数は定数とは見なされないのでそのようにスタイルされるのは避けるべきです。
 
+h4. 5.2.8 Type variable names 
+型変数名
 
+型変数名は以下の２つのやり方のうちいずれかで命名されます。
 
+* 一つの大文字アルファベット。それに１個の数字が続いて良い。例：E, T, X, T2
+* クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： RequestT, FooBarT
+
+h3. 5.3 キャメルケースの定義
+
+"IPv6"や、"iOS"のような頭字語や見慣れない単語があるように、英語のフレーズをキャメルケースに変換する
+合理的な方法はいくつかあります。
+正確さを維持するため、Google Styleでは以下のように（ほぼ）決定的な方法を定義します。
+
+名前の通常の形から始めて、
+
+1. 言葉を素のASCIIに変換し、アポストロフィを除去する。例えば、"Müller's  algorithm" は "Muellers algorithm"に変換される。
+2. これを単語に分割する。つまり、スペースや残っている句読点、ハイフンで分離する。
+** 推奨：
 
 
 
