@@ -833,6 +833,7 @@ try {
 
 
 .h3 6.3 Static members: qualified using class 
+
 staticなメンバーはクラスを使って修飾する。
 
 When a reference to a static class member must be qualified, it is qualified with that class's name,
@@ -862,4 +863,105 @@ TIP: これをやってはいけません。先に Effective JavaのItem7「フ�
 
 
 
+.h2 7 Javadoc 
 
+.h3 7.1 フォーマット
+
+.h4 7.1.1 一般的なフォーマット
+
+
+The basic formatting of Javadoc blocks is as seen in this example:
+
+Javadocブロックの基本的なフォーマットはこの例で表されます。
+
+<pre>
+/**
+ * Multiple lines of Javadoc text are written here,
+ * wrapped normally...
+ */
+public int method(String p1) { ... }
+</pre>
+
+... or in this single-line example:
+一行の例はこれです。
+
+<pre>
+/** An especially short bit of Javadoc. */
+</pre>
+
+The basic form is always acceptable. The single-line form may be substituted when there are no at-clauses present,
+ and the entirety of the Javadoc block (including comment markers) can fit on a single line.
+
+基本的な形は常に適用されます。 @節がない場合や、コメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は
+一行の形で代用できます。
+
+
+.h4 7.1.2 Paragraphs 段落
+
+
+One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, 
+and before the group of "at-clauses" if present. Each paragraph but the first has <p> immediately before the first word, with no space after.
+
+１個の空行、つまり、行頭に並べられたアスタリスク(*)のみの行が段落間と@節グループの前に挿入される。
+先頭が<p>でないそれぞれの段落は
+
+先頭以外のすべての段落は、最初の単語の前に<p>が入れられる。
+(TODO with no space after.の意味は？)
+
+
+.h4 7.1.3 @節　（javadoc タグ）At-clauses 
+
+（訳注：@param と言った節のこと。参照 http://docs.oracle.com/javase/jp/7/technotes/tools/windows/javadoc.html#javadoctags）
+GoogleJavaStyleでしか使っていない用語なので、全部javadoc タグに変えたほうがよいか。）
+
+Any of the standard "at-clauses" that are used appear in the order @param, @return, @throws, @deprecated, 
+and these four types never appear with an empty description. When an at-clause doesn't fit on a single line, 
+continuation lines are indented four (or more) spaces from the position of the @.
+
+標準の＠節で、使われるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つは空の記述には現れない。
+＠節が１行コメントに収まらない場合、２行目以降は@の位置からスペース４個以上インデントされる。
+
+
+.h3 7.2 The summary fragment 要約の記述
+
+The Javadoc for each class and member begins with a brief summary fragment. 
+This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
+
+クラスとメンバーのJavadocは簡単な要約の記述から始まります。
+この記述はとても重要です。クラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからです。
+
+
+This is a fragment—a noun phrase or verb phrase, not a complete sentence. 
+It does not begin with A {@code Foo} is a..., or This method returns..., nor does it form a complete imperative sentence like Save the record.. 
+However, the fragment is capitalized and punctuated as if it were a complete sentence.
+
+この記述は名詞句か動詞句であって文であってはなりません。
+「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存する。」といった
+命令文でもいけません。しかしながらこの記述はあたかも文であるかのように大文字化され、句読点が付けられます。
+（TODO 訳見直し）
+
+Tip: A common mistake is to write simple Javadoc in the form /** @return the customer ID */. 
+This is incorrect, and should be changed to /** Returns the customer ID. */.
+
+TIP: /** @return the customer ID */といった簡単なJavadocを書くことはよくある間違いです。
+これは不正で、正しくは以下のように直されるべきです。/** Returns the customer ID. */.
+
+
+
+
+7.3 Where Javadoc is used 
+
+At the minimum, Javadoc is present for every public class, and every public or protected member of such a class, with a few exceptions noted below.
+7.3.1 Exception: self-explanatory methods 
+
+Javadoc is optional for "simple, obvious" methods like getFoo, in cases where there really and truly is nothing else worthwhile to say but "Returns the foo".
+
+The test methods of a unit test class are perhaps the most common example of this exemption. These methods can usually be named descriptively enough that no additional documentation is needed.
+
+Tip: Important: it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named getCanonicalName, don't omit its documentation (with the rationale that it would say only /** Returns the canonical name. */) if a typical reader may have no idea what the term "canonical name" means!
+7.3.2 Exception: overrides 
+
+Javadoc is not always present on a method that overrides a supertype method.
+7.3.3 Optional javadoc 
+
+Classes and members that are not visible outside their package still have Javadoc as needed. Whenever an implementation comment would be used to define the overall purpose or behavior of a class, method or field, that comment is written as Javadoc instead. (It's more uniform, and more tool-friendly.)
