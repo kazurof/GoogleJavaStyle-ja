@@ -775,6 +775,91 @@ h3. 5.3 キャメルケースの定義
 
 
 
+.h2 6 Programming Practices 
+プログラミングの実践
+
+.h3 6.1 @Override を常に使う。
+
+
+A method is marked with the @Override annotation whenever it is legal. This includes a class method overriding a superclass method,
+ a class method implementing an interface method, and an interface method respecifying a superinterface method.
+許される場所ならばメソッドはOverrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、
+インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも
+当てはまります。
+
+
+
+.h3 6.2 Caught exceptions: not ignored 
+キャッチした例外を無視しない。
+
+Except as noted below, it is very rarely correct to do nothing in response to a caught exception.
+ (Typical responses are to log it, or if it is considered "impossible", rethrow it as an AssertionError.)
+
+以下の例外を除き、キャッチした例外に対してなにも対応しないのが正しいことはめったにありません。
+大抵の対応はログを取るか、ありえない場合ならばAssertionErrorとして再スローすることです。
+
+
+When it truly is appropriate to take no action whatsoever in a catch block, the reason this is justified is explained in a comment.
+
+キャッチ節でなにもしないことが本当に適切であるならば、それを正当化する理由をコメントで説明します。
+
+<pre>
+try {
+  int i = Integer.parseInt(response);
+  return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+  // 数字ではない。このような場合もあるので別の処理を続ける。
+}
+return handleTextResponse(response);
+</pre>
+
+
+Exception: in tests, a caught exception may be ignored without comment if it is named expected. 
+The following is a very common idiom for ensuring that the method under test does throw an exception of the expected type,
+ so a comment is unnecessary here.
+
+例外：テストにおいて例外がスローされることを期待する場合はキャッチした例外はコメントなしで無視されます。
+以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムで、
+コメントは不要です。
+
+<pre>
+try {
+  emptyStack.pop();
+  fail();
+} catch (NoSuchElementException expected) {
+}
+</pre>
+
+
+
+.h3 6.3 Static members: qualified using class 
+staticなメンバーはクラスを使って修飾する。
+
+When a reference to a static class member must be qualified, it is qualified with that class's name,
+ not with a reference or expression of that class's type.
+
+staticなメンバーへの参照の場合はクラス名で修飾されます。そのクラスの型の変数や式で修飾してはいけません。
+(TODO 訳語見直し)
+
+<pre>
+Foo aFoo = ...;
+Foo.aStaticMethod(); // 良い
+aFoo.aStaticMethod(); // 悪い
+somethingThatYieldsAFoo().aStaticMethod(); // とても悪い
+</pre>
+
+
+6.4 Finalizers: not used 
+ファイナライザは使わない。
+
+It is extremely rare to override Object.finalize.
+Objectクラスのfinalize()メソッドを使うケースは非常に稀です。
+
+Tip: Don't do it. If you absolutely must, first read and understand Effective Java Item 7, "Avoid Finalizers," very carefully, and then don't do it.
+
+TIP: これをやってはいけません。先に Effective JavaのItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
+
+
 
 
 
