@@ -4,7 +4,7 @@ h1. Google Java Style (和訳)
 --------------
 h2. この文書について
 
-本文書は、 "Google Java Style":http://google-styleguide.googlecode.com/svn/trunk/javaguide.html の非公式和訳です。
+本文書は、"Google Java Style":http://google-styleguide.googlecode.com/svn/trunk/javaguide.html の非公式和訳です。
 技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。
 さらに言えば翻訳作業途中です。生暖かく見守ってやってください。
 誤訳、誤植の指摘を歓迎いたします。
@@ -767,12 +767,27 @@ h3. 5.3 キャメルケースの定義
 
 名前の通常の形から始めて、
 
-1. 言葉を素のASCIIに変換し、アポストロフィを除去する。例えば、"Müller's  algorithm" は "Muellers algorithm"に変換される。
-2. これを単語に分割する。つまり、スペースや残っている句読点、ハイフンで分離する。
-** 推奨：
+# 言葉を素のASCIIに変換し、アポストロフィを除去する。例えば、"Müller's  algorithm" は "Muellers algorithm"に変換される。
+# これを単語に分割する。つまり、スペースや残っている句読点、ハイフンで分離する。
+** 推奨：もしもある単語が一般的にキャメルケースの形になっていたら、これを分解する。
+（例：「AdWords」 を 「ad words」にする。）「iOS」のような単語は本当はキャメルケースになっていない
+規約に当てはまらないのでこの推奨は適用しないことに注意する。
+# （頭字語を含めて）すべてを小文字にする。そして最初の文字を大文字にする。
+** 各単語とは大文字キャメルケースとなるか、最初の単語を除いて小文字キャメルケースになる。
+# 最後に、すべての単語を１個の識別子として連結する。
+
+元々の大文字小文字はほぼ無視される。例えば、
 
 
+|元々の形|正しい変換例|誤った変換例|
+|"XML HTTP request"|XmlHttpRequest|XMLHTTPRequest|
+|"new customer ID"|newCustomerId|newCustomerID|
+|"inner stopwatch"|innerStopwatch|innerStopWatch|
+|"supports IPv6 on iOS?"|supportsIpv6OnIos|supportsIPv6OnIOS|
+|"YouTube importer"|YouTubeImporter YoutubeImporter [1]|
 
+
+fn1. やってよいが推奨されない。
 
 
 .h2 6 Programming Practices 
