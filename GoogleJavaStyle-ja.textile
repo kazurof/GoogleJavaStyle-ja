@@ -271,11 +271,11 @@ h3. 4.5.1 どこで改行するか
 
 # 代入でない演算子で改行するときは、シンボルの前で改行します。（これはJavaScriptやC++のような他の
 言語でのGoogleスタイルで使われている週間と同じであることに注意して下さい）
-このことはドット演算子( . )や、型演算子の＆記号( <T extends Foo & Bar> )や、
+** このことはドット演算子( . )や、型演算子の＆記号( <T extends Foo & Bar> )や、
 catch節でのパイプ記号 (catch (FooException | BarException e)).といった演算子のようなシンボルにも
 適用されます。
 # 行が代入演算子で改行されるときは、通常シンボルの後ろで改行します。しかしどちらでも受け入れられます。
-このことは拡張 ("foreach") 文の「代入演算子のような」コロンにも適用されます。
+** このことは拡張 ("foreach") 文の「代入演算子のような」コロンにも適用されます。
 # メソッドやコンストラクタ名に続く開始括弧（(）は改行されません。
 # カンマ(,)はそれの前のトークンに続いて書かれます。改行されません。
 
@@ -287,11 +287,10 @@ h4. 4.5.2 インデントが続く行は最低4個の空白です。
 複数の連続した行がある場合、インデントは4以上ならいくつでも良いです。
 一般的に、2個の連続した行が同じインデントレベルであるならばその時のみ、
 文法的並行した要素で始まるべきです。
-（意味不明。。。）
 
 4.6.3節の、水平アラインメントは
-もっとわけわかめ
 
+TODO:要推敲
 
 h3. 4.6 空白
 
@@ -347,27 +346,25 @@ Here is an example without alignment, then using alignment:
 これはやっている例とやっていない例です。
 
 <pre>
-private int x; // this is fine
-private Color color; // this too
+private int x; // これは良い
+private Color color; // これも良い
 </pre>
 
 これはok  これも
 
 <pre>
-private int   x;      // permitted, but future edits
-private Color color;  // may leave it unaligned
+private int   x;      // 許容される。しかし今後の編集で
+private Color color;  // 揃えられなくなるかもしれない。
 </pre>
 
 やって良いがあとで直されるかもしれない
 
 Tip: Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is allowed.
-調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときをかんがえてほしい
+調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときを考えてほしい
 この変更は以前のきれいな並びをおかしくする。そしてそうなる
 
 
-
-
-More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. このことはコーダー多分君に近くの行に同様になおせと求める。そして修正範囲の拡大を引き起こす
+More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. このことはコーダー(多分君)に近くの行に同様になおせと求める。そして修正範囲の拡大を引き起こす
 
 
 
@@ -828,7 +825,7 @@ somethingThatYieldsAFoo().aStaticMethod(); // とても悪い
 </pre>
 
 
-6.4 Finalizers: not used 
+h3. 6.4 Finalizers: not used 
 ファイナライザは使わない。
 
 It is extremely rare to override Object.finalize.
@@ -841,11 +838,11 @@ TIP: これをやってはいけません。先に Effective JavaのItem7「フ�
 
 
 
-.h2 7 Javadoc 
+h2. 7 Javadoc 
 
-.h3 7.1 フォーマット
+h3. 7.1 フォーマット
 
-.h4 7.1.1 一般的なフォーマット
+h4. 7.1.1 一般的なフォーマット
 
 
 The basic formatting of Javadoc blocks is as seen in this example:
