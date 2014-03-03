@@ -4,7 +4,7 @@ h1. Google Java Style (和訳)
 --------------
 h2. この文書について
 
-本文書は、 [Google Java Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) の非公式和訳です。
+本文書は、 "Google Java Style":http://google-styleguide.googlecode.com/svn/trunk/javaguide.html の非公式和訳です。
 技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。
 さらに言えば翻訳作業途中です。生暖かく見守ってやってください。
 誤訳、誤植の指摘を歓迎いたします。
@@ -949,19 +949,53 @@ TIP: /** @return the customer ID */といった簡単なJavadocを書くこと�
 
 
 
-7.3 Where Javadoc is used 
+.h3 7.3 Where Javadoc is used Javadocが使われる場所
+
+
 
 At the minimum, Javadoc is present for every public class, and every public or protected member of such a class, with a few exceptions noted below.
-7.3.1 Exception: self-explanatory methods 
+
+少なくとも、javadocはpublicなクラスとそのクラスのpublic protected なメンバーに書かれます。但し以下の例外が有ります。
+
+.h4 7.3.1 Exception: self-explanatory methods 例外　自己叙述的なメソッド。
+
 
 Javadoc is optional for "simple, obvious" methods like getFoo, in cases where there really and truly is nothing else worthwhile to say but "Returns the foo".
 
+javadocはgetFooのような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。
+
+
 The test methods of a unit test class are perhaps the most common example of this exemption. These methods can usually be named descriptively enough that no additional documentation is needed.
 
+
+ユニットテストクラスのテストメソッドはおそらくこの例外の最も一般的な例外です。このようなメソッドは他の追加の文書が不要なほど内容がわかるように命名されます。
+
+
 Tip: Important: it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named getCanonicalName, don't omit its documentation (with the rationale that it would say only /** Returns the canonical name. */) if a typical reader may have no idea what the term "canonical name" means!
-7.3.2 Exception: overrides 
+
+Tip: 重要：この例外を典型的な読者が知りたがるような関連情報を省略することを正当化するために引用するのは
+適切ではありません。例えば、「getCanonicalName」というメソッドにおいて典型的な読者が「canonical name」という語の意味を
+知らないかもしれない場合、（単に/** Returns the canonical name. */と書くだけであるという理由で）省略してはいけません。
+
+
+
+
+.h4 7.3.2 Exception: overrides 例外　オーバーライドするメソッド
+
+親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではありません。
+
 
 Javadoc is not always present on a method that overrides a supertype method.
-7.3.3 Optional javadoc 
+
+.h4 7.3.3 追加のjavadoc
+
+
 
 Classes and members that are not visible outside their package still have Javadoc as needed. Whenever an implementation comment would be used to define the overall purpose or behavior of a class, method or field, that comment is written as Javadoc instead. (It's more uniform, and more tool-friendly.)
+
+パッケージ外から可視でないクラスやメンバーでもJavadocは必要です。
+クラス・メソッド・フィールドの挙動や全体的な目的を定める時実装コメントが必要な場合は、
+そのコメントはJavadocで書かれます。（より統一的で、ツールとの親和性も高いです。）
+
+
+
