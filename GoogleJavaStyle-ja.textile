@@ -121,6 +121,7 @@ h4. 3.2 パッケージ文
 パッケージ文は *行折り返ししてはならない。* 文字数制限（4.4節文字数制限は80あるいは100文字）はパッケージ文には適用されない。
 
 h3. 3.3 インポート文
+
 h4. 3.3.1 ワイルドカードインポートは禁止
 
 *ワイルドカードインポート* はstaticであってもなくても *使ってはならない。*
@@ -168,8 +169,7 @@ h5. 3.4.2.1 オーバーロードを分離してはならない
 
 h2. 4 フォーマット
 
-用語についての注釈：ブロックのような構造物とは、クラス、メソッド、コンストラクタの本体を指す。
-すべての配列は必要に応じてブロックのような構造物とみなされて良い。4.8.3.1節 配列初期化子を参照。
+用語についての注釈：ブロックのような構造物とは、クラス、メソッド、コンストラクタの本体を指す。すべての配列は必要に応じてブロックのような構造物とみなされて良い。4.8.3.1節 配列初期化子を参照。
 
 h3. 4.1 中括弧
 
@@ -180,8 +180,7 @@ h4. 4.1.1 使えるところでは中括弧は使う
 h4. 4.1.2 空でないブロックではK&Rスタイルに従う。
 
 
-中括弧は空でないブロックや、ブロックのような構造物ではカーニハン・リッチースタイル
-( "Egyptian Brackets":http://blog.codinghorror.com/new-programming-jargon/ )に従う。
+中括弧は空でないブロックや、ブロックのような構造物ではカーニハン・リッチースタイル( "Egyptian Brackets":http://blog.codinghorror.com/new-programming-jargon/ )に従う。
 
 
 * 開始中括弧の前に改行を入れない。
@@ -226,7 +225,7 @@ void doNothing() {}
 </pre>
 
 
-h3. 4.2 ブロックのインデントは空白2個である。
+h3. 4.2 ブロックのインデントは空白2個である
 
 
 新しいブロックあるいはブロック構造物が開始した時インデントは空白2個づつ増える。
@@ -239,7 +238,7 @@ h4. 4.3 1行毎に1個の文
 
 各文は、末尾に改行が来なくてはならない。
 
-h3. 4.4 1行の文字数制限。　80文字か100文字
+h3. 4.4 1行の文字数制限 80文字か100文字
 
 
 プロジェクトごとに1行の文字数制限を80文字か100文字から自由に決定して良い。
@@ -298,12 +297,11 @@ h4. 4.6.1 垂直の空白
 
 単一の空行が生成される状況は以下のとおり。
 
-1. クラスの連続するメンバ（あるいは初期化子）の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子
-例外：2個の連続するフィールド（その間にコードがないもの）間での空行は任意である。そのような空行はフィールドの論理的なグループ分けをするのに必要。
-
-2. メソッド本体内で、文を論理的にグループ分けしたい場合。
-3. 入れたいならば、クラスの最初のメンバーの前と最終メンバーの後。（推奨も拒否もしない）
-4. 本文書の別の節で入れるよう求められた場所（3.3節のインポート文など）
+# クラスの連続するメンバ（あるいは初期化子）の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子.
+** 例外：2個の連続するフィールド（その間にコードがないもの）間での空行は任意である。そのような空行はフィールドの論理的なグループ分けをするのに必要。
+# メソッド本体内で、文を論理的にグループ分けしたい場合。
+# 入れたいならば、クラスの最初のメンバーの前と最終メンバーの後。（推奨も拒否もしない）
+# 本文書の別の節で入れるよう求められた場所（3.3節のインポート文など）
 
 複数の連続した空行を入れて良いが、必須でも推奨でもない。
 
@@ -325,43 +323,35 @@ h4. 4.6.2 水平の空白
 * 連続する型パラメータ間のアンパサンド。　<T extends Foo & Bar>
 
 
-h4. 4.6.3 Horizontal alignment: never required 
-
-水平位置の揃え　全く不要
-
-
+h4. 4.6.3 Horizontal alignment: never required 水平位置揃え 全く不要
 
 
 Terminology Note: Horizontal alignment is the practice of adding a variable number of additional spaces in your code with the goal of making certain tokens appear directly below certain other tokens on previous lines.
-用語の注釈
-水平位置の揃えは前の行のあるトークンの真下にトークンが来るようにコードに追加のすペースを幾つか入れるやり方のことです。　　実践ノ事です
 
+用語の注釈：水平位置揃えは前の行のあるトークンの真下にトークンが来るようにコードに追加のスペースを幾つか入れるやり方のことです。
 
 
 This practice is permitted, but is never required by Google Style. It is not even required to maintain horizontal alignment in places where it was already used.
-これはやって良いがGoogleスタイルでは要求されない。すでに為されているところをそのように維持することすら求めれられない
+
+これはやって良いがGoogleスタイルでは *要求されない。* すでに為されているところをそのように維持することすら求めれられない
 
 
 Here is an example without alignment, then using alignment:
+
 これはやっている例とやっていない例です。
 
 <pre>
 private int x; // これは良い
 private Color color; // これも良い
-</pre>
 
-これはok  これも
-
-<pre>
 private int   x;      // 許容される。しかし今後の編集で
 private Color color;  // 揃えられなくなるかもしれない。
 </pre>
 
-やって良いがあとで直されるかもしれない
 
 Tip: Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is allowed.
 調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときを考えてほしい
-この変更は以前のきれいな並びをおかしくする。そしてそうなる
+この変更は以前のきれいな並びをおかしくするだろう。そして *実際そうなる。*
 
 
 More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. このことはコーダー(多分君)に近くの行に同様になおせと求める。そして修正範囲の拡大を引き起こす
@@ -373,9 +363,7 @@ That one-line change now has a "blast radius." This can at worst result in point
 
 
 
-h3. 4.7 Grouping parentheses: recommended 
-
-グループ化の括弧　　推奨
+h3. 4.7 Grouping parentheses: recommended グループ化の括弧　　推奨
 
 Optional grouping parentheses are omitted only when author and reviewer agree that there is no reasonable 
 chance the code will be misinterpreted without them, nor would they have made the code easier to read. 
@@ -559,18 +547,15 @@ public String getNameIfPresent() { ... }
 
 h4. 4.8.6 コメント
 
-
-
-h5. 4.8.6.1 Block comment style 
-ブロックコメントスタイル
+h5. 4.8.6.1 Block comment style ブロックコメントスタイル
 
 Block comments are indented at the same level as the surrounding code. They may be in /* ... */ style or // ... style. For multi-line /* ... */ comments, subsequent lines must start with * aligned with the * on the previous line.
 ブロックコメントは周りのコードと同じレベルにインデントされる。/**/でも　　//でも良い。複数行/**/コメントについては*の位置を先頭行の米と同じに揃えなくてはならない。
 
 <pre>
 /*
- * This is          // And so           /* Or you can
- * okay.            // is this.          * even do this. */
+ * これは         // これも           /* こんなかたち
+ * 良い           // 良い              * であっても良い。 */
  */
 </pre>
 
@@ -581,8 +566,7 @@ Comments are not enclosed in boxes drawn with asterisks or other characters.
 Tip: When writing multi-line comments, use the /* ... */ style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in // ... style comment blocks.
 Tip: 複数行コメントを書く際必要に応じ自動フォーマット機能で行折り返ししたい場合は/**/スタイルを使うと良い。多くのフォーマッタは//　スタイルのコメントの改行を直さない。
 
-4.8.7 Modifiers 
-修飾子
+h4. 4.8.7 Modifiers 修飾子
 
 Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
 クラスやメンバの修飾子はJava言語仕様が推奨する順序で出現しなくてはならない。
@@ -592,7 +576,7 @@ public protected private abstract static final transient volatile synchronized n
 </pre>
 
 
-4.8.8 Numeric Literals 
+h4. 4.8.8 Numeric Literals 
 数値リテラル
 
 long-valued integer literals use an uppercase L suffix, never lowercase (to avoid confusion with the digit 1). For example, 3000000000L rather than 3000000000l.
@@ -701,8 +685,7 @@ Parameter names are written in lowerCamelCase.
 One-character parameter names should be avoided.
 一文字のパラメータ名は避けるべきです。
 
-5.2.7 Local variable names 
-ローカル変数名
+h4. 5.2.7 Local variable names ローカル変数名
 
 Local variable names are written in lowerCamelCase, and can be abbreviated more liberally than other types of names.
 ローカル変数名は小文字キャメルケースで命名されます。
@@ -751,9 +734,9 @@ h3. 5.3 キャメルケースの定義
 fn1. やってよいが推奨されない。
 
 
-.h2 6 Programming Practices プログラミングの実践
+h2. 6 Programming Practices プログラミングの実践
 
-.h3 6.1 @Override を常に使う。
+h3. 6.1 @Override を常に使う。
 
 
 A method is marked with the @Override annotation whenever it is legal. This includes a class method overriding a superclass method,
@@ -764,7 +747,7 @@ A method is marked with the @Override annotation whenever it is legal. This incl
 
 
 
-.h3 6.2 Caught exceptions: not ignored 
+h3. 6.2 Caught exceptions: not ignored 
 キャッチした例外を無視しない。
 
 Except as noted below, it is very rarely correct to do nothing in response to a caught exception.
@@ -807,7 +790,7 @@ try {
 
 
 
-.h3 6.3 Static members: qualified using class 
+h3. 6.3 Static members: qualified using class 
 
 staticなメンバーはクラスを使って修飾する。
 
@@ -871,7 +854,7 @@ The basic form is always acceptable. The single-line form may be substituted whe
 一行の形で代用できます。
 
 
-.h4 7.1.2 Paragraphs 段落
+h4. 7.1.2 Paragraphs 段落
 
 
 One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, 
@@ -884,7 +867,7 @@ and before the group of "at-clauses" if present. Each paragraph but the first ha
 (TODO with no space after.の意味は？)
 
 
-.h4 7.1.3 @節　（javadoc タグ）At-clauses 
+h4. 7.1.3 @節　（javadoc タグ）At-clauses 
 
 （訳注：@param と言った節のこと。参照 http://docs.oracle.com/javase/jp/7/technotes/tools/windows/javadoc.html#javadoctags）
 GoogleJavaStyleでしか使っていない用語なので、全部javadoc タグに変えたほうがよいか。）
@@ -897,7 +880,7 @@ continuation lines are indented four (or more) spaces from the position of the @
 ＠節が１行コメントに収まらない場合、２行目以降は@の位置からスペース４個以上インデントされる。
 
 
-.h3 7.2 The summary fragment 要約の記述
+h3. 7.2 The summary fragment 要約の記述
 
 The Javadoc for each class and member begins with a brief summary fragment. 
 This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
@@ -924,7 +907,7 @@ TIP: /** @return the customer ID */といった簡単なJavadocを書くこと�
 
 
 
-.h3 7.3 Where Javadoc is used Javadocが使われる場所
+h3. 7.3 Where Javadoc is used Javadocが使われる場所
 
 
 
@@ -932,7 +915,7 @@ At the minimum, Javadoc is present for every public class, and every public or p
 
 少なくとも、javadocはpublicなクラスとそのクラスのpublic protected なメンバーに書かれます。但し以下の例外が有ります。
 
-.h4 7.3.1 Exception: self-explanatory methods 例外　自己叙述的なメソッド。
+h4. 7.3.1 Exception: self-explanatory methods 例外　自己叙述的なメソッド。
 
 
 Javadoc is optional for "simple, obvious" methods like getFoo, in cases where there really and truly is nothing else worthwhile to say but "Returns the foo".
@@ -955,14 +938,14 @@ Tip: 重要：この例外を典型的な読者が知りたがるような関連
 
 
 
-.h4 7.3.2 Exception: overrides 例外　オーバーライドするメソッド
+h4. 7.3.2 Exception: overrides 例外　オーバーライドするメソッド
 
 親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではありません。
 
 
 Javadoc is not always present on a method that overrides a supertype method.
 
-.h4 7.3.3 追加のjavadoc
+h4. 7.3.3 追加のjavadoc
 
 
 
