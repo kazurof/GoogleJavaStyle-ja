@@ -37,7 +37,7 @@ That is, while the examples are in Google Style, they may not illustrate the onl
 stylish way to represent the code. 
 Optional formatting choices made in examples should not be enforced as rules.
 
-この文書内のサンプルコードは規約に *従っていない。* つまり、サンプルコードはGoogleスタイルであるが、コードを表現する唯一のスタイルに則ったやり方を説明していないかもしれない。サンプルコードの追加の整形のやり方はルールとして強調されるべきではない。
+この文書内のサンプルコードは規約に *従っていない。* つまり、サンプルコードはGoogleスタイル文書に書かれているが、コードを表現する唯一のスタイルに則ったやり方を説明していないかもしれない。例に出される補足的な整形の仕方はルールとして強調されるべきではない。
 
 h2. 2 ソースファイルの基本
 
@@ -48,8 +48,7 @@ h3.  2.1 ファイル名
 The source file name consists of the case-sensitive name of the top-level class it contains, 
 plus the .java extension.
 
-ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて @.java@
-という拡張子が付いていること。
+ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて @.java@ という拡張子が付いていること。
 
 
 h3. 2.2 ファイルエンコーディング：UTF-8
@@ -61,7 +60,7 @@ h3. 2.3 特殊文字
 
 h4. 2.3.1 空白
 
-行区切り文字以外では、ASCII水平スペース文字 (0x20) はソース内でどこに現れても良い唯一の空白文字です。
+行区切り文字以外では、 ASCII水平スペース文字 (0x20)  はソース内でどこに現れても良い唯一の空白文字です。
 つまり、
 
 # Stringと文字リテラルでのこれ以外の空白文字はエスケープされること。
@@ -87,11 +86,11 @@ TIP: Unicodeエスケープの場合、時たま実際にUnicode文字が使わ�
 
 
 |例                           |説明|
-|String unitAbbrev = "μs";                             |最高。コメントなしでも完全に明確|
-|String unitAbbrev = "\u03bcs"; // "μs"                |許容される。しかしこれをする理由はない。|
+|String unitAbbrev = "μs";                             |最高。コメントなしでも完全で明確|
+|String unitAbbrev = "\u03bcs"; // "μs"                |許容される。しかしこう書く理由はない|
 |String unitAbbrev = "\u03bcs"; // ギリシャ文字ミューと "s" |許容される。しかし奇妙で間違えやすい|
-|String unitAbbrev = "\u03bcs";                         |だめ。読者やこれが何なのか分からない。|
-|return '\ufeff' + content; // バイトオーダーマーク     |良い。表示されない文字にはエスケープを使い、必要ならコメントする。|
+|String unitAbbrev = "\u03bcs";                         |だめ。読者やこれが何なのか分からない|
+|return '\ufeff' + content; // バイトオーダーマーク     |良い。表示されない文字にはエスケープを使い必要ならコメントする|
 
 
 
@@ -217,8 +216,7 @@ void doNothing() {}
 h3. 4.2 ブロックのインデントは空白2個である
 
 
-新しいブロックあるいはブロック構造物が開始した時インデントは空白2個づつ増える。ブロックが終了したら、インデントは1個まえのレベルに戻る。
-インデントレベルはブロックを通じてコードとコメントに適用される。4.1.2節の例を参照のこと。（ 4.1.2 空でないブロックではK&Rスタイルに従う。）
+新しいブロックあるいはブロック構造物が開始した時インデントは空白2個づつ増える。ブロックが終了したら、インデントは1個まえのレベルに戻る。インデントレベルはブロックを通じてコードとコメントに適用される。4.1.2節の例を参照のこと。（ 4.1.2 空でないブロックではK&Rスタイルに従う。）
 
 
 h3. 4.3 1行毎に1個の文
@@ -238,12 +236,10 @@ h3. 4.4 1行の文字数制限 80文字か100文字
 
 h3. 4.5 行の折り返し
 
-用語の注記：別の意味で正当に単一行を占めているコードを複数行に分けるとき、
-通常は文字数制限を超えないように分ける。この活動を行の折り返しと呼ぶ。
+用語の注記：別の意味で正当に単一行を占めているコードを複数行に分けるとき、通常は文字数制限を超えないように分ける。この活動を行の折り返しと呼ぶ。
 
 
-どんな状況にも合う改行方法を正確に示す、統一的で決定的なやり方はありません。
-同じコード片を改行する正しい方法は複数あるものです。
+どんな状況にも合う改行方法を正確に示す、統一的で決定的なやり方はありません。同じコード片を改行する正しい方法は複数あるものです。
 
 
 TIP:　メソッドやローカル変数の抽出は改行をせずに問題を解決する場合があります。
@@ -266,7 +262,7 @@ h4. 4.5.2 連続する行は少なくとも４文字インデントします。
 
 複数の連続した行がある場合、インデントは4以上ならいくつでも良いです。一般的に、2個の連続した行が同じインデントレベルであるならばその時のみ、文法的に並行した要素で始まるべきです。
 
-"4.6.3節の水平位置揃え"はあるトークンを前の行に揃えるため色々な数の空白を使うとげんなりするやり方を防止します。
+"4.6.3節の水平位置揃え"はあるトークンを前の行に揃えるため色々な数の空白を使うというげんなりするやり方を防止します。
 
 TODO:要推敲
 
@@ -296,7 +292,7 @@ h4. 4.6.2 水平の空白
 # 開始中括弧({)の前すべて。ただし以下の2個の例外を除く
 ** @SomeAnnotation({a, b}) (空白は使わない。)
 ** String[][] x = {{"foo"}};　({{ の中に空白は不要。項目8を参照)
-#  すべてのバイナリ、tenary演算子の両側。また、以下の様な演算子ライクなシンボルにも適用する。	
+#  すべてのバイナリ、tenary演算子の両側。また、以下の様な演算子ライクなシンボルにも適用する。
 ** 連続する型パラメータ間のアンパサンド。 @<T extends Foo & Bar>@
 ** 複数の例外を処理するcatchブロックでのパイプ。 @catch (FooException | BarException e)@
 ** 拡張for文　("foreach") でのコロン。 (:) 
@@ -312,17 +308,10 @@ h4. 4.6.2 水平の空白
 h4. 4.6.3  水平位置揃え 全く不要
 
 
-Terminology Note: Horizontal alignment is the practice of adding a variable number of additional spaces in your code with the goal of making certain tokens appear directly below certain other tokens on previous lines.
-
 用語の注釈：水平位置揃えは前の行のあるトークンの真下にトークンが来るようにコードに追加のスペースを幾つか入れるやり方のことです。
-
-
-This practice is permitted, but is never required by Google Style. It is not even required to maintain horizontal alignment in places where it was already used.
 
 これはやって良いがGoogleスタイルでは *要求されない。* すでに為されているところをそのように維持することすら求めれられない
 
-
-Here is an example without alignment, then using alignment:
 
 これはやっている例とやっていない例です。
 
@@ -335,86 +324,44 @@ private Color color;  // 揃えられなくなるかもしれない。
 </pre>
 
 
-Tip: Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is allowed.
-調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときを考えてほしい
-この変更は以前のきれいな並びをおかしくするだろう。そして *実際そうなる。*
+カラムの調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときを考えてほしい。この変更は以前のきれいな並びをおかしくするだろう。そして *実際そうなる。* このことは開発者(多分君)に近くの行を同様になおせと求める。そして修正範囲の拡大を引き起こす。一行の変更が核爆発になる。最悪意味のない作業になる。良くても変更履歴を汚くする。レビューが遅くなり、マージの衝突が激増する。
 
 
-More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. このことはコーダー(多分君)に近くの行に同様になおせと求める。そして修正範囲の拡大を引き起こす
+h3. 4.7 グループ化の括弧 推奨
+
+追加のグループ化の括弧は作者とレビュアーが括弧なしでもコードは誤解される余地がないと認めるか、コードを読みやすく書いた時のみなくすことが出来ます。すべての読者がJava演算子の優先度表を記憶していると仮定するのは合理的でありません。
 
 
+h3. 4.8 各構造物
 
-That one-line change now has a "blast radius." This can at worst result in pointless busywork, but at best it still corrupts version history information, slows down reviewers and exacerbates merge conflicts.
-一行の偏向が核爆発に為る。最悪意味のない作業になる。良くても変更履歴を汚くする。レビューがおそく成り、マージの衝突が激増する。
+h4. 4.8.1 列挙型
 
+列挙定数値後のカンマの後ろの改行は任意である。
 
+定数値にメソッドもドキュメンテーションもない列挙型は必要に応じて任意に配列の初期化と同じやり方で整形してよい。
 
-h3. 4.7 Grouping parentheses: recommended グループ化の括弧　　推奨
+<pre>private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }</pre>
 
-Optional grouping parentheses are omitted only when author and reviewer agree that there is no reasonable 
-chance the code will be misinterpreted without them, nor would they have made the code easier to read. 
-It is not reasonable to assume that every reader has the entire Java operator precedence table memorized.
+列挙型はクラスであるのでクラスに適用される他のルールが適用される。
 
-追加のグループ化の括弧は作者とレビュアーが括弧なしでもコードは誤解される余地がないと
-認めるか、コードを読みやすく書いた時のみなくすことが出来ます。すべての読者がJava演算子の優先度表を
-記憶していると仮定するのは合理的でありません。
-
-
-
-
-
-
-
-h3. 4.8 Specific constructs 
-
-各構造物
-
-h4. 4.8.1 Enum classes 
-
-列挙型
-
-After each comma that follows an enum constant, a line-break is optional.
-列挙定数値後のカンマの後ろの改行は任意である
-
-
-An enum class with no methods and no documentation on its constants may optionally be formatted as if it were an array initializer:
-定数値にメソッドもドキュメンテーションもない列挙型は任意に配列の初期化と同じやり方で整形してよい。
-
-private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
-Since enum classes are classes, all other rules for formatting classes apply.
-列挙型はclassであるのでクラスに適用されるほかのルールが適用される。
-
-h4. 4.8.2 Variable declarations 
-
-値の宣言
+h4. 4.8.2 変数宣言
 
 h5. 4.8.2.1 One variable per declaration 
 
 宣言ごとに一個の変数
 
-Every variable declaration (field or local) declares only one variable: declarations such as int a, b; are not used.
-フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。　　のような宣言は使われない。
+フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 @ int a, b;@ のような宣言は使われない。
 
-h5. 4.8.2.2 Declared when needed, initialized as soon as possible 
+h5. 4.8.2.2 必要なときに宣言して速やかに初期化する
 
-必要なときに宣言して
-速やかに初期化する
-Local variables are not habitually declared at the start of their containing block or block-like construct. Instead, local variables are declared close to the point they are first used (within reason), to minimize their scope.
-ローカル変数はそれを含むブロックやブロック構造物の先頭でハビチュアリに宣言されてはならない。代わりに、ローカル変数はそのスコープを最小化するために最初に使う場所(理由がある)の近くで宣言される。
+ローカル変数はそれを含むブロックやブロック構造物の先頭でなんとなく宣言されてはならない。代わりに、ローカル変数はそのスコープを最小化するために最初に使う場所(理由がある)の近くで宣言される。ローカル変数宣言はたいていは初期化子がある。あるいは宣言直後に初期化される。
 
 
- Local variable declarations typically have initializers, or are initialized immediately after declaration.
+h4. 4.8.3 配列
 
-ローカル変数宣言は形式的に初期化子がある。あるいは宣言直後に初期化される。
+h5. 4.8.3.1 配列の初期化はブロックのようにやって良い。
 
-h4. 4.8.3 Arrays 
-
-配列
-
-h5. 4.8.3.1 Array initializers: can be "block-like" 
-配列の初期化はブロックのようにやって良い。
-Any array initializer may optionally be formatted as if it were a "block-like construct." For example, the following are all valid (not an exhaustive list):
-配列の初期化はあたかもブロック構造物のようにやって良い。例えば以下の例は総べて有効である。網羅的なリストでは無い。
+配列の初期化はあたかも「block-like construct」のようにやって良い。例えば以下の例はすべて有効である。網羅的なリストでは無い。
 
 <pre>
 new int[] {           new int[] {
@@ -429,56 +376,26 @@ new int[] {             3,
 </pre>
 
 
-h5. 4.8.3.2 No C-style array declarations 
-Cのような宣言は禁止
+h5. 4.8.3.2 Cのような宣言は禁止
 
-The square brackets form a part of the type, not the variable: String[] args, not String args[].
-角括弧は型の一部を為すが、変数には当てはまらない。　String[] args は良い。 String args[]　はダメ。
+角括弧は型の一部を為すが、変数には当てはまらない。　<pre>String[] args </pre> は良い。 <pre>String args[]</pre> はダメ。
 
 
-h4. 4.8.4 Switch statements 
-スイッチ文
+h4. 4.8.4 スイッチ文
 
-Terminology Note: Inside the braces of a switch block are one or more statement 
+ *用語についての注釈* スイッチブロックの括弧の内側は一個以上の文グループです。それぞれの文グループは一個以上のスイッチラベル（case FOO: でも default:　であっても）とそれに続く続く一個以上の文です。
 
-groups. Each statement group consists of one or more switch labels (either case FOO: 
 
-or default:), followed by one or more statements.
-
-用語についての注釈　　スイッチブロックの括弧のなかは一個以上の文グループです。
-
-各文グループは一個以上のスイッチラベルと続く一個以上の文です。
-
-h5. 4.8.4.1 Indentation
-
-インデンテーション
-
-As with any other block, the contents of a switch block are indented +2.
+h5. 4.8.4.1 インデンテーション
 
 他のブロックがそうであるように、スイッチブロックのインデントは2です
 
-After a switch label, a newline appears, and the indentation level is increased +2, 
+スイッチラベルの後改行が入り、あたかもブロックが開始したかのようにインデントレベルは2上がります。次のスイッチラベルはあたかもブロックの終わったように前のインデンテーションレベルに戻ります。
 
-exactly as if a block were being opened. The following switch label returns to the 
-
-previous indentation level, as if a block had been closed.
-
-スイッチラベルの後インデントレベルは2上がります。ちょうどブロックが開始したの
-
-と同じようにです。
-
-次のスイッチラベルはあたかもブロックの終わったように、前のインデンテーションレ
-
-ベルに戻ります
-
-h5. 4.8.4.2 Fall-through: commented 
-フォールスルー　コメントを入れる
+h5. 4.8.4.2 フォールスルー コメントを入れる
 
 
-スイッチブロック内では、各ステートメントグループは突然止まる（break でかcontinue , return か例外スローか）か
-実行が次のステートメントグループに進むようなコメントが付けられるかのみです。
-フォールスルーということを示すどんなコメントも効果的です。// fall through　など。
-この特別なコメントは、最後のステートメントグループには必要ありません。
+スイッチブロック内では、各ステートメントグループは突然止まる（ @break@ か @continue@ か @return@ か例外スローか）か実行が次のステートメントグループに進むようなコメントが付けられるかのみです。フォールスルーということを示すコメントも効果的です。 @// fall through@ など。この特別なコメントは、最後のステートメントグループには必要ありません。
 
 例えば：
 
@@ -498,14 +415,11 @@ switch (input) {
 
 h5. 4.8.4.3 default 節は必要
 
-各スイッチ文はデフォルトステートメントグループがたとえコードがなかったとしても必要です。
+各スイッチ文はたとえコードがなかったとしても @default@ ステートメントグループが必要です。
 
 h4. 4.8.5 アノテーション
 
-クラス、メソッド、コンストラクタに付けられるアノテーションは、ドキュメンテーションブロックの直後にすぐ
-配置されます。そして、各アノテーションは１行に１個設定されます。
-これらの改行は行折り返し(4.5 節　行折り返し) に従いません。それ故、インデンテーションレベルも上がりません。
-例えば：
+クラス、メソッド、コンストラクタに付けられるアノテーションは、ドキュメンテーションブロックの直後に配置されます。そして、各アノテーションは１行に１個設定されます。これらの改行は行折り返し(4.5 節　行折り返し) に従いません。それ故、インデンテーションレベルも上がりません。例えば：
 
 <pre>
 @Override
@@ -513,17 +427,13 @@ h4. 4.8.5 アノテーション
 public String getNameIfPresent() { ... }
 </pre>
 
-
-例外：パラメータ無しのアノテーションが１個だけの場合はシグネチャー行の先頭に来ても良いです。
-例えば：
+ *例外：* パラメータ無しのアノテーションが１個だけの場合はシグネチャー行の先頭に来ても良いです。例えば：
 
 <pre>
 @Override public int hashCode() { ... }
 </pre>
 
-フィールドへのアノテーションもドキュメンテーションブロックの直後です。
-しかしこの場合、複数のアノテーションが同じ行に現れても良いです。
-例：
+フィールドへのアノテーションもドキュメンテーションブロックの直後です。しかしこの場合、複数のアノテーション(@parameterized など)が同じ行に現れても良いです。例えば：
 
 <pre>
 @Partial @Mock DataLoader loader;
@@ -533,10 +443,9 @@ public String getNameIfPresent() { ... }
 
 h4. 4.8.6 コメント
 
-h5. 4.8.6.1 Block comment style ブロックコメントスタイル
+h5. 4.8.6.1 ブロックコメントスタイル
 
-Block comments are indented at the same level as the surrounding code. They may be in /* ... */ style or // ... style. For multi-line /* ... */ comments, subsequent lines must start with * aligned with the * on the previous line.
-ブロックコメントは周りのコードと同じレベルにインデントされる。/**/でも　　//でも良い。複数行/**/コメントについては*の位置を先頭行の米と同じに揃えなくてはならない。
+ブロックコメントは周りのコードと同じレベルにインデントされる。 @/* ... */@ でも  @//...@ でも同じである。複数行 @/* ... */@ コメントについては * の位置を先頭行の * と同じに揃えなくてはならない。
 
 <pre>
 /*
@@ -545,16 +454,12 @@ Block comments are indented at the same level as the surrounding code. They may 
  */
 </pre>
 
-Comments are not enclosed in boxes drawn with asterisks or other characters.
 コメントはアスタリスクや他の文字で描かれた箱で囲われることは無い。
 
+bq. *Tip:* 複数行コメントを書く際必要に応じ自動フォーマット機能で行折り返ししたい場合は @/* ... */@ スタイルを使うと良い。多くのフォーマッタは @// ...@ スタイルのコメントの改行を直さない。
 
-Tip: When writing multi-line comments, use the /* ... */ style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in // ... style comment blocks.
-Tip: 複数行コメントを書く際必要に応じ自動フォーマット機能で行折り返ししたい場合は/**/スタイルを使うと良い。多くのフォーマッタは//　スタイルのコメントの改行を直さない。
+h4. 4.8.7 修飾子
 
-h4. 4.8.7 Modifiers 修飾子
-
-Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
 クラスやメンバの修飾子はJava言語仕様が推奨する順序で出現しなくてはならない。
 
 <pre>
@@ -562,17 +467,15 @@ public protected private abstract static final transient volatile synchronized n
 </pre>
 
 
-h4. 4.8.8 Numeric Literals 
-数値リテラル
+h4. 4.8.8 数値リテラル
 
 long-valued integer literals use an uppercase L suffix, never lowercase (to avoid confusion with the digit 1). For example, 3000000000L rather than 3000000000l.
-長い数値リテラルは大文字のLを末尾に使う。小文字は使わない。数値1との混乱を避ける。例えば　　3000000l ではなく300000Lを使う。
 
-h2. 5 Naming 
-命名
+長い数値リテラルは大文字の @L@ を末尾に使う。小文字は使わない。数値 @1@ との混乱を避ける。例えば @3000000l@ ではなく @300000L@ を使う。
 
-h3. 5.1 Rules common to all identifiers 
-すべての識別子への共通ルール
+h2. 5 命名
+
+h3. 5.1すべての識別子への共通ルール
 
 
 識別子はASCII文字のみを使い、数字と大文字小文字とアンダースコアである。
@@ -588,11 +491,7 @@ h4. 5.2.1 パッケージ名
 
 
 パッケージ名はすべて小文字で連続する単語をそのまま繋げる。アンダースコアは使わない。
-例えば、
-com.example.deepspace,
-であって、
-com.example.deepSpace や com.example.deep_space
-は使わない。
+例えば、 @com.example.deepspace@ であって、 @com.example.deepSpace@  や @com.example.deep_space@ は使わない。
 
 
 h4. 5.2.2 クラス名
@@ -600,22 +499,18 @@ h4. 5.2.2 クラス名
 
 クラス名は大文字キャメルケースで命名する。
 
-クラス名は大抵名詞か名詞句です。例えば、Character や、ImmutableList です。
-インターフェース名も名詞か名詞句です。例えば List です。
-しかし、場合によっては形容詞や形容詞句になります。例えば、Readable です。
+クラス名は大抵名詞か名詞句です。例えば、 @Character@ や、 @ImmutableList@ です。インターフェース名も名詞か名詞句です。例えば @List@ です。しかし、場合によっては形容詞や形容詞句になります。例えば、 @Readable@ です。
 
 アノテーション型に対する特定のルールや確立した規約はありません。
 
 
-テストクラスはテスト対象クラス名で始まり、Testで終わるよう命名されます。
-例えばHashTest や、 HashIntegrationTest です。
+テストクラスはテスト対象クラス名で始まり、 @Test@ で終わるよう命名されます。例えば @HashTest@ や、 @HashIntegrationTest@ です。
 
 
 h4. 5.2.3 メソッド名
 
 
 メソッド名は、小文字キャメルケースで命名されます。
-
 
 メソッド名は大抵動詞か動詞句です。例えば、sendMessage や stopです。
 
@@ -626,8 +521,7 @@ h4. 5.2.3 メソッド名
 
 h4. 5.2.4 定数名
 
-定数は コンスタントケースで命名します。すべて大文字で、各単語をアンダースコアで区切ります。
-しかし定数とは何でしょう？いいですか？
+定数は コンスタントケースで命名します。すべて大文字で、各単語をアンダースコアで区切ります。しかし定数とは一体何でしょう？
 
 すべての定数はstatic finalなフィールドです。しかし、すべてのstatic finalなフィールドが定数であるとは限りません。
 コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか考えてみましょう。例えば、
@@ -665,29 +559,24 @@ h4. 5.2.5 定数でないフィールド名
 
 h4. 5.2.6 パラメータ名
 
-
-Parameter names are written in lowerCamelCase.
 パラメータ名は小文字のキャメルケースです。
-One-character parameter names should be avoided.
+
 一文字のパラメータ名は避けるべきです。
 
-h4. 5.2.7 Local variable names ローカル変数名
+h4. 5.2.7  ローカル変数名
 
-Local variable names are written in lowerCamelCase, and can be abbreviated more liberally than other types of names.
-ローカル変数名は小文字キャメルケースで命名されます。
-他の種類の命名よりも自由に短縮されます。
-However, one-character names should be avoided, except for temporary and looping variables.
+ローカル変数名は小文字キャメルケースで命名されます。他の種類の命名よりも自由に短縮されます。
+
 しかしながら一文字の名前は一時的なループ変数を除いて避けるべきです。
-Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
+
 finalで不変であってもローカル変数は定数とは見なされないのでそのようにスタイルされるのは避けるべきです。
 
-h4. 5.2.8 Type variable names 
-型変数名
+h4. 5.2.8 型変数名
 
 型変数名は以下の２つのやり方のうちいずれかで命名されます。
 
-* 一つの大文字アルファベット。それに１個の数字が続いて良い。例：E, T, X, T2
-* クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： RequestT, FooBarT
+* 一つの大文字アルファベット。それに１個の数字が続いて良い。例：@E, T, X, T2@
+* クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： @RequestT, FooBarT@
 
 h3. 5.3 キャメルケースの定義
 
@@ -714,7 +603,7 @@ h3. 5.3 キャメルケースの定義
 |"new customer ID"|newCustomerId|newCustomerID|
 |"inner stopwatch"|innerStopwatch|innerStopWatch|
 |"supports IPv6 on iOS?"|supportsIpv6OnIos|supportsIPv6OnIOS|
-|"YouTube importer"|YouTubeImporter YoutubeImporter [1]||
+|"YouTube importer"|YouTubeImporter <br> YoutubeImporter [1]||
 
 
 fn1. やってよいが推奨されない。
@@ -727,23 +616,14 @@ h3. 6.1 @Override を常に使う。
 
 A method is marked with the @Override annotation whenever it is legal. This includes a class method overriding a superclass method,
  a class method implementing an interface method, and an interface method respecifying a superinterface method.
-許される場所ならばメソッドはOverrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、
-インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも
-当てはまります。
 
+許される場所ならばメソッドはOverrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも当てはまります。
 
-
-h3. 6.2 Caught exceptions: not ignored 
-キャッチした例外を無視しない。
-
-Except as noted below, it is very rarely correct to do nothing in response to a caught exception.
- (Typical responses are to log it, or if it is considered "impossible", rethrow it as an AssertionError.)
+h3. 6.2 キャッチした例外を無視しない。
 
 以下の例外を除き、キャッチした例外に対してなにも対応しないのが正しいことはめったにありません。
 大抵の対応はログを取るか、ありえない場合ならばAssertionErrorとして再スローすることです。
 
-
-When it truly is appropriate to take no action whatsoever in a catch block, the reason this is justified is explained in a comment.
 
 キャッチ節でなにもしないことが本当に適切であるならば、それを正当化する理由をコメントで説明します。
 
@@ -758,13 +638,7 @@ return handleTextResponse(response);
 </pre>
 
 
-Exception: in tests, a caught exception may be ignored without comment if it is named expected. 
-The following is a very common idiom for ensuring that the method under test does throw an exception of the expected type,
- so a comment is unnecessary here.
-
-例外：テストにおいて例外がスローされることを期待する場合はキャッチした例外はコメントなしで無視されます。
-以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムで、
-コメントは不要です。
+例外：テストにおいて例外がスローされることを期待する場合はキャッチした例外はコメントなしで無視されます。以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムで、コメントは不要です。
 
 <pre>
 try {
@@ -776,9 +650,7 @@ try {
 
 
 
-h3. 6.3 Static members: qualified using class 
-
-staticなメンバーはクラスを使って修飾する。
+h3. 6.3 staticなメンバーはクラスを使って修飾する。
 
 When a reference to a static class member must be qualified, it is qualified with that class's name,
  not with a reference or expression of that class's type.
@@ -794,13 +666,9 @@ somethingThatYieldsAFoo().aStaticMethod(); // とても悪い
 </pre>
 
 
-h3. 6.4 Finalizers: not used 
-ファイナライザは使わない。
+h3. 6.4 ファイナライザは使わない。
 
-It is extremely rare to override Object.finalize.
 Objectクラスのfinalize()メソッドを使うケースは非常に稀です。
-
-Tip: Don't do it. If you absolutely must, first read and understand Effective Java Item 7, "Avoid Finalizers," very carefully, and then don't do it.
 
 TIP: これをやってはいけません。先に Effective JavaのItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
 
@@ -840,7 +708,7 @@ The basic form is always acceptable. The single-line form may be substituted whe
 一行の形で代用できます。
 
 
-h4. 7.1.2 Paragraphs 段落
+h4. 7.1.2 段落
 
 
 One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, 
@@ -866,10 +734,8 @@ continuation lines are indented four (or more) spaces from the position of the @
 ＠節が１行コメントに収まらない場合、２行目以降は@の位置からスペース４個以上インデントされる。
 
 
-h3. 7.2 The summary fragment 要約の記述
+h3. 7.2 要約の記述
 
-The Javadoc for each class and member begins with a brief summary fragment. 
-This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
 
 クラスとメンバーのJavadocは簡単な要約の記述から始まります。
 この記述はとても重要です。クラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからです。
@@ -895,16 +761,9 @@ TIP: /** @return the customer ID */といった簡単なJavadocを書くこと�
 
 h3. 7.3 Where Javadoc is used Javadocが使われる場所
 
-
-
-At the minimum, Javadoc is present for every public class, and every public or protected member of such a class, with a few exceptions noted below.
-
 少なくとも、javadocはpublicなクラスとそのクラスのpublic protected なメンバーに書かれます。但し以下の例外が有ります。
 
 h4. 7.3.1 Exception: self-explanatory methods 例外　自己叙述的なメソッド。
-
-
-Javadoc is optional for "simple, obvious" methods like getFoo, in cases where there really and truly is nothing else worthwhile to say but "Returns the foo".
 
 javadocはgetFooのような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。
 
@@ -924,22 +783,14 @@ Tip: 重要：この例外を典型的な読者が知りたがるような関連
 
 
 
-h4. 7.3.2 Exception: overrides 例外　オーバーライドするメソッド
+h4. 7.3.2  例外　オーバーライドするメソッド
 
 親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではありません。
 
 
-Javadoc is not always present on a method that overrides a supertype method.
-
 h4. 7.3.3 追加のjavadoc
 
-
-
-Classes and members that are not visible outside their package still have Javadoc as needed. Whenever an implementation comment would be used to define the overall purpose or behavior of a class, method or field, that comment is written as Javadoc instead. (It's more uniform, and more tool-friendly.)
-
-パッケージ外から可視でないクラスやメンバーでもJavadocは必要です。
-クラス・メソッド・フィールドの挙動や全体的な目的を定める時実装コメントが必要な場合は、
-そのコメントはJavadocで書かれます。（より統一的で、ツールとの親和性も高いです。）
+パッケージ外から可視でないクラスやメンバーでもJavadocは必要です。クラス・メソッド・フィールドの挙動や全体的な目的を定める時実装コメントが必要な場合は、そのコメントはJavadocで書かれます。（より統一的で、ツールとの親和性も高いです。）
 
 
 
