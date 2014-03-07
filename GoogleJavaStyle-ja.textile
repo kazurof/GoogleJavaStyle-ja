@@ -25,28 +25,16 @@ h3. 1.1 用語についての注記
 # クラスという用語は、「通常の」クラス、列挙型  、インターフェース、アノテーション型(@interface)を包括的に意味する。
 # コメントという用語は、常に実装のコメントを意味する。「ドキュメンテーションコメント」という言い方は使わない。代わりに共通的に使われている、「Javadoc」という言葉を使う。
 
-
-他ものへの用語の注記は必要に応じて本文書を通じて現れる。
-
+本文書では他の用語の注記は必要に応じて現れる。
 
 
 h3. 1.2 ガイドについての注記
 
-Example code in this document is non-normative. 
-That is, while the examples are in Google Style, they may not illustrate the only 
-stylish way to represent the code. 
-Optional formatting choices made in examples should not be enforced as rules.
-
-この文書内のサンプルコードは規約に *従っていない。* つまり、サンプルコードはGoogleスタイル文書に書かれているが、コードを表現する唯一のスタイルに則ったやり方を説明していないかもしれない。例に出される補足的な整形の仕方はルールとして強調されるべきではない。
+この文書内のサンプルコードは規約に *従っていない。* つまり、サンプルコードはGoogleスタイル文書に書かれているが、これあ絶対に正しいやり方である保証はない。例に出される補足的なフォーマットの仕方はルールとして強調されるべきではない。
 
 h2. 2 ソースファイルの基本
 
 h3.  2.1 ファイル名
-
-
-
-The source file name consists of the case-sensitive name of the top-level class it contains, 
-plus the .java extension.
 
 ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて @.java@ という拡張子が付いていること。
 
@@ -81,7 +69,7 @@ h4. 2.3.3 非ASCII文字
 実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \\u221e)を使うかの判断を行う。
 
 
-TIP: Unicodeエスケープの場合、時たま実際にUnicode文字が使われている時でも説明のコメントがあるとわかりやすいです。
+bq. *TIP:* Unicodeエスケープの場合、時たま実際にUnicode文字が使われている時でも説明のコメントがあるとわかりやすいです。
 
 
 
@@ -94,13 +82,13 @@ TIP: Unicodeエスケープの場合、時たま実際にUnicode文字が使わ�
 
 
 
-> TIP: 単に何かのプログラムが非ASCII文字を正しく処理しないからといってコードを読みにくくしないで下さい。もしそのような事が起こる場合はそのプログラムがおかしいのであってプログラムが修正されるべきです。
+bq. *TIP:* 単に何かのプログラムが非ASCII文字を正しく処理しないからといってコードを読みにくくしないで下さい。もしそのような事が起こる場合はそのプログラムがおかしいのであってプログラムが修正されるべきです。
 
 
 h2. 3 ソースファイル構造
 
 
-ソースファイルの内容は以下の順序であること。
+ソースファイルの内容は *以下の順序* であること。
 
 1. ライセンスあるいはコピーライトの情報（もしあるならば）
 2. package文
@@ -378,7 +366,7 @@ new int[] {             3,
 
 h5. 4.8.3.2 Cのような宣言は禁止
 
-角括弧は型の一部を為すが、変数には当てはまらない。　<pre>String[] args </pre> は良い。 <pre>String args[]</pre> はダメ。
+型名と角括弧で型の表現に使えるが、変数で使ってはならない。 @String[] args@ は良い。 @String args[]@ はダメ。
 
 
 h4. 4.8.4 スイッチ文
@@ -469,7 +457,6 @@ public protected private abstract static final transient volatile synchronized n
 
 h4. 4.8.8 数値リテラル
 
-long-valued integer literals use an uppercase L suffix, never lowercase (to avoid confusion with the digit 1). For example, 3000000000L rather than 3000000000l.
 
 長い数値リテラルは大文字の @L@ を末尾に使う。小文字は使わない。数値 @1@ との混乱を避ける。例えば @3000000l@ ではなく @300000L@ を使う。
 
@@ -614,10 +601,7 @@ h2. 6 Programming Practices プログラミングの実践
 h3. 6.1 @Override を常に使う。
 
 
-A method is marked with the @Override annotation whenever it is legal. This includes a class method overriding a superclass method,
- a class method implementing an interface method, and an interface method respecifying a superinterface method.
-
-許される場所ならばメソッドはOverrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも当てはまります。
+許される場所ならばメソッドは Overrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも当てはまります。
 
 h3. 6.2 キャッチした例外を無視しない。
 
@@ -670,7 +654,7 @@ h3. 6.4 ファイナライザは使わない。
 
 Objectクラスのfinalize()メソッドを使うケースは非常に稀です。
 
-TIP: これをやってはいけません。先に Effective JavaのItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
+b. *TIP:* これをやってはいけません。先に Effective JavaのItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
 
 
 
@@ -682,30 +666,24 @@ h3. 7.1 フォーマット
 h4. 7.1.1 一般的なフォーマット
 
 
-The basic formatting of Javadoc blocks is as seen in this example:
-
 Javadocブロックの基本的なフォーマットはこの例で表されます。
 
 <pre>
 /**
- * Multiple lines of Javadoc text are written here,
- * wrapped normally...
+ * 複数行のJavadocテキストはここに書かれる。
+ * 普通に改行される。
  */
 public int method(String p1) { ... }
 </pre>
 
-... or in this single-line example:
 一行の例はこれです。
 
 <pre>
-/** An especially short bit of Javadoc. */
+/** 特に短いJavadoc */
 </pre>
 
-The basic form is always acceptable. The single-line form may be substituted when there are no at-clauses present,
- and the entirety of the Javadoc block (including comment markers) can fit on a single line.
 
-基本的な形は常に適用されます。 @節がない場合や、コメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は
-一行の形で代用できます。
+基本的な形は常に適用されます。 Javadocタグがない場合やコメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は一行の形で代用できます。
 
 
 h4. 7.1.2 段落
@@ -745,40 +723,26 @@ This is a fragment—a noun phrase or verb phrase, not a complete sentence.
 It does not begin with A {@code Foo} is a..., or This method returns..., nor does it form a complete imperative sentence like Save the record.. 
 However, the fragment is capitalized and punctuated as if it were a complete sentence.
 
-この記述は名詞句か動詞句であって文であってはなりません。
-「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存する。」といった
+この記述は名詞句か動詞句であって文であってはなりません。「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存する。」といった
 命令文でもいけません。しかしながらこの記述はあたかも文であるかのように大文字化され、句読点が付けられます。
 （TODO 訳見直し）
 
-Tip: A common mistake is to write simple Javadoc in the form /** @return the customer ID */. 
-This is incorrect, and should be changed to /** Returns the customer ID. */.
-
-TIP: /** @return the customer ID */といった簡単なJavadocを書くことはよくある間違いです。
-これは不正で、正しくは以下のように直されるべきです。/** Returns the customer ID. */.
+bq. *TIP:* <notextile>/** @return the customer ID */</notextile>   といった簡単なJavadocを書くことはよくある間違いです。
+これは不正で、正しくは以下のように直されるべきです。 @/** customer IDを返す。 */@ 
 
 
-
-
-h3. 7.3 Where Javadoc is used Javadocが使われる場所
+h3. 7.3  Javadocが使われる場所
 
 少なくとも、javadocはpublicなクラスとそのクラスのpublic protected なメンバーに書かれます。但し以下の例外が有ります。
 
-h4. 7.3.1 Exception: self-explanatory methods 例外　自己叙述的なメソッド。
+h4. 7.3.1  例外 自己叙述的なメソッド。
 
 javadocはgetFooのような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。
-
-
-The test methods of a unit test class are perhaps the most common example of this exemption. These methods can usually be named descriptively enough that no additional documentation is needed.
-
 
 ユニットテストクラスのテストメソッドはおそらくこの例外の最も一般的な例外です。このようなメソッドは他の追加の文書が不要なほど内容がわかるように命名されます。
 
 
-Tip: Important: it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named getCanonicalName, don't omit its documentation (with the rationale that it would say only /** Returns the canonical name. */) if a typical reader may have no idea what the term "canonical name" means!
-
-Tip: 重要：この例外を典型的な読者が知りたがるような関連情報を省略することを正当化するために引用するのは
-適切ではありません。例えば、「getCanonicalName」というメソッドにおいて典型的な読者が「canonical name」という語の意味を
-知らないかもしれない場合、（単に/** Returns the canonical name. */と書くだけであるという理由で）省略してはいけません。
+bq. *Tip: 重要：* 典型的な読者が知りたがるような関連情報を省略することを正当化するためにこの例外を引用するのは適切ではありません。例えば、「getCanonicalName」というメソッドにおいて典型的な読者が「canonical name」という語の意味を知らないかもしれない場合、（単に @/** Returns the canonical name. */@ と書くだけであるという理由で）省略してはいけません。
 
 
 
