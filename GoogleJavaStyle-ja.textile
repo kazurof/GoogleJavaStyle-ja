@@ -4,7 +4,7 @@ h1. Google Java Style (和訳)
 --------------
 h2. この文書について
 
-本文書はGoogleのJavaコーディング規約である "Google Java Style":http://google-styleguide.googlecode.com/svn/trunk/javaguide.html の非公式和訳です。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。さらに言えば翻訳作業途中です。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+本文書はGoogleのJavaコーディング規約である "Google Java Style":http://google-styleguide.googlecode.com/svn/trunk/javaguide.html の非公式和訳です。2014/02/3の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。さらに言えば翻訳作業途中です。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
 
 --------------
 
@@ -134,7 +134,7 @@ h4. 3.3.3 順序と空白
 
 h3. 3.4 クラス宣言
 
-h4. 3.4.1 正確に1個のトップレベルクラスの宣言
+h4. 3.4.1 1個だけのトップレベルクラスの宣言
 
 各トップレベルクラスは1個のファイルに保存される。
 
@@ -162,7 +162,7 @@ h4. 4.1.1 使えるところでは中括弧は使う
 h4. 4.1.2 空でないブロックではK&Rスタイルに従う。
 
 
-中括弧は空でないブロックや、ブロックのような構造物ではカーニハン・リッチースタイル( "Egyptian Brackets":http://blog.codinghorror.com/new-programming-jargon/ )に従う。
+中括弧は空でないブロックや、"block-like construct"ではカーニハン・リッチースタイル("Egyptian Brackets":http://blog.codinghorror.com/new-programming-jargon/ )に従う。
 
 
 * 開始中括弧の前に改行を入れない。
@@ -230,7 +230,7 @@ h3. 4.5 行の折り返し
 どんな状況にも合う改行方法を正確に示す、統一的で決定的なやり方はありません。同じコード片を改行する正しい方法は複数あるものです。
 
 
-TIP:　メソッドやローカル変数の抽出は改行をせずに問題を解決する場合があります。
+bq. *TIP:* メソッドやローカル変数の抽出は改行をせずに問題を解決する場合があります。
 
 
 h3. 4.5.1 どこで改行するか
@@ -246,13 +246,11 @@ h3. 4.5.1 どこで改行するか
 
 h4. 4.5.2 連続する行は少なくとも４文字インデントします。
 
-改行の際、連続する先頭行後の各行は少なくとも空白4個分元からインデントされます。
+改行の際、連続する先頭行のに続く各行は少なくとも空白4個分元からインデントされます。
 
-複数の連続した行がある場合、インデントは4以上ならいくつでも良いです。一般的に、2個の連続した行が同じインデントレベルであるならばその時のみ、文法的に並行した要素で始まるべきです。
+複数の連続した行がある場合、インデントは4以上ならいくつでも良いです。一般的に、2個の連続した行がもし文法的に並行した要素で始まるならばそのときのみ同じインデントレベルであるべきです。
 
-"4.6.3節の水平位置揃え"はあるトークンを前の行に揃えるため色々な数の空白を使うというげんなりするやり方を防止します。
-
-TODO:要推敲
+"4.6.3節の水平位置揃え"はあるトークンを前の行に揃えるため必要な分の空白を入れるという不適切なやり方を防止します。
 
 h3. 4.6 空白
 
@@ -279,7 +277,7 @@ h4. 4.6.2 水平の空白
 # 予約語（else, catch）とその行での前に来る終了中括弧(})との間。
 # 開始中括弧({)の前すべて。ただし以下の2個の例外を除く
 ** @SomeAnnotation({a, b}) (空白は使わない。)
-** String[][] x = {{"foo"}};　({{ の中に空白は不要。項目8を参照)
+** @String[][] x = {{"foo"}};@ ({{ の中に空白は不要。項目8を参照)
 #  すべてのバイナリ、tenary演算子の両側。また、以下の様な演算子ライクなシンボルにも適用する。
 ** 連続する型パラメータ間のアンパサンド。 @<T extends Foo & Bar>@
 ** 複数の例外を処理するcatchブロックでのパイプ。 @catch (FooException | BarException e)@
@@ -288,7 +286,7 @@ h4. 4.6.2 水平の空白
 # 行末コメントを開始するスラッシュ２個　（//）の両側。ここでは複数の空白が許されるが必須ではない。
 # 型と変数の宣言の間。 @List<String> list@
 # 任意で、配列初期化子の両括弧の中。
-** @new int[] {5, 6} @ と   @ new int[] { 5, 6 }@ は両方有効。
+** @new int[] {5, 6}@ と @new int[] { 5, 6 }@ は両方有効。
 
 注意：このルールは行頭行末の空白について要求も禁止もしない。内側の空白のみについて当てはまる。
 
@@ -334,11 +332,9 @@ h4. 4.8.1 列挙型
 
 h4. 4.8.2 変数宣言
 
-h5. 4.8.2.1 One variable per declaration 
+h5. 4.8.2.1 宣言ごとに一個の変数
 
-宣言ごとに一個の変数
-
-フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 @ int a, b;@ のような宣言は使われない。
+フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 @int a, b;@ のような宣言は使われない。
 
 h5. 4.8.2.2 必要なときに宣言して速やかに初期化する
 
@@ -499,18 +495,16 @@ h4. 5.2.3 メソッド名
 
 メソッド名は、小文字キャメルケースで命名されます。
 
-メソッド名は大抵動詞か動詞句です。例えば、sendMessage や stopです。
+メソッド名は大抵動詞か動詞句です。例えば、@sendMessage@ や @stop@です。
 
-アンダースコアはJUnitのメソッド名で、論理的コンポーネント名を分離する場合で使ってよいです。
-典型的なパターンは　test<MethodUnderTest>_<state>　で、例えば testPop_emptyStackです。
-テストメソッドを命名する正しい唯一の方法はありません。
+アンダースコアはJUnitのメソッド名で、論理的コンポーネント名を分離する場合で使ってよいです。典型的なパターンは @test<MethodUnderTest>_<state>@ で、例えば  @testPop_emptyStack@ です。テストメソッドを命名する正しい唯一の方法はありません。
 
 
 h4. 5.2.4 定数名
 
 定数は コンスタントケースで命名します。すべて大文字で、各単語をアンダースコアで区切ります。しかし定数とは一体何でしょう？
 
-すべての定数はstatic finalなフィールドです。しかし、すべてのstatic finalなフィールドが定数であるとは限りません。
+すべての定数は @static final@ なフィールドです。しかし、すべての @static final@ なフィールドが定数であるとは限りません。
 コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか考えてみましょう。例えば、
 そのインスタンスの可視な状態が変更できるならば、殆どの場合定数ではありません。
 決して変更されないオブジェクトの振りをするだけでは大抵不十分です。例えば、
@@ -541,7 +535,7 @@ h4. 5.2.5 定数でないフィールド名
 
 定数でないフィールド名（staticであってもなくても）は小文字キャメルケースで命名されます。
 
-これらの名前は大抵名詞か名詞句です。例えば computedValues や index です。
+これらの名前は大抵名詞か名詞句です。例えば @computedValues@ や @index@ です。
 
 
 h4. 5.2.6 パラメータ名
@@ -556,14 +550,14 @@ h4. 5.2.7  ローカル変数名
 
 しかしながら一文字の名前は一時的なループ変数を除いて避けるべきです。
 
-finalで不変であってもローカル変数は定数とは見なされないのでそのようにスタイルされるのは避けるべきです。
+ @final@ で不変であってもローカル変数は定数とは見なされないのでそのようにスタイルされるのは避けるべきです。
 
 h4. 5.2.8 型変数名
 
 型変数名は以下の２つのやり方のうちいずれかで命名されます。
 
-* 一つの大文字アルファベット。それに１個の数字が続いて良い。例：@E, T, X, T2@
-* クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： @RequestT, FooBarT@
+* 一つの大文字アルファベット。それに１個の数字が続いて良い。例： @E, T, X, T2@ 
+* クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： @RequestT, FooBarT@ 
 
 h3. 5.3 キャメルケースの定義
 
@@ -596,7 +590,7 @@ h3. 5.3 キャメルケースの定義
 fn1. やってよいが推奨されない。
 
 
-h2. 6 Programming Practices プログラミングの実践
+h2. 6 プログラミングの実践
 
 h3. 6.1 @Override を常に使う。
 
@@ -636,11 +630,7 @@ try {
 
 h3. 6.3 staticなメンバーはクラスを使って修飾する。
 
-When a reference to a static class member must be qualified, it is qualified with that class's name,
- not with a reference or expression of that class's type.
-
-staticなメンバーへの参照の場合はクラス名で修飾されます。そのクラスの型の変数や式で修飾してはいけません。
-(TODO 訳語見直し)
+staticなメンバーへを使う場合はクラス名経由で使います。そのクラスの変数や式経由で使ってはいけません。
 
 <pre>
 Foo aFoo = ...;
@@ -654,7 +644,7 @@ h3. 6.4 ファイナライザは使わない。
 
 Objectクラスのfinalize()メソッドを使うケースは非常に稀です。
 
-b. *TIP:* これをやってはいけません。先に Effective JavaのItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
+bq. *TIP:* これをやってはいけません。貴方は最初に "Effective Java":http://books.google.co.jp/books?id=ka2VUBqHiWkC のItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。
 
 
 
@@ -689,55 +679,37 @@ public int method(String p1) { ... }
 h4. 7.1.2 段落
 
 
-One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, 
-and before the group of "at-clauses" if present. Each paragraph but the first has <p> immediately before the first word, with no space after.
 
-１個の空行、つまり、行頭に並べられたアスタリスク(*)のみの行が段落間と@節グループの前に挿入される。
-先頭が<p>でないそれぞれの段落は
-
-先頭以外のすべての段落は、最初の単語の前に<p>が入れられる。
-(TODO with no space after.の意味は？)
+一つの空行つまり行頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしjavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
 
 
-h4. 7.1.3 @節　（javadoc タグ）At-clauses 
+h4. 7.1.3 javadoc タグ [2]
 
-（訳注：@param と言った節のこと。参照 http://docs.oracle.com/javase/jp/7/technotes/tools/windows/javadoc.html#javadoctags）
-GoogleJavaStyleでしか使っていない用語なので、全部javadoc タグに変えたほうがよいか。）
+標準のjavadoc タグで使われるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ずつかなくてはならない。javadoc タグが１行コメントに収まらない場合、２行目以降は＠の位置からスペース４個以上インデントされる。
 
-Any of the standard "at-clauses" that are used appear in the order @param, @return, @throws, @deprecated, 
-and these four types never appear with an empty description. When an at-clause doesn't fit on a single line, 
-continuation lines are indented four (or more) spaces from the position of the @.
 
-標準の＠節で、使われるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つは空の記述には現れない。
-＠節が１行コメントに収まらない場合、２行目以降は@の位置からスペース４個以上インデントされる。
 
+fn2. 訳注：javadoc での @param といった節のこと。原文では"at-clauses"であるが、GoogleJavaStyleでしか使っていない用語なのでjavadocの元文書に基づきjavadoc タグとする。参照 "javadoc タグ":http://docs.oracle.com/javase/jp/7/technotes/tools/windows/javadoc.html#javadoctags
 
 h3. 7.2 要約の記述
 
 
-クラスとメンバーのJavadocは簡単な要約の記述から始まります。
-この記述はとても重要です。クラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからです。
+クラスとメンバーのJavadocは簡単な *要約の記述* から始まります。この記述はとても重要です。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからです。
 
 
-This is a fragment—a noun phrase or verb phrase, not a complete sentence. 
-It does not begin with A {@code Foo} is a..., or This method returns..., nor does it form a complete imperative sentence like Save the record.. 
-However, the fragment is capitalized and punctuated as if it were a complete sentence.
+この記述は小さな断片の形です。つまり名詞句か動詞句であって文であってはなりません。「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存しなさい。」という命令形でもいけません。他方においてこの断片はあたかも文であるかのように大文字に変えられたり、句読点が付けられます。
 
-この記述は名詞句か動詞句であって文であってはなりません。「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存する。」といった
-命令文でもいけません。しかしながらこの記述はあたかも文であるかのように大文字化され、句読点が付けられます。
-（TODO 訳見直し）
 
-bq. *TIP:* <notextile>/** @return the customer ID */</notextile>   といった簡単なJavadocを書くことはよくある間違いです。
-これは不正で、正しくは以下のように直されるべきです。 @/** customer IDを返す。 */@ 
+bq. *TIP:* <notextile>/** @return the customer ID */</notextile>   といった簡単なJavadocを書くことはよくある間違いです。これは間違いで正しくは以下のように直されるべきです。 @/** customer IDを返す。 */@ 
 
 
 h3. 7.3  Javadocが使われる場所
 
-少なくとも、javadocはpublicなクラスとそのクラスのpublic protected なメンバーに書かれます。但し以下の例外が有ります。
+少なくとも、javadocは @public@ なクラスとそのクラスの @public@ @protected@ なメンバーに書かれます。但し以下の例外が有ります。
 
 h4. 7.3.1  例外 自己叙述的なメソッド。
 
-javadocはgetFooのような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。
+javadocは @getFoo@ のような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。
 
 ユニットテストクラスのテストメソッドはおそらくこの例外の最も一般的な例外です。このようなメソッドは他の追加の文書が不要なほど内容がわかるように命名されます。
 
