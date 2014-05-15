@@ -1,1 +1,504 @@
-hello ! 
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>Google Java Style (和訳)</h1>
+<hr />
+<h2 style="vertical-align:middle;">この文書について</h2>
+<p>本文書はGoogleのJavaコーディング規約である <a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Google Java Style</a> の非公式和訳です。 <a href="https://code.google.com/p/google-styleguide/source/detail?r=130">2014/03/21  Revision: r130</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
+<hr />
+<h2 style="vertical-align:middle;">1 導入</h2>
+<p>この文書はJavaプログラミング言語のソースコードのGoogleのコーディング標準の <strong>完全</strong> な定義を提供する。下記のルールに従うJavaソースファイルのみが、Googleスタイルであるとみなされる。</p>
+<p>他のプログラミングスタイルガイドのように、問題の対象範囲は審美的なフォーマットの問題だけでなく他の種類の規約やコーディング標準も含まれる。しかしながらこの文書は私達が全世界的に従う <strong>当然の規則</strong> に優先的に注力しており（人間でもマシンでも）明確に実施できない助言をすることを避けている。</p>
+<h3>1.1 用語についての注記</h3>
+<p>本文書において、特別に断りのない限り、</p>
+<ol>
+	<li>クラスという用語は、「通常の」クラス、列挙型  、インターフェース、アノテーション型(@interface)を包括的に意味する。</li>
+	<li>コメントという用語は、常に実装のコメントを意味する。「ドキュメンテーションコメント」という言い方は使わない。代わりに共通的に使われている、「Javadoc」という言葉を使う。</li>
+</ol>
+<p>本文書では他の用語の注記は必要に応じて現れる。</p>
+<h3>1.2 ガイドについての注記</h3>
+<p>この文書内のサンプルコードは規約に <strong>従っていない。</strong> つまり、サンプルコードはGoogleスタイル文書に書かれているが、これが絶対に正しいやり方である保証はない。例に出される補足的なフォーマットの仕方はルールとして強調されるべきではない。</p>
+<h2>2 ソースファイルの基本事項</h2>
+<h3>2.1 ファイル名</h3>
+<p>ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて <code>.java</code> という拡張子が付いていること。</p>
+<h3>2.2 ファイルエンコーディング：UTF-8</h3>
+<p>ソースファイルは <strong><span class="caps">UTF</span>-8</strong> でエンコードされていること。</p>
+<h3>2.3 特殊文字</h3>
+<h4>2.3.1 空白</h4>
+<p>行区切り文字以外では、 <strong><span class="caps">ASCII</span> 水平スペース文字 (0&#215;20)</strong>  はソース内でどこに現れても良い唯一の空白文字です。つまり、</p>
+<ol>
+	<li>Stringと文字リテラルでのこれ以外の空白文字はエスケープされること。</li>
+	<li>タブ文字をインデントの目的で <strong>使ってはいけない。</strong></li>
+</ol>
+<p>ことを意味します。</p>
+<h4>2.3.2 特殊文字シーケンス</h4>
+<p>特殊なエスケープシーケンスを持つ全ての文字(<code>\b, \t, \n, \f, \r, \", \' と \\</code>)については8進数表記(<code>\012</code>)やUnicodeエスケープ(<code>\u000a</code>)でなく、通常のエスケープシーケンスで表記する。</p>
+<h4>2.3.3 非ASCII文字</h4>
+<p>残りの非ASCII文字については <strong>ソースコードを読むことや理解することが簡単になる</strong> かどうかのみを基準にして実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \u221e)を使うかの判断を行う。</p>
+<blockquote>
+<p><strong><span class="caps">TIP</span>:</strong> Unicodeエスケープの場合時たま実際にUnicode文字が使われている時でも、説明のコメントがあるとわかりやすいです。</p>
+</blockquote>
+<table>
+	<tr>
+		<td>例                           </td>
+		<td>説明</td>
+	</tr>
+	<tr>
+		<td><code>String unitAbbrev = "μs";</code>                             </td>
+		<td>最高。コメントなしでも完全で明確</td>
+	</tr>
+	<tr>
+		<td><code>String unitAbbrev = "\u03bcs"; // "μs"</code>                </td>
+		<td>許容される。しかしこう書く理由はない</td>
+	</tr>
+	<tr>
+		<td><code>String unitAbbrev = "\u03bcs"; // ギリシャ文字ミューと "s"</code> </td>
+		<td>許容される。しかし奇妙で間違えやすい</td>
+	</tr>
+	<tr>
+		<td><code>String unitAbbrev = "\u03bcs";</code>                         </td>
+		<td>だめ。読者やこれが何なのか分からない</td>
+	</tr>
+	<tr>
+		<td><code>return '\ufeff' + content; // バイトオーダーマーク</code>     </td>
+		<td>良い。表示されない文字にはエスケープを使い必要ならコメントする</td>
+	</tr>
+</table>
+<blockquote>
+<p><strong><span class="caps">TIP</span>:</strong> 単に何かのプログラムが非ASCII文字を正しく処理しないからといってコードを読みにくくしないで下さい。もしそのような事が起こる場合はそのプログラムがおかしいのであってそちらが修正されるべきです。</p>
+</blockquote>
+<h2>3 ソースファイル構造</h2>
+<p>ソースファイルの内容は <strong>以下の順序</strong> であること。</p>
+<p>1. ライセンスあるいはコピーライトの情報（もしあるならば）<br />
+2. package文<br />
+3. import文<br />
+4. ただ1個のトップレベルクラス。</p>
+<p>それぞれの分離には <strong>ただ1個の空行</strong> を使うこと。</p>
+<h3>3.1 ライセンスあるいはコピーライトの情報（もしあるならば）</h3>
+<p>もしファイルにライセンスあるいはコピーライトの情報があるならばここに入る。</p>
+<h3>3.2 パッケージ文</h3>
+<p>パッケージ文は <strong>改行してはならない。</strong> 文字数制限（4.4節文字数制限は80あるいは100文字）はパッケージ文には適用されない。</p>
+<h3>3.3 インポート文</h3>
+<h4>3.3.1 ワイルドカードインポートは禁止</h4>
+<p><strong>ワイルドカードインポート</strong> はstaticであってもなくても <strong>使ってはならない。</strong></p>
+<h4>3.3.2 改行禁止</h4>
+<p>import文は <strong>改行してはならない。</strong> 文字数制限（4.4節文字数制限は80あるいは100文字）はimport文には適用されない。</p>
+<h4>3.3.3 順序と空白</h4>
+<p>インポート文は以下のグループに以下の順序で分けられる。グループは1行の空白で分離される。</p>
+<ol>
+	<li>すべてのstatic importを単一のグループにまとめる。</li>
+	<li><code>com.google</code> のインポート。（ソースファイルが <code>com.google</code> パッケージに属する場合のみ）</li>
+	<li>サードパーティのインポート。トップレベルパッケージ毎に1個のグループとしASCII文字の順序で
+	<ul>
+		<li>例： <code>android, com, junit, org, sun</code></li>
+	</ul></li>
+	<li><code>java</code> パッケージのインポート</li>
+	<li><code>javax</code> パッケージのインポート</li>
+</ol>
+<p>空行が入らないグループ毎にインポートした名前はASCII順に並べなければならない。（ <strong>注釈：</strong> セミコロンがあるとソート結果は変わってしまう。この意味でインポート文全体がASCII順になっていることと同じではない。）</p>
+<h3>3.4 クラス宣言</h3>
+<h4>3.4.1 1個だけのトップレベルクラスの宣言</h4>
+<p>各トップレベルクラスは1個のファイルに保存される。</p>
+<h4>3.4.2 クラスメンバーの順序</h4>
+<p>クラスメンバーの順序はわかりやすさに多大な影響を与えるが唯一の解法は無い。クラス毎にメンバーの並びが異なっていて良い。</p>
+<p>重要な事はそれぞれのクラスのメンバーは誰かに訊かれた時に答えられるような <strong>何らかの合理的な順序</strong> で並べることである。例えば新しいメソッドはクラスの最後になんとなくで追加されてはならない。それは追加された日の順になっているだけであって、論理的ではない。</p>
+<h5>3.4.2.1 オーバーロードしているメソッド群を分離してはならない</h5>
+<p>クラスに複数のコンストラクタや同じ名前を持つメソッドがある場合は連続して並べる。間に別のメンバーを入れてはならない。</p>
+<h2>4 フォーマット</h2>
+<p><strong>用語についての注釈：</strong> &#8220;block-like construct&#8221;とは、クラス、メソッド、コンストラクタの本体を指す。すべての配列は必要に応じて&quot;block-like construct&quot;とみなされて良い。4.8.3.1節 配列初期化子を参照。</p>
+<h3>4.1 中括弧</h3>
+<h4>4.1.1 使えるところでは中括弧は使う</h4>
+<p>括弧は <code>if else for do while</code> 文において本体が空でも1行しかなくても使われる。</p>
+<h4>4.1.2 空でないブロックではK&amp;Rスタイルに従う。</h4>
+<p>中括弧は空でないブロックや、&quot;block-like construct&quot;ではカーニハン・リッチースタイル(<a href="http://blog.codinghorror.com/new-programming-jargon/">Egyptian Brackets</a> )に従う。</p>
+<ul>
+	<li>開始中括弧の前に改行を入れない。</li>
+	<li>開始中括弧の後に改行を入れる。</li>
+	<li>終了中括弧の前に改行を入れる。</li>
+	<li>もし終了中括弧が文やメソッドの本体を終えるならばその中括弧の後に改行を入れる。例えば終了中括弧の後に <code>else</code> や、カンマが続く場合は改行をしない。</li>
+</ul>
+<p>例：</p>
+<pre>
+return new MyClass() {
+  @Override public void method() {
+    if (condition()) {
+      try {
+        something();
+      } catch (ProblemException e) {
+        recover();
+      }
+    }
+  }
+};
+</pre>
+<p>列挙型でのいくつかの例外はセクション4.8.1 列挙型にて示される。</p>
+<h4>4.1.3 空ブロックは簡潔に</h4>
+<p>空ブロックや空のブロックのような構造物は開始括弧直後に文字や改行無しで閉じてよい。（ <code>{}</code> ） <strong>但し、</strong>  <code>if/else-if/else</code> あるいは <code>try/catch/finally</code> のような複数ブロックの文の場合を除く。</p>
+<p>例：</p>
+<pre>
+void doNothing() {} 
+</pre>
+<h3>4.2 ブロックのインデントは空白2個である</h3>
+<p>新しいブロックあるいはブロック構造物が開始した時インデントは空白2個づつ増える。ブロックが終了したら、インデントは1個まえのレベルに戻る。インデントレベルはブロックを通じてコードとコメントに適用される。4.1.2節の例を参照のこと。（ 4.1.2 空でないブロックではK&amp;Rスタイルに従う。）</p>
+<h3>4.3 1行毎に1個の文</h3>
+<p>各文は、末尾に改行が来なくてはならない。</p>
+<h3>4.4 1行の文字数制限 80文字か100文字</h3>
+<p>プロジェクトごとに1行の文字数制限を80文字か100文字いずれかで自由に決定して良い。以下の例外を除き、この制限を超えた行は4.5節 行の折り返しで述べるように改行されなくてはならない。</p>
+<p>例外：</p>
+<p>1. 文字数制限に従うのが不可能の場合。（例えば、Javadoc内の長いURL、長いJSNIメソッド参照）<br />
+2. パッケージ文とインポート文　（3.2 パッケージ文　と3.3 インポート文を参照のこと）<br />
+3. コメント内の、コンソールにコピー＆ペーストされるようなコマンド。</p>
+<h3>4.5 行の折り返し</h3>
+<p><strong>用語の注記：</strong> 別の意味で正当に単一行を占めているコードを複数行に分けるとき、通常は文字数制限を超えないように分ける。この活動を行の折り返しと呼ぶ。</p>
+<p>どんな状況にも合う改行方法を正確に示すような統一的で決定的なやり方はありません。同じコード片を改行する正しい方法は複数あるものです。</p>
+<blockquote>
+<p><strong><span class="caps">TIP</span>:</strong> メソッドやローカル変数の抽出は改行をせずに問題を解決する場合があります。</p>
+</blockquote>
+<h3>4.5.1 どこで改行するか</h3>
+<p>改行の第一原則は、 <strong>高い文法のレベル</strong> で改行することです。つまり、</p>
+<ol>
+	<li>代入でない演算子で改行するときは、シンボルの前で改行します。（これはJavaScriptやC++のような他の言語でのGoogleスタイルで使われている週間と同じであることに注意して下さい）
+	<ul>
+		<li>このことはドット演算子( <code>.</code> )や、型演算子の＆記号( <code>&lt;T extends Foo &amp; Bar&gt;</code> )や、catch節でのパイプ記号 ( <code>catch (FooException | BarException e)</code> )といった演算子のようなシンボルにも適用されます。</li>
+	</ul></li>
+	<li>行が代入演算子で改行されるときは、通常シンボルの後ろで改行します。しかしどちらでも受け入れられます。
+	<ul>
+		<li>このことは拡張for (&#8220;foreach&#8221;) 文の「代入演算子のような」コロンにも適用されます。</li>
+	</ul></li>
+	<li>メソッドやコンストラクタ名に続く開始括弧（(）はそれに続いて書かれます。改行されません。</li>
+	<li>カンマ( <code>,</code> )はその前のトークンに続いて書かれます。カンマの直前で改行されません。</li>
+</ol>
+<h4>4.5.2 連続する行は少なくとも４文字インデントします。</h4>
+<p>改行の際、連続する先頭行のに続く各行は少なくとも空白4個分元からインデントされます。</p>
+<p>複数の連続した行がある場合、インデントは4以上ならいくつでも良いです。一般的に、2個の連続した行がもし文法的に並行した要素で始まるならばそのときのみ同じインデントレベルであるべきです。</p>
+<p>&#8220;4.6.3節の水平位置揃えは全く不要&#8221;は、あるトークンを前の行に揃えるため必要な分の空白を入れるというまずいやり方を防止します。</p>
+<h3>4.6 空白</h3>
+<h4>4.6.1 垂直の空白</h4>
+<p>単一の空行が生成される状況は以下のとおり。</p>
+<ol>
+	<li>クラスの連続するメンバ（あるいは初期化子）の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子。
+	<ul>
+		<li><strong>例外</strong> ：2個の連続するフィールド（その間にコードがないもの）間での空行は任意である。そのような空行はフィールドの論理的なグループ分けをするのに必要である。</li>
+	</ul></li>
+	<li>メソッド本体内で、文を論理的にグループ分けしたい場合。</li>
+	<li>必要な場合、クラスの最初のメンバーの前と最終メンバーの後。（推奨も拒否もしない）</li>
+	<li>本文書の別の節で入れるよう求められた場所（3.3節のインポート文など）</li>
+</ol>
+<p>複数の連続した空行を入れて良いが、必須でも推奨でもない。</p>
+<h4>4.6.2 水平の空白</h4>
+<p>言語かあるいは他のスタイルルールの要求であるかによらず、リテラル、コメント、Javadoc以外で単一のASCII空白は以下の場所 <strong>のみ</strong> において使って良い。</p>
+<ol>
+	<li>予約語（ <code>if, for , catch</code> ）とその行での開始小括弧 ( <code>(</code> )の間。</li>
+	<li>予約語（ <code>else, catch</code> ）とその行での前に来る終了中括弧( <code>}</code> )との間。</li>
+	<li>開始中括弧( <code>{</code> )の前すべて。ただし以下の2個の例外を除く
+	<ul>
+		<li>@SomeAnnotation({a, b}) (空白は使わない。)</li>
+		<li><code>String[][] x = {{"foo"}};</code> ( <code>{{</code> の中に空白は不要。項目8を参照)</li>
+	</ul></li>
+	<li>すべてのバイナリ、tenary演算子の両側。また、以下の様な演算子ライクなシンボルにも適用する。
+	<ul>
+		<li>連続する型パラメータ間のアンパサンド。 <code>&lt;T extends Foo &amp; Bar&gt;</code></li>
+		<li>複数の例外を処理するcatchブロックでのパイプ。 <code>catch (FooException | BarException e)</code></li>
+		<li>拡張for文　(&#8220;foreach&#8221;) でのコロン。 ( <code>:</code> )</li>
+	</ul></li>
+	<li><code>, : ;</code> あるいはキャストの閉じ括弧 （ <code>)</code> ） の後ろ。</li>
+	<li>行末コメントを開始するスラッシュ２個（ <code>//</code> ）の両側。ここでは複数の空白が許されるが必須ではない。</li>
+	<li>型と変数の宣言の間。 <code>List&lt;String&gt; list</code></li>
+	<li>任意で、配列初期化子の両括弧の中。
+	<ul>
+		<li><code>new int[] {5, 6}</code> と <code>new int[] { 5, 6 }</code> は両方有効。</li>
+	</ul></li>
+</ol>
+<blockquote>
+<p>注意：このルールは行頭行末の空白について要求も禁止もしない。内側の空白のみについて当てはまる。</p>
+</blockquote>
+<h4>4.6.3 水平位置揃えは全く不要</h4>
+<p><strong>用語の注釈：</strong> 水平位置揃えは前行のトークン(変数名、型名)の真下に次行のトークンが来るように入れるスペース数を調整するやり方のことです。</p>
+<p>やって良いですがGoogleスタイルでは <strong>決して要求されません。</strong> すでにこうなっている箇所をそのまま維持することすら求めれられない</p>
+<p>これはやっている例とやっていない例です。</p>
+<pre>
+private int x; // これは良い
+private Color color; // これも良い
+
+private int   x;      // 許容される。しかし今後の編集で
+private Color color;  // 揃えられなくなるかもしれない。
+</pre>
+<blockquote>
+<p><strong>Tip:</strong> カラムの調整は可読性を上げるが将来のメンテナンスで問題になる。一行だけ直したいときを考えてほしい。この変更は以前のきれいな並びをおかしくするだろう。このようなことが <strong>発生しうる。</strong> このことは開発者(多分君)に近くの行を同様になおせと求める。そして修正範囲の拡大を引き起こす。一行の変更が長大な変更となる。最悪意味のない作業になる。良くても変更履歴を汚くする。レビューが遅くなり、マージの衝突がおこるようになる。。</p>
+</blockquote>
+<h3>4.7 グループ化の括弧 推奨</h3>
+<p>追加のグループ化の括弧は作者とレビュアーが括弧なしでもコードは誤解される余地がないと認めるか、コードを読みやすく書いた時のみなくすことが出来ます。すべての読者がJava演算子の優先度表を記憶していると仮定するのは合理的でありません。</p>
+<h3>4.8 各構造物</h3>
+<h4>4.8.1 列挙型</h4>
+<p>列挙定数値後のカンマの後ろの改行は任意である。</p>
+<p>定数値にメソッドもドキュメンテーションもない列挙型は必要に応じて任意に配列の初期化と同じやり方で整形してよい。(4.8.3.1 節 配列の初期化 を参照)</p>
+<pre>private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }</pre>
+<p>列挙型はクラスであるのでクラスに適用される他のルールが適用される。</p>
+<h4>4.8.2 変数宣言</h4>
+<h5>4.8.2.1 宣言ごとに一個の変数</h5>
+<p>フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 <code>int a, b;</code> のような宣言は使われない。</p>
+<h5>4.8.2.2 必要なときに宣言して速やかに初期化する</h5>
+<p>ローカル変数はそれを含むブロックやブロック構造物の先頭でなんとなく宣言されてはならない。代わりに、ローカル変数はそのスコープを最小化するために最初に使う場所(理由がある)の近くで宣言される。ローカル変数宣言はたいていは初期化子がある。あるいは宣言直後に初期化される。</p>
+<h4>4.8.3 配列</h4>
+<h5>4.8.3.1 配列の初期化はブロックのようにやって良い。</h5>
+<p>配列の初期化はあたかも「block-like construct」のようにやって良い。例えば以下の例はすべて有効である。網羅的なリストでは無い。</p>
+<pre>
+new int[] {           new int[] {
+  0, 1, 2, 3            0,
+}                       1,
+                        2,
+new int[] {             3,
+  0, 1,               }
+  2, 3
+}                     new int[]
+                          {0, 1, 2, 3}
+</pre>
+<h5>4.8.3.2 Cのような宣言は禁止</h5>
+<p>型名と角括弧で型の表現に使えるが、変数で使ってはならない。 <code>String[] args</code> は良い。 <code>String args[]</code> はダメ。</p>
+<h4>4.8.4 スイッチ文</h4>
+<strong>用語についての注釈</strong> スイッチブロックの括弧の内側は一個以上の文グループです。それぞれの文グループは一個以上のスイッチラベル（ <code>case FOO:</code> でも <code>default:</code> であっても）とそれに続く続く一個以上の文です。
+<h5>4.8.4.1 インデンテーション</h5>
+<p>他のブロックがそうであるように、スイッチブロックのインデントは2です</p>
+<p>スイッチラベルの後改行が入り、あたかもブロックが開始したかのようにインデントレベルは2上がります。次のスイッチラベルはあたかもブロックの終わったように前のインデンテーションレベルに戻ります。</p>
+<h5>4.8.4.2 フォールスルー コメントを入れる</h5>
+<p>スイッチブロック内では、各ステートメントグループは突然止まる（ <code>break</code> か <code>continue</code> か <code>return</code> か例外スローか）か実行が次のステートメントグループに進むようなコメントが付けられるかのみです。フォールスルーということを示すコメントも効果的です。 <code>// fall through</code> など。この特別なコメントは、最後のステートメントグループには必要ありません。</p>
+<p>例えば：</p>
+<pre>
+switch (input) {
+ case 1:
+ case 2:
+   prepareOneOrTwo();
+   // fall through
+ case 3:
+   handleOneTwoOrThree();
+   break;
+ default:
+   handleLargeNumber(input);
+}
+</pre>
+<h5>4.8.4.3 default 節は必要</h5>
+<p>各スイッチ文はたとえコードがなかったとしても <code>default</code> ステートメントグループが必要です。</p>
+<h4>4.8.5 アノテーション</h4>
+<p>クラス、メソッド、コンストラクタに付けられるアノテーションは、ドキュメンテーションブロックの直後に配置されます。そして、各アノテーションは１行に１個設定されます。これらの改行は行折り返し(4.5 節　行折り返し) に従いません。それ故、インデンテーションレベルも上がりません。例えば：</p>
+<pre>
+@Override
+@Nullable
+public String getNameIfPresent() { ... }
+</pre>
+<strong>例外：</strong> パラメータ無しのアノテーションが１個だけの場合はシグネチャー行の先頭に来ても良いです。例えば：
+
+<pre>
+@Override public int hashCode() { ... }
+</pre>
+<p>フィールドへのアノテーションもドキュメンテーションブロックの直後です。しかしこの場合、複数のアノテーション(@parameterized など)が同じ行に現れても良いです。例えば：</p>
+<pre>
+@Partial @Mock DataLoader loader;
+</pre>
+<p>パラメータや、ローカル変数へのアノテーションについては特にルールはありません。</p>
+<h4>4.8.6 コメント</h4>
+<h5>4.8.6.1 ブロックコメントスタイル</h5>
+<p>ブロックコメントは周りのコードと同じレベルにインデントされる。 <code>/* ... */</code> でも  <code>//...</code> でも同じである。複数行 <code>/* ... */</code> コメントについては <code>*</code> の位置を先頭行の <code>*</code> と同じに揃えなくてはならない。</p>
+<pre>
+/*
+ * これは         // これも           /* こんなかたち
+ * 良い           // 良い              * であっても良い。 */
+ */
+</pre>
+<p>コメントはアスタリスクや他の文字で描かれた箱で囲われることは無い。</p>
+<blockquote>
+<p><strong>Tip:</strong> 複数行コメントを書く際必要に応じ自動フォーマット機能で行折り返ししたい場合は <code>/* ... */</code> スタイルを使うと良い。多くのフォーマッタは <code>// ...</code> スタイルのコメントの改行を直さない。</p>
+</blockquote>
+<h4>4.8.7 修飾子</h4>
+<p>クラスやメンバの修飾子はJava言語仕様が推奨する順序で出現しなくてはならない。</p>
+<pre>
+public protected private abstract static final transient volatile synchronized native strictfp
+</pre>
+<h4>4.8.8 数値リテラル</h4>
+<p>長い数値リテラルは大文字の <code>L</code> を末尾に使う。小文字は使わない。数値 <code>1</code> との混乱を避ける。例えば <code>3000000l</code> ではなく <code>300000L</code> を使う。</p>
+<h2>5 命名</h2>
+<h3>5.1すべての識別子への共通ルール</h3>
+<p>識別子はASCII文字のみを使い、数字と大文字小文字とアンダースコアである。それゆえ、有効な識別子名は正規表現 <code>\w+</code> にマッチする。</p>
+<p>Googleスタイルでは、 <code>name_</code> 、 <code>mName</code> 、 <code>s_name</code> や <code>kName</code> といったような特別な接尾辞・接頭辞は使われない。</p>
+<h3>5.2 識別子の種類ごとのルール</h3>
+<h4>5.2.1 パッケージ名</h4>
+<p>パッケージ名はすべて小文字で連続する単語をそのまま繋げる。アンダースコアは使わない。例えば、 <code>com.example.deepspace</code> であって、 <code>com.example.deepSpace</code>  や <code>com.example.deep_space</code> は使わない。</p>
+<h4>5.2.2 クラス名</h4>
+<p>クラス名は大文字キャメルケースで命名する。</p>
+<p>クラス名は大抵名詞か名詞句です。例えば、 <code>Character</code> や、 <code>ImmutableList</code> です。インターフェース名も名詞か名詞句です。例えば <code>List</code> です。しかし、場合によっては形容詞や形容詞句になります。例えば、 <code>Readable</code> です。</p>
+<p>アノテーション型に対する特定のルールや確立した規約はありません。</p>
+<p>テストクラスはテスト対象クラス名で始まり、 <code>Test</code> で終わるよう命名されます。例えば <code>HashTest</code> や、 <code>HashIntegrationTest</code> です。</p>
+<h4>5.2.3 メソッド名</h4>
+<p>メソッド名は、小文字キャメルケースで命名されます。</p>
+<p>メソッド名は大抵動詞か動詞句です。例えば、 <code>sendMessage</code> や <code>stop</code> です。</p>
+<p>アンダースコアはJUnitのメソッド名で、論理的コンポーネント名を分離する場合で使ってよいです。典型的なパターンは <code>test&lt;MethodUnderTest&gt;_&lt;state&gt;</code> で、例えば  <code>testPop_emptyStack</code> です。テストメソッドを命名する正しい唯一の方法はありません。</p>
+<h4>5.2.4 定数名</h4>
+<p>定数は コンスタントケースで命名します。すべて大文字で、各単語をアンダースコアで区切ります。しかし定数とは一体何でしょう？</p>
+<p>すべての定数は <code>static final</code> なフィールドです。しかし、すべての <code>static final</code> なフィールドが定数であるとは限りません。<br />
+コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか考えてみましょう。例えば、そのインスタンスの可視な状態が変更できるならば、殆どの場合定数ではありません。決して変更されないオブジェクトの振りをするだけでは大抵不十分です。例えば、</p>
+<pre>
+// 定数である
+static final int NUMBER = 5;
+static final ImmutableList&lt;String&gt; NAMES = ImmutableList.of("Ed", "Ann");
+static final Joiner COMMA_JOINER = Joiner.on(',');  // Joiner は不変であるので。
+static final SomeMutableType[] EMPTY_ARRAY = {};
+enum SomeEnum { ENUM_CONSTANT }
+
+// 定数でない
+static String nonFinal = "non-final";
+final String nonStatic = "non-static";
+static final Set&lt;String&gt; mutableCollection = new HashSet&lt;String&gt;();
+static final ImmutableSet&lt;SomeMutableType&gt; mutableElements = ImmutableSet.of(mutable);
+static final Logger logger = Logger.getLogger(MyClass.getName());
+static final String[] nonEmptyArray = {"these", "can", "change"};
+</pre>
+<p>これらの名前は大抵名詞か名詞句です。</p>
+<h4>5.2.5 定数でないフィールド名</h4>
+<p>定数でないフィールド名（staticであってもなくても）は小文字キャメルケースで命名されます。</p>
+<p>これらの名前は大抵名詞か名詞句です。例えば <code>computedValues</code> や <code>index</code> です。</p>
+<h4>5.2.6 パラメータ名</h4>
+<p>パラメータ名は小文字のキャメルケースです。</p>
+<p>一文字のパラメータ名は避けるべきです。</p>
+<h4>5.2.7  ローカル変数名</h4>
+<p>ローカル変数名は小文字キャメルケースで命名されます。他の種類の命名よりも自由に短縮されます。</p>
+<p>しかしながら一文字の名前は一時的なループ変数を除いて避けるべきです。</p>
+<code>final</code> で不変であってもローカル変数は定数とは見なされないのでそのようにスタイルされるのは避けるべきです。
+<h4>5.2.8 型変数名</h4>
+<p>型変数名は以下の２つのやり方のうちいずれかで命名されます。</p>
+<ul>
+	<li>一つの大文字アルファベット。それに１個の数字が続いて良い。例： <code>E, T, X, T2</code></li>
+	<li>クラスの命名（5.2.2節 クラス名 参照）の後ろに、大文字Tを付加する。例： <code>RequestT, FooBarT</code></li>
+</ul>
+<h3>5.3 キャメルケースの定義</h3>
+<p>&quot;IPv6&quot;や、&quot;iOS&quot;のような頭字語や見慣れない単語があるように、英語のフレーズをキャメルケースに変換する合理的な方法はいくつかあります。正確さを維持するため、Google Styleでは以下のように（ほぼ）決定的な方法を定義します。</p>
+<p>名前の通常の形から始めて、</p>
+<ol>
+	<li>言葉を素のASCIIに変換し、アポストロフィを除去する。例えば、&quot;Müller&#8217;s  algorithm&quot; は &#8220;Muellers algorithm&#8221;に変換される。</li>
+	<li>これを単語に分割する。つまり、スペースや残っている句読点、ハイフンで分離する。
+	<ul>
+		<li>推奨：もしもある単語が一般的にキャメルケースの形になっていたら、これを分解する。<br />
+（例：「AdWords」 を 「ad words」にする。）「iOS」のような単語は本当はキャメルケースになっていない<br />
+規約に当てはまらないのでこの推奨は適用しないことに注意する。</li>
+	</ul></li>
+	<li>（頭字語を含めて）すべてを小文字にする。そして最初の文字を大文字にする。
+	<ul>
+		<li>各単語とは大文字キャメルケースとなるか、最初の単語を除いて小文字キャメルケースになる。</li>
+	</ul></li>
+	<li>最後に、すべての単語を１個の識別子として連結する。</li>
+</ol>
+<p>元々の大文字小文字はほぼ無視される。例えば、</p>
+<table>
+	<tr>
+		<td>元々の形</td>
+		<td>正しい変換例</td>
+		<td>誤った変換例</td>
+	</tr>
+	<tr>
+		<td>&#8220;<span class="caps">XML</span> <span class="caps">HTTP</span> request&#8221;</td>
+		<td>XmlHttpRequest</td>
+		<td>XMLHTTPRequest</td>
+	</tr>
+	<tr>
+		<td>&#8220;new customer ID&#8221;</td>
+		<td>newCustomerId</td>
+		<td>newCustomerID</td>
+	</tr>
+	<tr>
+		<td>&#8220;inner stopwatch&#8221;</td>
+		<td>innerStopwatch</td>
+		<td>innerStopWatch</td>
+	</tr>
+	<tr>
+		<td>&#8220;supports IPv6 on iOS?&#8221;</td>
+		<td>supportsIpv6OnIos</td>
+		<td>supportsIPv6OnIOS</td>
+	</tr>
+	<tr>
+		<td>&#8220;YouTube importer&#8221;</td>
+		<td>YouTubeImporter <br> YoutubeImporter <sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></td>
+		<td></td>
+	</tr>
+</table>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> やってよいが推奨されない。</p>
+<blockquote>
+<p><strong>注釈：</strong> いくつかの単語は英語では曖昧にハイフン付けされています。例えば、&quot;nonempty&quot; と &#8220;non-empty&#8221; はどちらも正しいです。ですので、 <code>checkNonempty</code> や <code>checkNonEmpty</code> というメソッド名はどちらも正しいです。</p>
+</blockquote>
+<h2>6 プログラミングの実践</h2>
+<h3>6.1 @Override を常に使う。</h3>
+<p>許される場所ならばメソッドは @Overrideアノテーションをつけられます。これは親クラスのメソッドをオーバーライドするクラスメソッドや、インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにも当てはまります。</p>
+<p><strong>例外：</strong> @Override は親メソッドが@Deprecated の場合書かなくて良い。</p>
+<h3>6.2 キャッチした例外を無視しない。</h3>
+<p>以下の例外を除き、キャッチした例外に対してなにも対応しないのが正しいことはめったにありません。大抵の対応はログを取るか、ありえない場合ならば <code>AssertionError</code> として再スローすることです。</p>
+<p>キャッチ節でなにもしないことが本当に適切であるならば、それを正当化する理由をコメントで説明します。</p>
+<pre>
+try {
+  int i = Integer.parseInt(response);
+  return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+  // 数字ではない。このような場合もあるので別の処理を続ける。
+}
+return handleTextResponse(response);
+</pre>
+<p><strong>例外：</strong> テストにおいて例外がスローされることを期待する場合はキャッチした例外はコメントなしで無視されます。以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムで、コメントは不要です。</p>
+<pre>
+try {
+  emptyStack.pop();
+  fail();
+} catch (NoSuchElementException expected) {
+}
+</pre>
+<h3>6.3 staticなメンバーはクラスを使って修飾する。</h3>
+<p>staticなメンバーへを使う場合はクラス名経由で使います。そのクラスの変数や式経由で使ってはいけません。</p>
+<pre>
+Foo aFoo = ...;
+Foo.aStaticMethod(); // 良い
+aFoo.aStaticMethod(); // 悪い
+somethingThatYieldsAFoo().aStaticMethod(); // とても悪い
+</pre>
+<h3>6.4 ファイナライザは使わない。</h3>
+<p><code>Object</code> クラスの <code>finalize()</code> メソッドを使うケースは非常に稀です。</p>
+<blockquote>
+<p><strong><span class="caps">TIP</span>:</strong> これをやってはいけません。貴方は最初に <a href="http://books.google.co.jp/books?id=ka2VUBqHiWkC">Effective Java</a> のItem7「ファイナライザを避ける」を必ず熟読しなくてはなりません。そしてこれをやってはいけません。</p>
+</blockquote>
+<h2>7 Javadoc</h2>
+<h3>7.1 フォーマット</h3>
+<h4>7.1.1 一般的なフォーマット</h4>
+<p>Javadocブロックの基本的なフォーマットはこの例で表されます。</p>
+<pre>
+/**
+ * 複数行のJavadocテキストはここに書かれる。
+ * 普通に改行される。
+ */
+public int method(String p1) { ... }
+</pre>
+<p>一行の例はこれです。</p>
+<pre>
+/** 特に短いJavadoc */
+</pre>
+<p>基本的な形は常に適用されます。 Javadocタグがない場合やコメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は一行の形で代用できます。</p>
+<h4>7.1.2 段落</h4>
+<p>一つの空行つまり行頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしjavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで <code>&lt;p&gt;</code> が入れられる。</p>
+<h4>7.1.3 javadoc タグ <sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup></h4>
+<p>標準のjavadoc タグで使われるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ずつかなくてはならない。javadoc タグが１行コメントに収まらない場合、２行目以降は＠の位置からスペース４個以上インデントされる。</p>
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> 訳注：javadoc での @param といった節のこと。原文では&quot;at-clauses&quot;であるが、GoogleJavaStyleでしか使っていない用語なのでjavadocの元文書に基づきjavadoc タグと翻訳した。参照 <a href="http://docs.oracle.com/javase/jp/7/technotes/tools/windows/javadoc.html#javadoctags">javadoc タグ</a></p>
+<h3>7.2 要約の記述</h3>
+<p>クラスとメンバーのJavadocは簡単な <strong>要約の記述</strong> から始まります。この記述はとても重要です。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからです。</p>
+<p>この記述は小さな断片の形です。つまり名詞句か動詞句であって文であってはなりません。「このクラス {@code Foo} は、、、」とか「このメソッドはナニナニを返す。」で始まってはいけませんし、「結果を保存しなさい。」という命令形でもいけません。他方においてこの断片はあたかも文であるかのように大文字に変えられたり、句読点が付けられます。</p>
+<blockquote>
+<p><strong><span class="caps">TIP</span>:</strong> /** @return 顧客ID */   といった簡単なJavadocを書くことはよくある間違いです。これは間違いで正しくは以下のように直されるべきです。 <code>/** 顧客IDを返す。 */</code></p>
+</blockquote>
+<h3>7.3  Javadocが使われる場所</h3>
+<p>少なくとも、javadocは <code>public</code> なクラスとそのクラスの <code>public</code> <code>protected</code> なメンバーに書かれます。但し以下の例外が有ります。</p>
+<p>クラスとメンバー以外にもJavadocは必要に応じて書かれます。クラス、メソッド、フィールドの全体の振る舞いや目的を記述するのに実装コメントが使われている場合は代わりにJavadocで書かれます。（より統一的で、ツールとの親和性も高いです。）</p>
+<h4>7.3.1  例外 自己叙述的なメソッド</h4>
+<p>javadocは <code>getFoo</code> のような簡単で明確なメソッドの場合は必須ではありません。つまり、「fooを返す」以外の意味ある情報が本当に無い場合です。</p>
+<blockquote>
+<p><strong>Tip: 重要：</strong> 典型的な読者が知りたがるような関連情報を省略することを正当化するためにこの例外を引用するのは適切ではありません。例えば、「getCanonicalName」というメソッドにおいて典型的な読者が「canonical name」という語の意味を知らないかもしれない場合、（単に <code>/** Returns the canonical name. */</code> と書くだけであるという理由で）省略してはいけません。</p>
+</blockquote>
+<h4>7.3.2  例外：オーバーライドするメソッド</h4>
+<p>親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではありません。</p>
+</body>
+</html>
+
