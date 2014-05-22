@@ -1,0 +1,20 @@
+
+.title{
+  text-align: center;
+}
+
+td{
+  vertical-align: top;
+}
+
+.lv1 {
+   margin-left: 1em;
+}
+.lv2 {
+   margin-left: 2em;
+}
+
+.indexgroup {
+  margin-bottom: 0px;
+}
+
