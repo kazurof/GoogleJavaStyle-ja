@@ -13,9 +13,9 @@ h2. この文書について
 <td>
 
 
-p(indexgroup). "1 *導入*":#s1-introduction 
+p(indexgroup). "1 *導入*":#s1-introduction
 
-div(lv1). "1.1 用語についての注記":#s1-1-terminology 
+div(lv1). "1.1 用語についての注記":#s1-1-terminology
 "1.2 ガイドについての注記":#s1-2-guide-notes
 
 p(indexgroup). "2 *ソースファイルの基本事項*":#s2-source-file-basics
@@ -130,7 +130,7 @@ div(lv2). "7.3.1 例外 自己叙述的なメソッド":#s7-3-1-javadoc-exceptio
 
 
 
-h2(#s1-introduction). 1 導入 
+h2(#s1-introduction). 1 導入
 
 この文書はJavaプログラミング言語のソースコードのGoogleのコーディング標準の *完全* な定義を提供する。下記のルールに従うJavaソースファイルのみが、Googleスタイルであるとみなされる。
 
