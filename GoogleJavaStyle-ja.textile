@@ -4,7 +4,7 @@ h1(title). Google Java Style (非公式和訳)
 --------------
 h2. この文書について
 
-本文書はGoogleのJavaコーディング規約である "Google Java Style":https://google.github.io/styleguide/javaguide.html	 の非公式和訳です。  "2014/03/22":https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071 の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+本文書はGoogleのJavaコーディング規約である "Google Java Style":https://google.github.io/styleguide/javaguide.html の非公式和訳です。  "2014/03/22":https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071 の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
 
 --------------
 
