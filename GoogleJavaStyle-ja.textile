@@ -103,10 +103,10 @@ div(lv1). "5.3 キャメルケースの定義":#s5-3-camel-case
 
 p(indexgroup). "6 *プログラミングの実践*":#s6-programming-practices
 
-div(lv1). "6.1 @Override を常に使う":#s6-1-override-annotation
-"6.2 キャッチした例外を無視しない":#s6-2-caught-exceptions
-"6.3 staticなメンバーはクラスを使って修飾する":#s6-3-static-members
-"6.4 ファイナライザは使わない":#s6-4-finalizers
+div(lv1). "6.1 @Override：常に使う":#s6-1-override-annotation
+"6.2 キャッチされた例外：無視しない":#s6-2-caught-exceptions
+"6.3 staticなメンバー：クラスを使って修飾する":#s6-3-static-members
+"6.4 ファイナライザ：使わない":#s6-4-finalizers
 
 p(indexgroup). "7 *Javadoc*":#s7-javadoc
 
@@ -702,7 +702,7 @@ bq. *注釈：* いくつかの単語は英語として曖昧にハイフン付�
 
 h2(#s6-programming-practices). 6 プログラミングの実践
 
-h3(#s6-1-override-annotation). 6.1 @Override ：常に使う。
+h3(#s6-1-override-annotation). 6.1 @Override：常に使う
 
 適用可能ならば、メソッドには @Overrideアノテーションを付与する。これは親クラスのメソッドをオーバーライドするクラスのメソッドや、インターフェースのメソッドを実装するクラスのメソッドや、親インターフェースのメソッドを再定義する子インターフェースのメソッドにもあてはまる。
 
@@ -737,7 +737,7 @@ try {
 }
 </pre>
 
-h3(#s6-3-static-members). 6.3 staticなメンバー：クラスを使って修飾する。
+h3(#s6-3-static-members). 6.3 staticなメンバー：クラスを使って修飾する
 
 staticなメンバーを修飾する必要がある場合はクラス名を使う。そのクラスの変数や式経由で使ってはいけません。
 
@@ -749,7 +749,7 @@ somethingThatYieldsAFoo().aStaticMethod(); // とても悪い
 </pre>
 
 
-h3(#s6-4-finalizers). 6.4 ファイナライザ：使わない。
+h3(#s6-4-finalizers). 6.4 ファイナライザ：使わない
 
 @Object@ クラスの @finalize()@ メソッドを使うケースは非常に稀である。
 
