@@ -114,7 +114,7 @@ div(lv1). "7.1 フォーマット":#s7-1-javadoc-formatting
 
 div(lv2). "7.1.1 一般的なフォーマット":#s7-1-1-javadoc-multi-line
 "7.1.2 段落":#s7-1-2-javadoc-paragraphs
-"7.1.3 javadoc タグ":#s7-1-3-javadoc-at-clauses
+"7.1.3 Javadoc タグ":#s7-1-3-javadoc-at-clauses
 
 div(lv1). "7.2 要約の記述":#s7-2-summary-fragment
 "7.3 Javadocが使われる場所":#s7-3-javadoc-where-required
@@ -786,14 +786,14 @@ public int method(String p1) { ... }
 
 h4(#s7-1-2-javadoc-paragraphs). 7.1.2 段落
 
-一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしjavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
+一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしJavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
 
 
-h4(#s7-1-3-javadoc-at-clauses). 7.1.3 javadoc タグ [2]
+h4(#s7-1-3-javadoc-at-clauses). 7.1.3 Javadoc タグ [2]
 
-標準のjavadoc タグで利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。javadoc タグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
+標準のJavadoc タグで利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。Javadoc タグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
 
-fn2. 訳注：javadoc での @param といった節のこと。原文では"at-clauses"であるが、GoogleJavaStyleでしか使っていない用語なのでjavadocの元文書に基づきjavadoc タグと翻訳した。参照 "javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
+fn2. 訳注：Javadoc での @param といった節のこと。原文では"at-clauses"であるが、GoogleJavaStyleでしか使っていない用語なのでJavadocの元文書に基づきJavadoc タグと翻訳した。参照 "Javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
 
 h3(#s7-2-summary-fragment). 7.2 要約の記述
 
@@ -815,7 +815,7 @@ h3(#s7-3-javadoc-where-required). 7.3  Javadocが使われる場所
 
 h4(#s7-3-1-javadoc-exception-self-explanatory). 7.3.1  例外：自己叙述的なメソッド
 
-javadocは @getFoo@ のような簡単で明確なメソッドの場合は必須ではない。つまり、「fooを返す」以外の意味ある情報が本当に無い場合である。
+Javadocは @getFoo@ のような簡単で明確なメソッドの場合は必須ではない。つまり、「fooを返す」以外の意味ある情報が本当に無い場合である。
 
 
 bq. *Tip: 重要：* 典型的な読者が知りたがるような関連情報を省略することを正当化するためにこの例外を引用するのは適切ではない。例えば、「getCanonicalName」というメソッドにおいて典型的な読者が「canonical name」という語の意味を知らないかもしれない場合、（単に @/** canonical name を返す。 */@ と書くだけであるという理由で）省略してはいけません。
