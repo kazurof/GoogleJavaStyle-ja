@@ -575,8 +575,7 @@ h2(#s5-naming). 5 命名
 h3(#s5-1-identifier-names). 5.1 すべての識別子への共通ルール
 
 
-識別子はASCII文字、数字、後述する2つの場合(訳注:5.2.4の定数名と、5.2.3のメソッド名のうちJUnitのテストメソッド名の場合)はアンダースコア、のみを使う。それゆえ、有効な識別子名は正規表現 @\w+@ にマッチする。
-TODO ここ後で考える。
+識別子はASCII文字、数字、後述する2つの場合(訳注:5.2.4の "定数名":#s5-2-4-constant-names の場合と、5.2.3の "メソッド名":#s5-2-3-method-names でのUnitのテストメソッド名の場合)はアンダースコアのみを使う。それゆえ、有効な識別子名は正規表現 @\w+@ にマッチする。
 
 Googleスタイルでは、 @name_@ 、 @mName@ 、 @s_name@ や @kName@ といったような特別な接尾辞・接頭辞は _使わない。_ 
 
@@ -752,7 +751,7 @@ h3(#s6-4-finalizers). 6.4 ファイナライザ：使わない
 
 @Object@ クラスの @finalize()@ メソッドを使うケースは非常に稀である。
 
-bq. *TIP:* これをやってはならない。絶対的に必要ならば、まず "Effective Java":http://books.google.co.jp/books?id=ka2VUBqHiWkC のItem7「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはいけません。
+bq. *TIP:* これをやってはならない。絶対的に必要ならば、まず "Effective Java":http://books.google.co.jp/books?id=ka2VUBqHiWkC のItem7「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはならない。
 
 
 h2(#s7-javadoc). 7 Javadoc 
