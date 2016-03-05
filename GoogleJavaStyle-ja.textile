@@ -4,7 +4,7 @@ h1(title). Google Java Style (非公式和訳)
 --------------
 h2. この文書について
 
-本文書はGoogleのJavaコーディング規約である "Google Java Style":https://google.github.io/styleguide/javaguide.html の非公式和訳です。  "2014/03/22":https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071 の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+本文書はGoogleのJavaコーディング規約であるところの "Google Java Style":https://google.github.io/styleguide/javaguide.html の非公式和訳です。  "2014/03/22":https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071 の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
 
 --------------
 
@@ -68,7 +68,7 @@ div(lv1). "4.6 空白":#s4-6-whitespace
 
 div(lv2). "4.6.1 垂直の空白":#s4-6-1-vertical-whitespace
 "4.6.2 水平の空白":#s4-6-2-horizontal-whitespace
-"4.6.3 水平位置揃えは全く不要":#s4-6-3-horizontal-alignment
+"4.6.3 水平位置揃え：全く不要":#s4-6-3-horizontal-alignment
 
 div(lv1). "4.7 グループ化の括弧 推奨":#s4-7-grouping-parentheses
 
@@ -636,7 +636,7 @@ static final Logger logger = Logger.getLogger(MyClass.getName());
 static final String[] nonEmptyArray = {"these", "can", "change"};
 </pre>
 
-これらの名前は大抵名詞か名詞句です。
+これらの名前は大抵名詞か名詞句である。
 
 h4(#s5-2-5-non-constant-field-names). 5.2.5 定数でないフィールド名
 
@@ -697,7 +697,7 @@ h3(#s5-3-camel-case). 5.3 キャメルケースの定義
 
 fn2. やってよいが推奨されない。
 
-bq. *注釈：* いくつかの単語は英語として曖昧にハイフン付けされています。例えば、"nonempty" と "non-empty" はどちらも正しいです。ですので同様に @checkNonempty@ と @checkNonEmpty@ というメソッド名はどちらも正しいです。
+bq. *注釈：* いくつかの単語は英語として曖昧にハイフン付けされている。例えば、"nonempty" と "non-empty" はどちらも正しい。それゆえ同様に @checkNonempty@ と @checkNonEmpty@ というメソッド名はどちらも正しい。
 
 
 h2(#s6-programming-practices). 6 プログラミングの実践
