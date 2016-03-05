@@ -337,7 +337,7 @@ h3(#s4-4-column-limit). 4.4 1行の文字数制限 80文字か100文字
 2. パッケージ文とインポート文　（3.2 パッケージ文　と3.3 インポート文を参照のこと）
 3. コメント内の、コンソールにコピー＆ペーストされるようなコマンド。
 
-fn1. 訳注：JavaScript Native Interface 。Google Web Tookit においてアプリからJavaScriptコードを呼ぶことができる。
+fn1. 訳注：JavaScript Native Interface 。Google Web Tookit においてアプリからJavaScript コードを呼ぶことができる。
 
 h3(#s4-5-line-wrapping). 4.5 行の折り返し
 
