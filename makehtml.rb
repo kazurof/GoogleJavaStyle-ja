@@ -9,7 +9,7 @@ f = File.open("GoogleJavaStyle-ja.textile" , "r:utf-8")
 result = RedCloth.new(f.read).to_html
 
 erb = ERB.new(DATA.read)
-out = File.open("index.html" , "w:utf-8")
+out = File.open("index.html" , "wb:utf-8")
 out.write(erb.result)
 
 __END__
