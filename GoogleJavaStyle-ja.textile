@@ -119,7 +119,7 @@ div(lv2). "7.1.1 一般的なフォーマット":#s7-1-1-javadoc-multi-line
 div(lv1). "7.2 要約の記述":#s7-2-summary-fragment
 "7.3 Javadocが使われる場所":#s7-3-javadoc-where-required
 
-div(lv2). "7.3.1 例外 自己叙述的なメソッド":#s7-3-1-javadoc-exception-self-explanatory
+div(lv2). "7.3.1 例外：自己叙述的なメソッド":#s7-3-1-javadoc-exception-self-explanatory
 "7.3.2 例外：オーバーライドするメソッド":#s7-3-2-javadoc-exception-overrides
 
 
