@@ -240,18 +240,19 @@ import文は *改行してはならない。* 文字数制限（4.4節 "文字�
 h4(#s3-3-3-import-ordering-and-spacing). 3.3.3 順序と空白
 
 
-インポート文は以下のグループに以下の順序で分けられる。グループは1行の空行で分離される。
+インポート文は順序で並べられる。
 
-# すべてのstatic importを単一のグループにまとめる。
-** static import は static ネストクラスには使えない。通常のimportとして以下の適切なグループでimportされる。
-# @com.google@ のインポート。（ソースファイルが @com.google@ パッケージに属する場合のみ）
-# サードパーティのインポート。トップレベルパッケージ毎に1個のグループとしASCII文字の順序で
-** 例： @android, com, org, sun@
-# @java@ パッケージのインポート
-# @javax@ パッケージのインポート
+# 単一のブロックでの全てのstaticインポート。
+# 単一のブロックでの全ての非staticインポート。
 
+もしもstaticインポートと非staticインポートの両方があるなら、一つの空行が両者を分離する。import節に、他の空行は存在しない。
 
-一つのグループ内に空行は入らない。なおかつインポートした名前はASCII順に並べなければならない。（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。セミコロンがあるとソート結果は変わってしまうからである。）
+各ブロック内で、importされた名前はASCII順序で並べられる。
+（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。セミコロンがあるとソート結果は変わってしまうからである。）
+
+一つのグループ内に空行は入らない。なおかつインポートした名前はASCII順に並べなければならない。
+（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。なぜなら '.' は';' より先にソートされるからである。
+
 
 h3(#s3-4-class-declaration). 3.4 クラス宣言
 
@@ -293,6 +294,12 @@ h4(#s4-1-2-blocks-k-r-style). 4.1.2 空でないブロック：K&Rスタイル
 例：
 
 <pre>
+return () -> {
+  while (condition()) {
+    method();
+  }
+};
+
 return new MyClass() {
   @Override public void method() {
     if (condition()) {
@@ -365,7 +372,7 @@ h4(#s4-5-1-line-wrapping-where-to-break). 4.5.1 どこで改行するか
 改行の第一原則は、 *高い文法のレベル* で改行することである。また、
 
 # 代入でない演算子で改行するときは、シンボルの前で改行する。（これはJavaScriptやC++のような他の言語のGoogleスタイルの慣習とは異なることに注意すること。）
-** このことはドット演算子( @.@ )や、型演算子の＆記号( @<T extends Foo & Bar>@ )や、catch節でのパイプ記号 ( @catch (FooException | BarException e)@ )といった演算子のようなシンボルにも適用される。
+** このことはドット演算子( @.@ )や、メソッド参照でのコロン２個( @::@ )や、型演算子の＆記号( @<T extends Foo & Bar>@ )や、catch節でのパイプ記号 ( @catch (FooException | BarException e)@ )といった演算子のようなシンボルにも適用される。
 # 行が代入演算子で改行されるときは、通常シンボルの後ろで改行される。しかしどちらの方法でも問題はない。
 ** このことは拡張 @for@ ("foreach") 文の「代入演算子のような」コロンにも適用される。
 # メソッドやコンストラクタ名に続く開始括弧（ @(@ ）は直後に続いて書かれる。
@@ -392,7 +399,7 @@ h4(#s4-6-1-vertical-whitespace). 4.6.1 垂直の空白
 ** *例外* ：enum 定数間の改行は 4.8.1. 節で議論される
 # ステートメントの間で、コードを論理的にグループ分けしたいため。
 # 必要な場合、クラスの最初のメンバーの前と最終メンバーの後。（推奨も禁止もしない）
-# 本文書の別の節で入れるよう求められた場所（3.3節の "インポート文":#s3-3-import-statements など）
+# 本文書の別の節で入れるよう求められた場所（3節の "ソースファイル構造":#s3-source-file-structure や、3.3節の "インポート文":#s3-3-import-statements など）
 
 複数の連続した空行を入れて良いが、必須でも推奨でもない。
 
@@ -410,6 +417,10 @@ h4(#s4-6-2-horizontal-whitespace). 4.6.2 水平の空白
 ** 連続する型パラメータ間のアンパサンド。 @<T extends Foo & Bar>@
 ** 複数の例外を処理するcatchブロックでのパイプ。 @catch (FooException | BarException e)@
 ** 拡張for文("foreach") でのコロン。 ( @:@ ) 
+** ラムダ式での矢印。@(String str) ->; str.length()@
+# 以下は除外する。
+** @Object::toString@ と書かれるような、メソッド参照でのコロン２個。
+** @object.toString@ と書かれるような、ドット演算子。 
 # @, : ;@ あるいはキャストの閉じ括弧 （ @)@ ） の後ろ。
 # 行末コメントを開始するスラッシュ２個（ @//@ ）の両側。ここでは複数の空白が許されるが必須ではない。
 # 型と変数の宣言の間。 @List<String> list@
@@ -569,7 +580,7 @@ public String getNameIfPresent() { ... }
 @Partial @Mock DataLoader loader;
 </pre>
 
-パラメータや、ローカル変数へのアノテーションについては特にルールはありません。
+パラメータやローカル変数や型についてのアノテーションには特にルールはありません。
 
 h4(#s4-8-6-comments). 4.8.6 コメント
 
@@ -595,7 +606,7 @@ h4(#s4-8-7-modifiers). 4.8.7 修飾子
 クラスやメンバの修飾子が出現する場合、Java言語仕様が推奨する順序で出現しなくてはならない。
 
 <pre>
-public protected private abstract static final transient volatile synchronized native strictfp
+public protected private abstract default static final transient volatile synchronized native strictfp
 </pre>
 
 
