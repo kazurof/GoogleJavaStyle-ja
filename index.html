@@ -3,15 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css"/>
-<title>Google Java Style (非公式和訳)</title>
+<title>Google Java Style Guide (非公式和訳)</title>
 <meta name="keywords" content="java, Google,コーディング規約">
-<meta name="description" content="本文書はGoogleのJavaコーディング規約である Google Java Style の非公式和訳です。">
+<meta name="description" content="本文書はGoogleのJavaコーディング規約である Google Java Style Guide の非公式和訳です。">
 </head>
 <body>
-<h1 class="title">Google Java Style (非公式和訳)</h1>
+<h1 class="title">Google Java Style Guide(非公式和訳)</h1>
 <hr />
 <h2 style="vertical-align:middle;">この文書について</h2>
-<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style</a> の非公式和訳です。  <a href="https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071">2014/03/22</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
+<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> の非公式和訳です。 <a href="https://github.com/google/styleguide/blob/b075cb7cad464b224103fb2ec8fdb8521ec08e7f/javaguide.html">2016/07/13</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
+<p>本文書はCC-By 3.0 Licenseにてライセンスされます。（翻訳元文書に基づく）詳細は <a href="https://creativecommons.org/licenses/by/3.0/">https://creativecommons.org/licenses/by/3.0/</a> をご覧ください。</p>
 <hr />
 <table border="0">
 <tr>
@@ -23,57 +24,24 @@
 <div class="lv1"><a href="#s2-1-file-name">2.1 ファイル名</a><br />
 <a href="#s2-2-file-encoding">2.2 ファイルエンコーディング：UTF-8</a><br />
 <a href="#s2-3-special-characters">2.3 特殊文字</a></div>
-<div class="lv2"><a href="#s2-3-1-whitespace-characters">2.3.1 空白</a><br />
-<a href="#s2-3-2-special-escape-sequences">2.3.2 特別なエスケープシーケンス</a><br />
-<a href="#s2-3-3-non-ascii-characters">2.3.3 非ASCII文字</a></div>
 <p class="indexgroup"><a href="#s3-source-file-structure">3 <strong>ソースファイル構造</strong></a></p>
 <div class="lv1"><a href="#s3-1-copyright-statement">3.1 ライセンスあるいはコピーライトの情報（もしあるならば）</a><br />
 <a href="#s3-2-package-statement">3.2 パッケージ文</a><br />
 <a href="#s3-3-import-statements">3.3 インポート文</a></div>
-<div class="lv2"><a href="#s3-3-1-wildcard-imports">3.3.1 ワイルドカードインポートは禁止</a><br />
-<a href="#s3-3-2-import-line-wrapping">3.3.2 改行禁止</a><br />
-<a href="#s3-3-3-import-ordering-and-spacing">3.3.3 順序と空白</a></div>
 <div class="lv1"><a href="#s3-4-class-declaration">3.4 クラス宣言</a></div>
-<div class="lv2"><a href="#s3-4-1-one-top-level-class">3.4.1 1個だけのトップレベルクラスの宣言</a><br />
-<a href="#s3-4-2-class-member-ordering">3.4.2 クラスメンバーの順序</a></div>
-<p></td><td></p>
 <p class="indexgroup"><a href="#s4-formatting">4 <strong>フォーマット</strong></a></p>
 <div class="lv1"><a href="#s4-1-braces">4.1 中括弧</a></div>
-<div class="lv2"><a href="#s4-1-1-braces-always-used">4.1.1 使えるところでは中括弧は使う</a><br />
-<a href="#s4-1-2-blocks-k-r-style">4.1.2 空でないブロック：K&amp;Rスタイル</a><br />
-<a href="#s4-1-3-braces-empty-blocks">4.1.3 空ブロックは簡潔に</a></div>
 <div class="lv1"><a href="#s4-2-block-indentation">4.2 ブロックのインデントは空白2個である</a></div>
 <div class="lv1"><a href="#s4-3-one-statement-per-line">4.3 1行毎に1個の文</a></div>
-<div class="lv1"><a href="#s4-4-column-limit">4.4 1行の文字数制限 80文字か100文字</a></div>
+<div class="lv1"><a href="#s4-4-column-limit">4.4 1行の文字数制限 100文字</a></div>
 <div class="lv1"><a href="#s4-5-line-wrapping">4.5 行の折り返し</a></div>
-<div class="lv2"><a href="#s4-5-1-line-wrapping-where-to-break">4.5.1 どこで改行するか</a><br />
-<a href="#s4-5-2-line-wrapping-indent">4.5.2 連続する行は少なくとも4文字インデントする</a></div>
+<p></td><td></p>
 <div class="lv1"><a href="#s4-6-whitespace">4.6 空白</a></div>
-<div class="lv2"><a href="#s4-6-1-vertical-whitespace">4.6.1 垂直の空白</a><br />
-<a href="#s4-6-2-horizontal-whitespace">4.6.2 水平の空白</a><br />
-<a href="#s4-6-3-horizontal-alignment">4.6.3 水平位置揃え：全く不要</a></div>
 <div class="lv1"><a href="#s4-7-grouping-parentheses">4.7 グループ化の括弧 推奨</a></div>
 <div class="lv1"><a href="#s4-8-specific-constructs">4.8 各構造物</a></div>
-<div class="lv2"><a href="#s4-8-1-enum-classes">4.8.1 列挙型</a><br />
-<a href="#s4-8-2-variable-declarations">4.8.2 変数宣言</a><br />
-<a href="#s4-8-3-arrays">4.8.3 配列</a><br />
-<a href="#s4-8-4-switch">4.8.4 スイッチ文</a><br />
-<a href="#s4-8-5-annotations">4.8.5 アノテーション</a><br />
-<a href="#s4-8-6-comments">4.8.6 コメント</a><br />
-<a href="#s4-8-7-modifiers">4.8.7 修飾子</a><br />
-<a href="#s4-8-8-numeric-literals">4.8.8 数値リテラル</a></div>
-<p></td><td></p>
 <p class="indexgroup"><a href="#s5-naming">5 <strong>命名</strong></a></p>
 <div class="lv1"><a href="#s5-1-identifier-names">5.1 すべての識別子への共通ルール</a><br />
 <a href="#s5-2-specific-identifier-names">5.2 識別子の種類ごとのルール</a></div>
-<div class="lv2"><a href="#s5-2-1-package-names">5.2.1 パッケージ名</a><br />
-<a href="#s5-2-2-class-names">5.2.2 クラス名</a><br />
-<a href="#s5-2-3-method-names">5.2.3 メソッド名</a><br />
-<a href="#s5-2-4-constant-names">5.2.4 定数名</a><br />
-<a href="#s5-2-5-non-constant-field-names">5.2.5 定数でないフィールド名</a><br />
-<a href="#s5-2-6-parameter-names">5.2.6 パラメータ名</a><br />
-<a href="#s5-2-7-local-variable-names">5.2.7 ローカル変数名</a><br />
-<a href="#s5-2-8-type-variable-names">5.2.8 型変数名</a></div>
 <div class="lv1"><a href="#s5-3-camel-case">5.3 キャメルケースの定義</a></div>
 <p class="indexgroup"><a href="#s6-programming-practices">6 <strong>プログラミングの実践</strong></a></p>
 <div class="lv1"><a href="#s6-1-override-annotation">6.1 @Override：常に使う</a><br />
@@ -82,13 +50,8 @@
 <a href="#s6-4-finalizers">6.4 ファイナライザ：使わない</a></div>
 <p class="indexgroup"><a href="#s7-javadoc">7 <strong>Javadoc</strong></a></p>
 <div class="lv1"><a href="#s7-1-javadoc-formatting">7.1 フォーマット</a></div>
-<div class="lv2"><a href="#s7-1-1-javadoc-multi-line">7.1.1 一般的なフォーマット</a><br />
-<a href="#s7-1-2-javadoc-paragraphs">7.1.2 段落</a><br />
-<a href="#s7-1-3-javadoc-at-clauses">7.1.3 Javadoc タグ</a></div>
 <div class="lv1"><a href="#s7-2-summary-fragment">7.2 要約の記述</a><br />
 <a href="#s7-3-javadoc-where-required">7.3 Javadocが使われる場所</a></div>
-<div class="lv2"><a href="#s7-3-1-javadoc-exception-self-explanatory">7.3.1 例外：自己叙述的なメソッド</a><br />
-<a href="#s7-3-2-javadoc-exception-overrides">7.3.2 例外：オーバーライドするメソッド</a></div>
 </td>
 </tr>
 </table>
@@ -99,6 +62,7 @@
 <p>本文書において、特別に断りのない限り、</p>
 <ol>
 	<li>クラスという用語は、「通常の」クラス、列挙型  、インターフェース、アノテーション型(@interface)を包括的に意味する。</li>
+	<li>（クラスの）メンバという用語は、ネストしたクラス、フィールド、メソッド、コンストラクタ、つまり初期化子とコメントを除いた全てのトップレベルの内容を包括的に意味する。</li>
 	<li>コメントという用語は、常に実装のコメントを意味する。「ドキュメンテーションコメント」という言い方は使わない。代わりに共通の言葉である「Javadoc」を使う。</li>
 </ol>
 <p>本文書では他の用語の注記は適宜行われる。</p>
@@ -106,7 +70,7 @@
 <p>この文書内のサンプルコードは <strong>参考</strong> (Non-Normative)である。 つまり、例がGoogleスタイル文書に書かれていても、それはコードを記述するための <em>唯一の</em> 方法ではない場合がある。例に出される補足的なフォーマットの仕方はルールとして強調されるべきではない。</p>
 <h2 id="s2-source-file-basics">2 ソースファイルの基本事項</h2>
 <h3 id="s2-1-file-name">2.1 ファイル名</h3>
-<p>ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて <code>.java</code> という拡張子が付いていること。</p>
+<p>ソースファイル名はそのファイルに(正確に1つ)入っているトップレベルクラスの大文字小文字を区別した名前に加えて <code>.java</code> という拡張子が付いていること。</p>
 <h3 id="s2-2-file-encoding">2.2 ファイルエンコーディング：UTF-8</h3>
 <p>ソースファイルは <strong><span class="caps">UTF</span>-8</strong> でエンコードされていること。</p>
 <h3 id="s2-3-special-characters">2.3 特殊文字</h3>
@@ -119,7 +83,8 @@
 <h4 id="s2-3-2-special-escape-sequences">2.3.2 特別なエスケープシーケンス</h4>
 <p>特別なエスケープシーケンスを持つ全ての文字(<code>\b, \t, \n, \f, \r, \", \' と \\</code>)については8進数表記(<code>\012</code>)やUnicodeエスケープ(<code>\u000a</code>)でなく、通常のエスケープシーケンスで表記する。</p>
 <h4 id="s2-3-3-non-ascii-characters">2.3.3 非ASCII文字</h4>
-<p>残りの非ASCII文字については <strong>ソースコードを読むことや理解することが簡単になる</strong> かどうかのみを基準にして実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \u221e)を使うかの判断を行う。</p>
+<p>残りの非ASCII文字については実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \u221e)が使われる。<br />
+この選択は <strong>ソースコードを読むことや理解することが簡単になる</strong> かどうかのみに依存するが、文字列リテラルやコメント以外でのUnicodeエスケープは強く推奨されない。</p>
 <blockquote>
 <p><strong>Tip:</strong> Unicodeエスケープの場合時たま実際にUnicode文字が使われている時でも、説明のコメントがあるとわかりやすい。</p>
 </blockquote>
@@ -162,48 +127,51 @@
 <h3 id="s3-1-copyright-statement">3.1 ライセンスあるいはコピーライトの情報（もしあるならば）</h3>
 <p>もしファイルにライセンスあるいはコピーライトの情報があるならばここに入る。</p>
 <h3 id="s3-2-package-statement">3.2 パッケージ文</h3>
-<p>パッケージ文は <strong>改行してはならない。</strong> 文字数制限（4.4節 <a href="#s4-4-column-limit">文字数制限は80あるいは100文字</a> ）はパッケージ文には適用されない。</p>
+<p>パッケージ文は <strong>改行してはならない。</strong> 文字数制限（4.4節 <a href="#s4-4-column-limit">文字数制限は100文字</a> ）はパッケージ文には適用されない。</p>
 <h3 id="s3-3-import-statements">3.3 インポート文</h3>
 <h4 id="s3-3-1-wildcard-imports">3.3.1 ワイルドカードインポートは禁止</h4>
 <p><strong>ワイルドカードインポート</strong> はstaticであってもなくても <strong>使ってはならない。</strong></p>
 <h4 id="s3-3-2-import-line-wrapping">3.3.2 改行禁止</h4>
-<p>import文は <strong>改行してはならない。</strong> 文字数制限（4.4節 <a href="#s4-4-column-limit">文字数制限は80あるいは100文字</a> ）はimport文には適用されない。</p>
+<p>import文は <strong>改行してはならない。</strong> 文字数制限（4.4節 <a href="#s4-4-column-limit">文字数制限は100文字</a> ）はimport文には適用されない。</p>
 <h4 id="s3-3-3-import-ordering-and-spacing">3.3.3 順序と空白</h4>
-<p>インポート文は以下のグループに以下の順序で分けられる。グループは1行の空行で分離される。</p>
+<p>インポート文は以下の順序で並べられる。</p>
 <ol>
-	<li>すべてのstatic importを単一のグループにまとめる。</li>
-	<li><code>com.google</code> のインポート。（ソースファイルが <code>com.google</code> パッケージに属する場合のみ）</li>
-	<li>サードパーティのインポート。トップレベルパッケージ毎に1個のグループとしASCII文字の順序で
-	<ul>
-		<li>例： <code>android, com, junit, org, sun</code></li>
-	</ul></li>
-	<li><code>java</code> パッケージのインポート</li>
-	<li><code>javax</code> パッケージのインポート</li>
+	<li>全てのstaticインポートを単一のブロックでまとめる。</li>
+	<li>全ての非staticインポートを単一のブロックでまとめる。</li>
 </ol>
-<p>一つのグループ内に空行は入らない。なおかつインポートした名前はASCII順に並べなければならない。（ <strong>注釈：</strong> このことはインポート文全体がASCII順になっていることと同じではない。セミコロンがあるとソート結果は変わってしまうからである。）</p>
+<p>もしもstaticインポートと非staticインポートの両方があるなら、一つの空行が両者を分離する。import節間に、空行は存在しない。</p>
+<p>各ブロック内で、importされた名前はASCII順序で並べられる。（ <strong>注釈：</strong> このことはインポート文全体がASCII順になっていることと同じではない。なぜなら &#8216;.&#8217; は&#8217;;&#8217; より先にソートされるからである。</p>
+<p>h4(#s3.3.4-import-class-not-static). 3.3.3 順序と空白</p>
+<p>staticなネストしたクラスをimportするのにstatic importを使わない。それらは通常のインポートで使われる。</p>
 <h3 id="s3-4-class-declaration">3.4 クラス宣言</h3>
 <h4 id="s3-4-1-one-top-level-class">3.4.1 1個だけのトップレベルクラスの宣言</h4>
 <p>各トップレベルクラスは1個のファイルに保存される。</p>
 <h4 id="s3-4-2-class-member-ordering">3.4.2 クラスメンバーの順序</h4>
-<p>クラスメンバーの順序はわかりやすさに多大な影響を与えるが唯一の解法は無い。クラス毎にメンバーの並びが異なっていて良い。</p>
+<p>クラスメンバーや初期化子の順序の選択はわかりやすさに多大な影響を与える。しかしながら唯一の解法は無い。クラスが異なれば内容は異なった順序で並べられる。</p>
 <p>重要な事はそれぞれのクラスはそのメンバーを <strong>何らかの合理的な順序</strong> で並べ、クラスのメンテナンスをする人が尋ねられた時に答えられるようなることである。例えば新しいメソッドはクラスの最後に入れることが慣例であるかのように追加されてはならない。それは「追加された日の順」という結果になるだけであって、合理的な順序ではない。</p>
 <h5>3.4.2.1 オーバーロードしているメソッド群を分離してはならない</h5>
-<p>クラスに複数のコンストラクタや同じ名前を持つメソッドがある場合は連続して並べる。間に別のメンバーを入れてはならない。</p>
+<p>クラスに複数のコンストラクタや同じ名前を持つメソッドがある場合は、別のコードを（privateなメンバであっても）入れることなく連続して並べる。</p>
 <h2 id="s4-formatting">4 フォーマット</h2>
 <p><strong>用語についての注釈：</strong> 「ブロック様の構造物(block-like construct)」とは、クラス、メソッド、コンストラクタの本体を指す。すべての配列初期化子は任意に「ブロック様の構造物」とみなされて良い。4.8.3.1節 <a href="#s4-8-3-1-array-initializers">配列初期化子</a>  を参照。</p>
 <h3 id="s4-1-braces">4.1 中括弧</h3>
 <h4 id="s4-1-1-braces-always-used">4.1.1 使えるところでは中括弧は使う</h4>
 <p>中括弧は <code>if else for do while</code> 文において本体が空でも1行しかなくても使われる。</p>
 <h4 id="s4-1-2-blocks-k-r-style">4.1.2 空でないブロック：K&amp;Rスタイル</h4>
-<p>中括弧は空でないブロックや、ブロック様の構造物ではカーニハン・リッチースタイル(<a href="http://blog.codinghorror.com/new-programming-jargon/">Egyptian Brackets</a> )に従う。</p>
+<p>中括弧は空でないブロックや、ブロック様の構造物ではカーニハン・リッチースタイル(<a href="https://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian Brackets</a> )に従う。</p>
 <ul>
 	<li>開始中括弧の前に改行を入れない。</li>
 	<li>開始中括弧の後に改行を入れる。</li>
 	<li>終了中括弧の前に改行を入れる。</li>
-	<li>もし終了中括弧が文やメソッドの本体を終えるならばその中括弧の後に改行を入れる。例えば終了中括弧の後に <code>else</code> や、カンマが続く場合は改行をしない。</li>
+	<li>終了中括弧の後に改行を入れる。但し、終了中括弧が文やメソッドの本体を終える時のみである。例えば終了中括弧の後に <code>else</code> や、カンマが続く場合は改行をしない。</li>
 </ul>
 <p>例：</p>
 <pre>
+return () -&gt; {
+  while (condition()) {
+    method();
+  }
+};
+
 return new MyClass() {
   @Override public void method() {
     if (condition()) {
@@ -212,31 +180,49 @@ return new MyClass() {
       } catch (ProblemException e) {
         recover();
       }
+    } else if (otherCondition()) {
+      somethingElse();
+    } else {
+      lastThing();
     }
   }
 };
 </pre>
 <p>列挙型でのいくつかの例外は、4.8.1節 <a href="#s4-8-1-enum-classes">列挙型</a>  にて示される。</p>
 <h4 id="s4-1-3-braces-empty-blocks">4.1.3 空ブロックは簡潔に</h4>
-<p>空ブロックやブロック様の構造物は開始括弧直後に文字や改行無しで閉じてよい。（ <code>{}</code> ） <strong>但し、</strong>  <code>if/else-if/else</code> あるいは <code>try/catch/finally</code> のような複数ブロックの文の場合を除く。</p>
+<p>空ブロックやブロック様の構造物は(Section 4.1.2で示したように) K &amp; R スタイルでもよい。<br />
+また、開始括弧直後で( <code>{}</code> ) の間に文字や改行無しで閉じてよい。 <strong>但し、</strong>  <code>if/else</code> あるいは <code>try/catch/finally</code> のような複数ブロックの文の場合を除く。</p>
 <p>例：</p>
 <pre>
+// これは問題ない
 void doNothing() {}
+
+// これも同様に問題ない
+void doNothing() {
+}
+</pre>
+
+<pre>
+// これは問題がある。複数ブロックの文では簡単な空ブロックをつかってはならない。
+try {
+  doSomething();
+} catch (Exception e) {}
 </pre>
 <h3 id="s4-2-block-indentation">4.2 ブロックのインデントは空白2個である</h3>
 <p>新しいブロックあるいはブロック様の構造物が開始した時インデントは空白2個づつ増える。ブロックが終了したら、インデントは1個前のレベルに戻る。インデントレベルはブロックを通じてコードとコメントに適用される。4.1.2節の例を参照のこと。（ <a href="#s4-1-2-blocks-k-r-style">空でないブロック：K&amp;Rスタイル</a> ）</p>
 <h3 id="s4-3-one-statement-per-line">4.3 1行毎に1個の文</h3>
 <p>各文の末尾は改行でなくてはならない。</p>
-<h3 id="s4-4-column-limit">4.4 1行の文字数制限 80文字か100文字</h3>
-<p>プロジェクトごとに1行の文字数制限を80文字か100文字いずれかで自由に決定して良い。以下の例外を除き、この制限を超えた行は4.5節 <a href="#s4-5-line-wrapping">行の折り返し</a> で述べるように改行されなくてはならない。</p>
+<h3 id="s4-4-column-limit">4.4 1行の文字数制限 100文字</h3>
+<p>Java コードの1行の文字数制限は100文字である。以下の例外を除き、この制限を超えた行は4.5節 <a href="#s4-5-line-wrapping">行の折り返し</a> で述べるように改行されなくてはならない。</p>
 <p><strong>例外：</strong></p>
 <p>1. 文字数制限に従うのが不可能の場合。（例えば、Javadoc内の長いURL、長いJSNIメソッド<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>参照）<br />
 2. パッケージ文とインポート文　（3.2 <a href="#s3-2-package-statement">パッケージ文</a> と 3.3 <a href="#s3-3-import-statements">インポート文</a>  を参照のこと）<br />
 3. コメント内の、コンソールにコピー＆ペーストされるようなコマンド。</p>
 <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> 訳注：JavaScript Native Interface 。Google Web Tookit においてアプリからJavaScript コードを呼ぶことができる。</p>
 <h3 id="s4-5-line-wrapping">4.5 行の折り返し</h3>
-<p><strong>用語の注記：</strong> ある意味では規約に合致しているコードを複数行に分ける(多くは行の長さ制限を超えないようにするため)場合、この活動を行の折り返しと呼ぶ。</p>
+<p><strong>用語の注記：</strong> ある意味では規約に合致している1行のコードを複数行に分けた場合、この行為を行の折り返しと呼ぶ。</p>
 <p>どんな状況にも合う改行方法を正確に示すような統一的で決定的なやり方は存在しない。同じコードを改行する正しい方法は複数存在する。</p>
+<p><strong>注記：</strong> 改行の典型的な理由は1行の文字数制限を超えることを避けることであるが、文字数制限を実際に満たしているコードであっても作者の裁量で改行される場合がある。</p>
 <blockquote>
 <p><strong>Tip:</strong> メソッドやローカル変数の抽出をすれば、改行をせずに問題を解決できる場合がある。</p>
 </blockquote>
@@ -245,7 +231,13 @@ void doNothing() {}
 <ol>
 	<li>代入でない演算子で改行するときは、シンボルの前で改行する。（これはJavaScriptやC++のような他の言語のGoogleスタイルの慣習とは異なることに注意すること。）
 	<ul>
-		<li>このことはドット演算子( <code>.</code> )や、型演算子の＆記号( <code>&lt;T extends Foo &amp; Bar&gt;</code> )や、catch節でのパイプ記号 ( <code>catch (FooException | BarException e)</code> )といった演算子のようなシンボルにも適用される。</li>
+		<li>このことは、以下の「演算子ライクな」シンボルにも適用される。
+		<ul>
+			<li>ドット演算子( <code>.</code> )</li>
+			<li>メソッド参照でのコロン２個( <code>::</code> )</li>
+			<li>型演算子の &amp; 記号( <code>&lt;T extends Foo &amp; Bar&gt;</code> )</li>
+			<li>catch節でのパイプ記号 ( <code>catch (FooException | BarException e)</code> )</li>
+		</ul></li>
 	</ul></li>
 	<li>行が代入演算子で改行されるときは、通常シンボルの後ろで改行される。しかしどちらの方法でも問題はない。
 	<ul>
@@ -253,7 +245,19 @@ void doNothing() {}
 	</ul></li>
 	<li>メソッドやコンストラクタ名に続く開始括弧（ <code>(</code> ）は直後に続いて書かれる。</li>
 	<li>カンマ( <code>,</code> )はその前のトークンの直後に続いて書かれる。</li>
+	<li>行はラムダの矢印の隣で改行されることはない。但しラムダの本体が単一のカッコなしの式である場合は矢印の直後で改行して良い。</li>
 </ol>
+<p>例：</p>
+<pre>
+MyLambda&lt;String, Long, Object&gt; lambda =
+    (String label, Long value, Object obj) -&gt; {
+        ...
+    };
+
+Predicate&lt;String&gt; predicate = str -&gt;
+    longExpressionInvolving(str);
+</pre>
+<p><strong>注記：</strong> 改行の第一目的はコードを明確にすることである。行数が小さくなるようにコードを書く必要はない。</p>
 <h4 id="s4-5-2-line-wrapping-indent">4.5.2 連続する行は少なくとも４文字インデントする</h4>
 <p>改行の際、連続する先頭行に続く各行は少なくとも空白4個分、元からインデントする。</p>
 <p>複数の連続した行がある場合、インデントは4以上ならいくつでも良い。一般的に、2個の連続した行が同じインデントレベルであることは、文法的に相似の要素であることと同じである。</p>
@@ -262,13 +266,14 @@ void doNothing() {}
 <h4 id="s4-6-1-vertical-whitespace">4.6.1 垂直の空白</h4>
 <p>単一の空行は、以下の場合で使われる。</p>
 <ol>
-	<li>クラスの連続するメンバ（あるいは初期化子）の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子。
+	<li>クラスの連続するメンバか初期化子の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子。
 	<ul>
 		<li><strong>例外</strong> ：2個の連続するフィールド（その間にコードがないもの）間での空行は任意である。そのような空行はフィールドの <em>論理的なグループ分け</em> をするのに必要である。</li>
+		<li><strong>例外</strong> ：enum 定数間の改行は 4.8.1. 節で議論される</li>
 	</ul></li>
-	<li>メソッド本体内で、文を <em>論理的にグループ分け</em> したい場合。</li>
-	<li>必要な場合、クラスの最初のメンバーの前と最終メンバーの後。（推奨も禁止もしない）</li>
-	<li>本文書の別の節で入れるよう求められた場所（3.3節の <a href="#s3-3-import-statements">インポート文</a> など）</li>
+	<li>ステートメントの間で、コードを論理的にグループ分けしたいため。</li>
+	<li>必要な場合、クラスの最初のメンバーあるいは初期化子の前と最終メンバーあるいは初期化子の後。（推奨も禁止もしない）</li>
+	<li>本文書の別の節で入れるよう求められた場所（3節の <a href="#s3-source-file-structure">ソースファイル構造</a> や、3.3節の <a href="#s3-3-import-statements">インポート文</a> など）</li>
 </ol>
 <p>複数の連続した空行を入れて良いが、必須でも推奨でもない。</p>
 <h4 id="s4-6-2-horizontal-whitespace">4.6.2 水平の空白</h4>
@@ -286,6 +291,12 @@ void doNothing() {}
 		<li>連続する型パラメータ間のアンパサンド。 <code>&lt;T extends Foo &amp; Bar&gt;</code></li>
 		<li>複数の例外を処理するcatchブロックでのパイプ。 <code>catch (FooException | BarException e)</code></li>
 		<li>拡張for文(&#8220;foreach&#8221;) でのコロン。 ( <code>:</code> )</li>
+		<li>ラムダ式での矢印。@(String str) &#8594;; str.length()@</li>
+	</ul></li>
+	<li>以下は除外する。
+	<ul>
+		<li><code>Object::toString</code> と書かれるような、メソッド参照でのコロン２個。</li>
+		<li><code>object.toString</code> と書かれるような、ドット演算子。</li>
 	</ul></li>
 	<li><code>, : ;</code> あるいはキャストの閉じ括弧 （ <code>)</code> ） の後ろ。</li>
 	<li>行末コメントを開始するスラッシュ２個（ <code>//</code> ）の両側。ここでは複数の空白が許されるが必須ではない。</li>
@@ -296,7 +307,7 @@ void doNothing() {}
 	</ul></li>
 </ol>
 <blockquote>
-<p>注意：このルールは行頭行末の空白について要求も禁止もしない。内側の空白のみについて当てはまる。</p>
+<p>注意：このルールは行頭行末の空白について要求や禁止をするものと解釈してはならない。内側の空白のみに適用される。</p>
 </blockquote>
 <h4 id="s4-6-3-horizontal-alignment">4.6.3 水平位置揃え：全く不要</h4>
 <p><strong>用語の注釈：</strong> 水平位置揃えとは前行のトークン(変数名、型名)の真下に次行のトークンが来るように、入れるスペース数を調整するやり方のことである。</p>
@@ -316,14 +327,27 @@ private Color color;  // 揃えられなくなるかもしれない。
 <p>追加のグループ化の括弧は作者とレビュアーが括弧なしでもコードは誤解される余地がないと認めるか、コードが読みやすくなる時のみ省くことが出来る。すべての読者がJava演算子の優先度表を覚えていると仮定するのは合理的では <strong>ない。</strong></p>
 <h3 id="s4-8-specific-constructs">4.8 各構造物</h3>
 <h4 id="s4-8-1-enum-classes">4.8.1 列挙型</h4>
-<p>列挙定数値後のカンマの後ろの改行は任意である。</p>
+<p>列挙定数値後のカンマの後ろの改行は任意である。追加の空行（大抵はたった一つ）も許可される。<br />
+ありうる可能性は、以下のとおり。</p>
+<pre>
+private enum Answer {
+  YES {
+    @Override public String toString() {
+      return "yes";
+    }
+  },
+
+  NO,
+  MAYBE
+}
+</pre>
 <p>定数値にメソッドもドキュメンテーションもない列挙型は必要に応じて配列の初期化と同様に整形してよい。(4.8.3.1 節 配列の初期化 を参照)</p>
 <pre>private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }</pre>
 <p>列挙型は <em>クラスである</em> のでクラスに対する他のルールが全て適用される。</p>
 <h4 id="s4-8-2-variable-declarations">4.8.2 変数宣言</h4>
 <h5>4.8.2.1 宣言ごとに一個の変数</h5>
 <p>フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 <code>int a, b;</code> のような宣言は使わない。</p>
-<h5>4.8.2.2 必要なときに宣言して速やかに初期化する</h5>
+<h5>4.8.2.2 必要なときに宣言する</h5>
 <p>ローカル変数はそれを含むブロックやブロック様の構造物の先頭で慣習的に宣言されては <em>ならない。</em> 代わりに、ローカル変数はそのスコープを最小化するために(合理的な範囲で)最初に使う場所の近くで宣言される。ローカル変数宣言は通常は初期化がされるか、あるいは宣言されてすぐに初期化される。</p>
 <h4 id="s4-8-3-arrays">4.8.3 配列</h4>
 <h5 id="s4-8-3-1-array-initializers">4.8.3.1 配列の初期化：ブロック様で良い</h5>
@@ -362,6 +386,7 @@ switch (input) {
    handleLargeNumber(input);
 }
 </pre>
+<p>注意： <code>case 1</code> の後にコメントは必要ない。ステートメントグループの終わりのみに必要である。</p>
 <h5>4.8.4.3 default 節は必要</h5>
 <p>各スイッチ文はたとえコードがない場合でも <code>default</code> ステートメントグループが必須である。</p>
 <h4 id="s4-8-5-annotations">4.8.5 アノテーション</h4>
@@ -380,8 +405,10 @@ public String getNameIfPresent() { ... }
 <pre>
 @Partial @Mock DataLoader loader;
 </pre>
-<p>パラメータや、ローカル変数へのアノテーションについては特にルールはありません。</p>
+<p>パラメータやローカル変数や型についてのアノテーションには特にルールはありません。</p>
 <h4 id="s4-8-6-comments">4.8.6 コメント</h4>
+<p>この節では実装コメントについて扱う。Javadocについては7節 Javadoc にて個別に扱われる。</p>
+<p>すべての改行の前には任意で空白が入り実装コメントが続く。そのようなコメントは行を非空白にします。</p>
 <h5>4.8.6.1 ブロックコメントスタイル</h5>
 <p>ブロックコメントは周りのコードと同じレベルにインデントされる。 <code>/* ... */</code> でも  <code>//...</code> でも同じである。複数行 <code>/* ... */</code> コメントについては <code>*</code> の位置を前の行の <code>*</code> と同じに揃えなくてはならない。</p>
 <pre>
@@ -397,13 +424,14 @@ public String getNameIfPresent() { ... }
 <h4 id="s4-8-7-modifiers">4.8.7 修飾子</h4>
 <p>クラスやメンバの修飾子が出現する場合、Java言語仕様が推奨する順序で出現しなくてはならない。</p>
 <pre>
-public protected private abstract static final transient volatile synchronized native strictfp
+public protected private abstract default static final transient volatile synchronized native strictfp
 </pre>
 <h4 id="s4-8-8-numeric-literals">4.8.8 数値リテラル</h4>
 <p><code>long</code> 型の数値リテラルは大文字の <code>L</code> を末尾に使う。小文字は使わない。数値 <code>1</code> との混乱を避ける。例えば <code>3000000000l</code> ではなく <code>3000000000L</code> を使う。</p>
 <h2 id="s5-naming">5 命名</h2>
 <h3 id="s5-1-identifier-names">5.1 すべての識別子への共通ルール</h3>
-<p>識別子はASCII文字、数字、後述する2つの場合(訳注:5.2.4の <a href="#s5-2-4-constant-names">定数名</a> の場合と、5.2.3の <a href="#s5-2-3-method-names">メソッド名</a> でのUnitのテストメソッド名の場合)はアンダースコアのみを使う。それゆえ、有効な識別子名は正規表現 <code>\w+</code> にマッチする。</p>
+<p>識別子はASCII文字、数字のみを使う。また後述するいくつかの場合ではアンダースコアも使う。それゆえ、有効な識別子名は正規表現 <code>\w+</code> にマッチする。</p>
+<p>(訳注:5.2.4の <a href="#s5-2-4-constant-names">定数名</a> の場合と、5.2.3の <a href="#s5-2-3-method-names">メソッド名</a> でのUnitのテストメソッド名の場合)</p>
 <p>Googleスタイルでは、 <code>name_</code> 、 <code>mName</code> 、 <code>s_name</code> や <code>kName</code> といったような特別な接尾辞・接頭辞は <em>使わない。</em></p>
 <h3 id="s5-2-specific-identifier-names">5.2 識別子の種類ごとのルール</h3>
 <h4 id="s5-2-1-package-names">5.2.1 パッケージ名</h4>
@@ -418,12 +446,17 @@ public protected private abstract static final transient volatile synchronized n
 <p>メソッド名は大抵動詞か動詞句である。例えば、 <code>sendMessage</code> や <code>stop</code> である。</p>
 <p>アンダースコアはJUnitのメソッド名において、名前の論理的コンポーネント名を分離するために使ってよい。典型的なパターンは <code>test&lt;MethodUnderTest&gt;_&lt;state&gt;</code> で、例えば  <code>testPop_emptyStack</code> である。テストメソッドを命名する正しい唯一の方法はない。</p>
 <h4 id="s5-2-4-constant-names">5.2.4 定数名</h4>
-<p>定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語をアンダースコアで区切る。しかし定数とは一体何だろうか。</p>
-<p>すべての定数は <code>static final</code> なフィールドである。しかし、すべての <code>static final</code> なフィールドが定数であるとは限らない。コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか検討すべきだ。例えば、そのインスタンスの可視な状態が変更できるならば、殆どの場合定数ではない。単に絶対にオブジェクトを変更しないことを意図するだけでは大抵は不十分である。</p>
+<p>定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語をアンダースコアで区切る。しかし定数とは正確には何だろうか。</p>
+<p>定数とは、その内容が不変であってそのメソッドは検知可能な副作用を持たないような <code>static final</code> なフィールドである。<br />
+例えば、プリミティブ型、String、不変な型、不変な型の不変なコレクションである。<br />
+もしインスタンスの観測可能な状態が変化できるなら、それは定数ではない。<br />
+単に絶対にオブジェクトを変更しないことを意図するだけでは大抵は不十分である。</p>
+<p>例：</p>
 <pre>
 // 定数である
 static final int NUMBER = 5;
 static final ImmutableList&lt;String&gt; NAMES = ImmutableList.of("Ed", "Ann");
+static final ImmutableMap&lt;String, Integer&gt; AGES = ImmutableMap.of("Ed", 35, "Ann", 32);
 static final Joiner COMMA_JOINER = Joiner.on(',');  // Joiner は不変であるので。
 static final SomeMutableType[] EMPTY_ARRAY = {};
 enum SomeEnum { ENUM_CONSTANT }
@@ -433,6 +466,8 @@ static String nonFinal = "non-final";
 final String nonStatic = "non-static";
 static final Set&lt;String&gt; mutableCollection = new HashSet&lt;String&gt;();
 static final ImmutableSet&lt;SomeMutableType&gt; mutableElements = ImmutableSet.of(mutable);
+static final ImmutableMap&lt;String, SomeMutableType&gt; mutableValues =
+    ImmutableMap.of("Ed", mutableInstance, "Ann", mutableInstance2);
 static final Logger logger = Logger.getLogger(MyClass.getName());
 static final String[] nonEmptyArray = {"these", "can", "change"};
 </pre>
@@ -442,11 +477,10 @@ static final String[] nonEmptyArray = {"these", "can", "change"};
 <p>これらの名前は大抵名詞か名詞句である。例えば <code>computedValues</code> や <code>index</code> である。</p>
 <h4 id="s5-2-6-parameter-names">5.2.6 パラメータ名</h4>
 <p>パラメータ名は小文字キャメルケース(lowerCamelCase)で命名される。</p>
-<p>一文字のパラメータ名は避けるべきである。</p>
+<p>一文字のパラメータ名はpublic なメソッドでは避けるべきである。</p>
 <h4 id="s5-2-7-local-variable-names">5.2.7  ローカル変数名</h4>
-<p>ローカル変数名は小文字キャメルケース(lowerCamelCase)で命名される。他の種類の命名よりも自由に短縮されてよい。</p>
-<p>しかしながら一文字の名前は一時的なループ変数を除いて避けるべきである。</p>
-<code>final</code> で不変であってもローカル変数は定数とは見なされないので定数として命名されるのは避けるべきである。
+<p>ローカル変数名は小文字キャメルケース(lowerCamelCase)で命名される。</p>
+<p><code>final</code> で不変であってもローカル変数は定数とは見なされないので定数として命名されるのは避けるべきである。</p>
 <h4 id="s5-2-8-type-variable-names">5.2.8 型変数名</h4>
 <p>型変数名は以下の２つのやり方のうちいずれかで命名される。</p>
 <ul>
@@ -522,7 +556,7 @@ try {
 }
 return handleTextResponse(response);
 </pre>
-<p><strong>例外：</strong> テストにおいて、キャッチされた例外が、 <code>expected</code> と命名されている場合は、コメントなしで無視してよい。以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムであり、コメントは不要である。</p>
+<p><strong>例外：</strong> テストにおいて、キャッチされた例外が、 <code>expected</code> と命名されているあるいは始まる名前である場合は、コメントなしで無視してよい。以下の例はテスト対象のコードが期待した型の例外をスローすることを確認するためのよくあるイディオムであり、コメントは不要である。</p>
 <pre>
 try {
   emptyStack.pop();
@@ -565,14 +599,14 @@ public int method(String p1) { ... }
 <p>標準のJavadoc タグで利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。Javadoc タグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。</p>
 <p class="footnote" id="fn3"><a href="#fnr3"><sup>3</sup></a> 訳注：Javadoc での @param といった節のこと。原文では&quot;at-clauses&quot;であるが、GoogleJavaStyleでしか使っていない用語なのでJavadocの元文書に基づきJavadoc タグと翻訳した。参照 <a href="http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF">Javadoc タグ</a></p>
 <h3 id="s7-2-summary-fragment">7.2 要約の記述</h3>
-<p>クラスとメンバーのJavadocは簡単な <strong>要約の記述</strong> から始まる。この記述はとても重要である。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからである。</p>
+<p>全てのJavadocブロックは簡単な <strong>要約の記述</strong> から始まる。この記述はとても重要である。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからである。</p>
 <p>この記述は小さな断片の形である。つまり名詞句か動詞句であって、完全な文であってはならない。「このクラス {@code Foo} は…」とか「このメソッドは…を返す。」で始まってはならないし、「結果を保存しなさい。」という命令形であってもならない。他方においてこの断片はあたかも文であるかのように大文字に変えられたり、句読点が付けられる。</p>
 <blockquote>
 <p><strong>Tip:</strong> /** @return 顧客ID */   といった簡単なJavadocを書くことはよくある間違いである。これは間違いで正しくは以下のように直されるべきである。 <code>/** 顧客IDを返す。 */</code></p>
 </blockquote>
 <h3 id="s7-3-javadoc-where-required">7.3  Javadocが使われる場所</h3>
 <p>少なくとも、Javadocは <code>public</code> なクラスとそのクラスの <code>public</code> 、 <code>protected</code> なメンバーに書かれる。但し以下の例外がある。</p>
-<p>クラスとメンバー以外にもJavadocは必要に応じて書かれる。クラス、メソッド、フィールドの全体の振る舞いや目的を記述するのに実装コメントが使われている場合は代わりにJavadocで書かれる。（より統一的で、ツールとの親和性も高い。）</p>
+<p>追加のJavadocコメントがある場合がある。7.3.4節 不要なJavadoc にて解説される。</p>
 <h4 id="s7-3-1-javadoc-exception-self-explanatory">7.3.1  例外：自己叙述的なメソッド</h4>
 <p>Javadocは <code>getFoo</code> のような簡単で明確なメソッドの場合は必須ではない。つまり、「fooを返す」以外の意味ある情報が本当に無い場合である。</p>
 <blockquote>
@@ -580,6 +614,12 @@ public int method(String p1) { ... }
 </blockquote>
 <h4 id="s7-3-2-javadoc-exception-overrides">7.3.2  例外：オーバーライドするメソッド</h4>
 <p>親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではない。</p>
+<h4 id="s7-3-4-javadoc-exception-overrides">7.3.4  必須ではないJavadoc</h4>
+<p>訳注：節番号が飛んでいるが、原文に従う。</p>
+<p>他のクラスとメンバーにもJavadocは必要に応じて書かれる。</p>
+<p>クラスやメンバの全体の目的を記述するのに<br />
+実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（@ /** @）</p>
+<p>必須ではないJavadocは7.1.2, 7.1.3, 7.2 節のフォーマット規則に従うことがもちろん推奨であるが、必ずしも必要ではない。</p>
 </body>
 </html>
 

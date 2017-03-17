@@ -18,9 +18,9 @@ __END__
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css"/>
-<title>Google Java Style (非公式和訳)</title>
+<title>Google Java Style Guide (非公式和訳)</title>
 <meta name="keywords" content="java, Google,コーディング規約">
-<meta name="description" content="本文書はGoogleのJavaコーディング規約である Google Java Style の非公式和訳です。">
+<meta name="description" content="本文書はGoogleのJavaコーディング規約である Google Java Style Guide の非公式和訳です。">
 </head>
 <body>
 <%= result %>
