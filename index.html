@@ -11,7 +11,7 @@
 <h1 class="title">Google Java Style Guide(非公式和訳)</h1>
 <hr />
 <h2 style="vertical-align:middle;">この文書について</h2>
-<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> の非公式和訳です。 <a href="https://github.com/google/styleguide/blob/b075cb7cad464b224103fb2ec8fdb8521ec08e7f/javaguide.html">2016/07/13</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
+<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> の非公式和訳です。 <a href="https://github.com/google/styleguide/blob/594d91bfbb8dfcbcac0f148af8175f2b7ec9857b/javaguide.html">2017/03/01</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
 <p>本文書はCC-By 3.0 Licenseにてライセンスされます。（翻訳元文書に基づく）詳細は <a href="https://creativecommons.org/licenses/by/3.0/">https://creativecommons.org/licenses/by/3.0/</a> をご覧ください。</p>
 <hr />
 <table border="0">
@@ -107,7 +107,7 @@
 	</tr>
 	<tr>
 		<td><code>String unitAbbrev = "\u03bcs";</code>                         </td>
-		<td>だめ。読者やこれが何なのか分からない。</td>
+		<td>だめ。読者はこれが何なのか分からない。</td>
 	</tr>
 	<tr>
 		<td><code>return '\ufeff' + content; // バイトオーダーマーク</code>     </td>
@@ -140,8 +140,8 @@
 	<li>全ての非staticインポートを単一のブロックでまとめる。</li>
 </ol>
 <p>もしもstaticインポートと非staticインポートの両方があるなら、一つの空行が両者を分離する。import節間に、空行は存在しない。</p>
-<p>各ブロック内で、importされた名前はASCII順序で並べられる。（ <strong>注釈：</strong> このことはインポート文全体がASCII順になっていることと同じではない。なぜなら &#8216;.&#8217; は&#8217;;&#8217; より先にソートされるからである。</p>
-<p>h4(#s3.3.4-import-class-not-static). 3.3.3 順序と空白</p>
+<p>各ブロック内で、importされた名前はASCII順序で並べられる。（ <strong>注釈：</strong> このことはインポート文全体がASCII順になっていることと同じではない。なぜなら &#8216;.&#8217; は&#8217;;&#8217; より先にソートされるからである。）</p>
+<h4 id="s3-3-4-import-class-not-static">3.3.4 クラスをstatic importしない</h4>
 <p>staticなネストしたクラスをimportするのにstatic importを使わない。それらは通常のインポートで使われる。</p>
 <h3 id="s3-4-class-declaration">3.4 クラス宣言</h3>
 <h4 id="s3-4-1-one-top-level-class">3.4.1 1個だけのトップレベルクラスの宣言</h4>
@@ -618,8 +618,7 @@ public int method(String p1) { ... }
 <h4 id="s7-3-4-javadoc-exception-overrides">7.3.4  必須ではないJavadoc</h4>
 <p>訳注：節番号が飛んでいるが、原文に従う。</p>
 <p>他のクラスとメンバーにもJavadocは必要に応じて書かれる。</p>
-<p>クラスやメンバの全体の目的を記述するのに<br />
-実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（@ /** @）</p>
+<p>クラスやメンバの全体の目的を記述するのに実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（ <code>/**</code> ）</p>
 <p>必須ではないJavadocは7.1.2, 7.1.3, 7.2 節のフォーマット規則に従うことがもちろん推奨であるが、必ずしも必要ではない。</p>
 </body>
 </html>

@@ -3,7 +3,7 @@ h1(title). Google Java Style Guide(非公式和訳)
 --------------
 h2. この文書について
 
-本文書はGoogleのJavaコーディング規約であるところの "Google Java Style Guide":https://google.github.io/styleguide/javaguide.html の非公式和訳です。 "2016/07/13":https://github.com/google/styleguide/blob/b075cb7cad464b224103fb2ec8fdb8521ec08e7f/javaguide.html の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+本文書はGoogleのJavaコーディング規約であるところの "Google Java Style Guide":https://google.github.io/styleguide/javaguide.html の非公式和訳です。 "2017/03/01":https://github.com/google/styleguide/blob/594d91bfbb8dfcbcac0f148af8175f2b7ec9857b/javaguide.html の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
 
 本文書はCC-By 3.0 Licenseにてライセンスされます。（翻訳元文書に基づく）詳細は "https://creativecommons.org/licenses/by/3.0/":https://creativecommons.org/licenses/by/3.0/ をご覧ください。
 
@@ -149,7 +149,7 @@ bq. *Tip:* Unicodeエスケープの場合時たま実際にUnicode文字が使�
 |@String unitAbbrev = "μs";@                             |最良。コメントなしでも完全で明確。|
 |@String unitAbbrev = "\u03bcs"; // "μs"@                |許容される。しかしこう書く理由はない。|
 |@String unitAbbrev = "\u03bcs"; // ギリシャ文字ミューと "s"@ |許容される。しかし奇妙で間違えやすい。|
-|@String unitAbbrev = "\u03bcs";@                         |だめ。読者やこれが何なのか分からない。|
+|@String unitAbbrev = "\u03bcs";@                         |だめ。読者はこれが何なのか分からない。|
 |@return '\ufeff' + content; // バイトオーダーマーク@     |良い。表示されない文字にはエスケープを使い必要ならコメントする。|
 
 
@@ -198,9 +198,10 @@ h4(#s3-3-3-import-ordering-and-spacing). 3.3.3 順序と空白
 
 もしもstaticインポートと非staticインポートの両方があるなら、一つの空行が両者を分離する。import節間に、空行は存在しない。
 
-各ブロック内で、importされた名前はASCII順序で並べられる。（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。なぜなら '.' は';' より先にソートされるからである。
+各ブロック内で、importされた名前はASCII順序で並べられる。（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。なぜなら '.' は';' より先にソートされるからである。）
 
-h4(#s3.3.4-import-class-not-static). 3.3.3 順序と空白
+
+h4(#s3-3-4-import-class-not-static). 3.3.4 クラスをstatic importしない
 
 staticなネストしたクラスをimportするのにstatic importを使わない。それらは通常のインポートで使われる。
 
@@ -871,8 +872,7 @@ h4(#s7-3-4-javadoc-exception-overrides). 7.3.4  必須ではないJavadoc
 
 他のクラスとメンバーにもJavadocは必要に応じて書かれる。
 
-クラスやメンバの全体の目的を記述するのに
-実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（@ /** @）
+クラスやメンバの全体の目的を記述するのに実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（ @/**@ ）
 
 必須ではないJavadocは7.1.2, 7.1.3, 7.2 節のフォーマット規則に従うことがもちろん推奨であるが、必ずしも必要ではない。
 
