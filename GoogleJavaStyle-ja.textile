@@ -1,10 +1,11 @@
-h1(title). Google Java Style (非公式和訳)
-
+h1(title). Google Java Style Guide(非公式和訳)
 
 --------------
 h2. この文書について
 
-本文書はGoogleのJavaコーディング規約であるところの "Google Java Style":https://google.github.io/styleguide/javaguide.html の非公式和訳です。  "2014/03/22":https://github.com/google/styleguide/commit/0858ea619059a0b383338d6af285c9754599b071 の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+本文書はGoogleのJavaコーディング規約であるところの "Google Java Style Guide":https://google.github.io/styleguide/javaguide.html の非公式和訳です。 "2017/03/01":https://github.com/google/styleguide/blob/594d91bfbb8dfcbcac0f148af8175f2b7ec9857b/javaguide.html の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。
+
+本文書はCC-By 3.0 Licenseにてライセンスされます。（翻訳元文書に基づく）詳細は "https://creativecommons.org/licenses/by/3.0/":https://creativecommons.org/licenses/by/3.0/ をご覧ください。
 
 --------------
 
@@ -24,80 +25,41 @@ div(lv1).  "2.1 ファイル名":#s2-1-file-name
 "2.2 ファイルエンコーディング：UTF-8":#s2-2-file-encoding
 "2.3 特殊文字":#s2-3-special-characters
 
-div(lv2). "2.3.1 空白":#s2-3-1-whitespace-characters
-"2.3.2 特別なエスケープシーケンス":#s2-3-2-special-escape-sequences
-"2.3.3 非ASCII文字":#s2-3-3-non-ascii-characters
-
 p(indexgroup). "3 *ソースファイル構造*":#s3-source-file-structure
 
 div(lv1). "3.1 ライセンスあるいはコピーライトの情報（もしあるならば）":#s3-1-copyright-statement
 "3.2 パッケージ文":#s3-2-package-statement
 "3.3 インポート文":#s3-3-import-statements
 
-div(lv2).  "3.3.1 ワイルドカードインポートは禁止":#s3-3-1-wildcard-imports
-"3.3.2 改行禁止":#s3-3-2-import-line-wrapping
-"3.3.3 順序と空白":#s3-3-3-import-ordering-and-spacing
-
 div(lv1). "3.4 クラス宣言":#s3-4-class-declaration
 
-div(lv2). "3.4.1 1個だけのトップレベルクラスの宣言":#s3-4-1-one-top-level-class
-"3.4.2 クラスメンバーの順序":#s3-4-2-class-member-ordering
 
-</td><td>
 
 p(indexgroup). "4 *フォーマット*":#s4-formatting
 
 div(lv1). "4.1 中括弧":#s4-1-braces
 
-div(lv2). "4.1.1 使えるところでは中括弧は使う":#s4-1-1-braces-always-used
-"4.1.2 空でないブロック：K&Rスタイル":#s4-1-2-blocks-k-r-style
-"4.1.3 空ブロックは簡潔に":#s4-1-3-braces-empty-blocks
-
 div(lv1). "4.2 ブロックのインデントは空白2個である":#s4-2-block-indentation
 
 div(lv1). "4.3 1行毎に1個の文":#s4-3-one-statement-per-line
 
-div(lv1). "4.4 1行の文字数制限 80文字か100文字":#s4-4-column-limit
+div(lv1). "4.4 1行の文字数制限 100文字":#s4-4-column-limit
 
 div(lv1). "4.5 行の折り返し":#s4-5-line-wrapping
 
-div(lv2). "4.5.1 どこで改行するか":#s4-5-1-line-wrapping-where-to-break
-"4.5.2 連続する行は少なくとも4文字インデントする":#s4-5-2-line-wrapping-indent
+</td><td>
 
 div(lv1). "4.6 空白":#s4-6-whitespace
-
-div(lv2). "4.6.1 垂直の空白":#s4-6-1-vertical-whitespace
-"4.6.2 水平の空白":#s4-6-2-horizontal-whitespace
-"4.6.3 水平位置揃え：全く不要":#s4-6-3-horizontal-alignment
 
 div(lv1). "4.7 グループ化の括弧 推奨":#s4-7-grouping-parentheses
 
 div(lv1). "4.8 各構造物":#s4-8-specific-constructs
 
-div(lv2). "4.8.1 列挙型":#s4-8-1-enum-classes
-"4.8.2 変数宣言":#s4-8-2-variable-declarations
-"4.8.3 配列":#s4-8-3-arrays
-"4.8.4 スイッチ文":#s4-8-4-switch
-"4.8.5 アノテーション":#s4-8-5-annotations
-"4.8.6 コメント":#s4-8-6-comments
-"4.8.7 修飾子":#s4-8-7-modifiers
-"4.8.8 数値リテラル":#s4-8-8-numeric-literals
-
-</td><td>
 
 p(indexgroup). "5 *命名*":#s5-naming
 
 div(lv1). "5.1 すべての識別子への共通ルール":#s5-1-identifier-names
 "5.2 識別子の種類ごとのルール":#s5-2-specific-identifier-names
-
-div(lv2). "5.2.1 パッケージ名":#s5-2-1-package-names
-"5.2.2 クラス名":#s5-2-2-class-names
-"5.2.3 メソッド名":#s5-2-3-method-names
-"5.2.4 定数名":#s5-2-4-constant-names
-"5.2.5 定数でないフィールド名":#s5-2-5-non-constant-field-names
-"5.2.6 パラメータ名":#s5-2-6-parameter-names
-"5.2.7 ローカル変数名":#s5-2-7-local-variable-names
-"5.2.8 型変数名":#s5-2-8-type-variable-names
 
 div(lv1). "5.3 キャメルケースの定義":#s5-3-camel-case
 
@@ -112,16 +74,8 @@ p(indexgroup). "7 *Javadoc*":#s7-javadoc
 
 div(lv1). "7.1 フォーマット":#s7-1-javadoc-formatting
 
-div(lv2). "7.1.1 一般的なフォーマット":#s7-1-1-javadoc-multi-line
-"7.1.2 段落":#s7-1-2-javadoc-paragraphs
-"7.1.3 Javadoc タグ":#s7-1-3-javadoc-at-clauses
-
 div(lv1). "7.2 要約の記述":#s7-2-summary-fragment
 "7.3 Javadocが使われる場所":#s7-3-javadoc-where-required
-
-div(lv2). "7.3.1 例外：自己叙述的なメソッド":#s7-3-1-javadoc-exception-self-explanatory
-"7.3.2 例外：オーバーライドするメソッド":#s7-3-2-javadoc-exception-overrides
-
 
 </td>
 </tr>
@@ -143,6 +97,7 @@ h3(#s1-1-terminology).  1.1 用語についての注記
 本文書において、特別に断りのない限り、
 
 # クラスという用語は、「通常の」クラス、列挙型  、インターフェース、アノテーション型(@interface)を包括的に意味する。
+# （クラスの）メンバという用語は、ネストしたクラス、フィールド、メソッド、コンストラクタ、つまり初期化子とコメントを除いた全てのトップレベルの内容を包括的に意味する。
 # コメントという用語は、常に実装のコメントを意味する。「ドキュメンテーションコメント」という言い方は使わない。代わりに共通の言葉である「Javadoc」を使う。
 
 本文書では他の用語の注記は適宜行われる。
@@ -156,7 +111,7 @@ h2(#s2-source-file-basics). 2 ソースファイルの基本事項
 
 h3(#s2-1-file-name).  2.1 ファイル名
 
-ソースファイル名はそれが入っているトップレベルクラスの大文字小文字を区別した名前と加えて @.java@ という拡張子が付いていること。
+ソースファイル名はそのファイルに(正確に1つ)入っているトップレベルクラスの大文字小文字を区別した名前に加えて @.java@ という拡張子が付いていること。
 
 
 h3(#s2-2-file-encoding). 2.2 ファイルエンコーディング：UTF-8
@@ -182,7 +137,8 @@ h4(#s2-3-2-special-escape-sequences). 2.3.2 特別なエスケープシーケン
 
 h4(#s2-3-3-non-ascii-characters). 2.3.3 非ASCII文字
 
-残りの非ASCII文字については *ソースコードを読むことや理解することが簡単になる* かどうかのみを基準にして実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \u221e)を使うかの判断を行う。
+残りの非ASCII文字については実際のUnicode文字（例：∞）あるいは同等のUnicodeエスケープ(例： \u221e)が使われる。
+この選択は *ソースコードを読むことや理解することが簡単になる* かどうかのみに依存するが、文字列リテラルやコメント以外でのUnicodeエスケープは強く推奨されない。
 
 
 bq. *Tip:* Unicodeエスケープの場合時たま実際にUnicode文字が使われている時でも、説明のコメントがあるとわかりやすい。
@@ -193,7 +149,7 @@ bq. *Tip:* Unicodeエスケープの場合時たま実際にUnicode文字が使�
 |@String unitAbbrev = "μs";@                             |最良。コメントなしでも完全で明確。|
 |@String unitAbbrev = "\u03bcs"; // "μs"@                |許容される。しかしこう書く理由はない。|
 |@String unitAbbrev = "\u03bcs"; // ギリシャ文字ミューと "s"@ |許容される。しかし奇妙で間違えやすい。|
-|@String unitAbbrev = "\u03bcs";@                         |だめ。読者やこれが何なのか分からない。|
+|@String unitAbbrev = "\u03bcs";@                         |だめ。読者はこれが何なのか分からない。|
 |@return '\ufeff' + content; // バイトオーダーマーク@     |良い。表示されない文字にはエスケープを使い必要ならコメントする。|
 
 
@@ -221,7 +177,7 @@ h3(#s3-1-copyright-statement). 3.1 ライセンスあるいはコピーライト
 
 h3(#s3-2-package-statement). 3.2 パッケージ文
 
-パッケージ文は *改行してはならない。* 文字数制限（4.4節 "文字数制限は80あるいは100文字":#s4-4-column-limit ）はパッケージ文には適用されない。
+パッケージ文は *改行してはならない。* 文字数制限（4.4節 "文字数制限は100文字":#s4-4-column-limit ）はパッケージ文には適用されない。
 
 h3(#s3-3-import-statements). 3.3 インポート文
 
@@ -231,22 +187,24 @@ h4(#s3-3-1-wildcard-imports). 3.3.1 ワイルドカードインポートは禁�
 
 h4(#s3-3-2-import-line-wrapping). 3.3.2 改行禁止
 
-import文は *改行してはならない。* 文字数制限（4.4節 "文字数制限は80あるいは100文字":#s4-4-column-limit ）はimport文には適用されない。
+import文は *改行してはならない。* 文字数制限（4.4節 "文字数制限は100文字":#s4-4-column-limit ）はimport文には適用されない。
 
 h4(#s3-3-3-import-ordering-and-spacing). 3.3.3 順序と空白
 
+インポート文は以下の順序で並べられる。
 
-インポート文は以下のグループに以下の順序で分けられる。グループは1行の空行で分離される。
+# 全てのstaticインポートを単一のブロックでまとめる。
+# 全ての非staticインポートを単一のブロックでまとめる。
 
-# すべてのstatic importを単一のグループにまとめる。
-# @com.google@ のインポート。（ソースファイルが @com.google@ パッケージに属する場合のみ）
-# サードパーティのインポート。トップレベルパッケージ毎に1個のグループとしASCII文字の順序で
-** 例： @android, com, junit, org, sun@
-# @java@ パッケージのインポート
-# @javax@ パッケージのインポート
+もしもstaticインポートと非staticインポートの両方があるなら、一つの空行が両者を分離する。import節間に、空行は存在しない。
+
+各ブロック内で、importされた名前はASCII順序で並べられる。（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。なぜなら '.' は';' より先にソートされるからである。）
 
 
-一つのグループ内に空行は入らない。なおかつインポートした名前はASCII順に並べなければならない。（ *注釈：* このことはインポート文全体がASCII順になっていることと同じではない。セミコロンがあるとソート結果は変わってしまうからである。）
+h4(#s3-3-4-import-class-not-static). 3.3.4 クラスをstatic importしない
+
+staticなネストしたクラスをimportするのにstatic importを使わない。それらは通常のインポートで使われる。
+
 
 h3(#s3-4-class-declaration). 3.4 クラス宣言
 
@@ -256,17 +214,15 @@ h4(#s3-4-1-one-top-level-class). 3.4.1 1個だけのトップレベルクラス�
 
 h4(#s3-4-2-class-member-ordering). 3.4.2 クラスメンバーの順序
 
-クラスメンバーの順序はわかりやすさに多大な影響を与えるが唯一の解法は無い。クラス毎にメンバーの並びが異なっていて良い。
+クラスメンバーや初期化子の順序の選択はわかりやすさに多大な影響を与える。しかしながら唯一の解法は無い。クラスが異なれば内容は異なった順序で並べられる。
 
 重要な事はそれぞれのクラスはそのメンバーを *何らかの合理的な順序* で並べ、クラスのメンテナンスをする人が尋ねられた時に答えられるようなることである。例えば新しいメソッドはクラスの最後に入れることが慣例であるかのように追加されてはならない。それは「追加された日の順」という結果になるだけであって、合理的な順序ではない。
 
 h5. 3.4.2.1 オーバーロードしているメソッド群を分離してはならない
 
-クラスに複数のコンストラクタや同じ名前を持つメソッドがある場合は連続して並べる。間に別のメンバーを入れてはならない。
-
+クラスに複数のコンストラクタや同じ名前を持つメソッドがある場合は、別のコードを（privateなメンバであっても）入れることなく連続して並べる。
 
 h2(#s4-formatting). 4 フォーマット
-
 
 
 *用語についての注釈：* 「ブロック様の構造物(block-like construct)」とは、クラス、メソッド、コンストラクタの本体を指す。すべての配列初期化子は任意に「ブロック様の構造物」とみなされて良い。4.8.3.1節 "配列初期化子":#s4-8-3-1-array-initializers  を参照。
@@ -279,17 +235,23 @@ h4(#s4-1-1-braces-always-used). 4.1.1 使えるところでは中括弧は使う
 
 h4(#s4-1-2-blocks-k-r-style). 4.1.2 空でないブロック：K&Rスタイル
 
-中括弧は空でないブロックや、ブロック様の構造物ではカーニハン・リッチースタイル("Egyptian Brackets":http://blog.codinghorror.com/new-programming-jargon/ )に従う。
+中括弧は空でないブロックや、ブロック様の構造物ではカーニハン・リッチースタイル("Egyptian Brackets":https://www.codinghorror.com/blog/2012/07/new-programming-jargon.html )に従う。
 
 
 * 開始中括弧の前に改行を入れない。
 * 開始中括弧の後に改行を入れる。
 * 終了中括弧の前に改行を入れる。
-* もし終了中括弧が文やメソッドの本体を終えるならばその中括弧の後に改行を入れる。例えば終了中括弧の後に @else@ や、カンマが続く場合は改行をしない。
+* 終了中括弧の後に改行を入れる。但し、終了中括弧が文やメソッドの本体を終える時のみである。例えば終了中括弧の後に @else@ や、カンマが続く場合は改行をしない。
 
 例：
 
 <pre>
+return () -> {
+  while (condition()) {
+    method();
+  }
+};
+
 return new MyClass() {
   @Override public void method() {
     if (condition()) {
@@ -298,6 +260,10 @@ return new MyClass() {
       } catch (ProblemException e) {
         recover();
       }
+    } else if (otherCondition()) {
+      somethingElse();
+    } else {
+      lastThing();
     }
   }
 };
@@ -308,12 +274,25 @@ return new MyClass() {
 
 h4(#s4-1-3-braces-empty-blocks). 4.1.3 空ブロックは簡潔に
 
-空ブロックやブロック様の構造物は開始括弧直後に文字や改行無しで閉じてよい。（ @{}@ ） *但し、*  @if/else-if/else@ あるいは @try/catch/finally@ のような複数ブロックの文の場合を除く。
+空ブロックやブロック様の構造物は(Section 4.1.2で示したように) K &amp; R スタイルでもよい。
+また、開始括弧直後で( @{}@ ) の間に文字や改行無しで閉じてよい。 *但し、*  @if/else@ あるいは @try/catch/finally@ のような複数ブロックの文の場合を除く。
 
 例：
 
 <pre>
+// これは問題ない
 void doNothing() {}
+
+// これも同様に問題ない
+void doNothing() {
+}
+</pre>
+
+<pre>
+// これは問題がある。複数ブロックの文では簡単な空ブロックをつかってはならない。
+try {
+  doSomething();
+} catch (Exception e) {}
 </pre>
 
 
@@ -327,9 +306,9 @@ h3(#s4-3-one-statement-per-line). 4.3 1行毎に1個の文
 
 各文の末尾は改行でなくてはならない。
 
-h3(#s4-4-column-limit). 4.4 1行の文字数制限 80文字か100文字
+h3(#s4-4-column-limit). 4.4 1行の文字数制限 100文字
 
-プロジェクトごとに1行の文字数制限を80文字か100文字いずれかで自由に決定して良い。以下の例外を除き、この制限を超えた行は4.5節 "行の折り返し":#s4-5-line-wrapping で述べるように改行されなくてはならない。
+Java コードの1行の文字数制限は100文字である。以下の例外を除き、この制限を超えた行は4.5節 "行の折り返し":#s4-5-line-wrapping で述べるように改行されなくてはならない。
 
 *例外：*
 
@@ -341,10 +320,13 @@ fn1. 訳注：JavaScript Native Interface 。Google Web Tookit においてア�
 
 h3(#s4-5-line-wrapping). 4.5 行の折り返し
 
-*用語の注記：* ある意味では規約に合致しているコードを複数行に分ける(多くは行の長さ制限を超えないようにするため)場合、この活動を行の折り返しと呼ぶ。
+*用語の注記：* ある意味では規約に合致している1行のコードを複数行に分けた場合、この行為を行の折り返しと呼ぶ。
 
 
 どんな状況にも合う改行方法を正確に示すような統一的で決定的なやり方は存在しない。同じコードを改行する正しい方法は複数存在する。
+
+*注記：* 改行の典型的な理由は1行の文字数制限を超えることを避けることであるが、文字数制限を実際に満たしているコードであっても作者の裁量で改行される場合がある。
+
 
 bq. *Tip:* メソッドやローカル変数の抽出をすれば、改行をせずに問題を解決できる場合がある。
 
@@ -355,11 +337,33 @@ h4(#s4-5-1-line-wrapping-where-to-break). 4.5.1 どこで改行するか
 改行の第一原則は、 *高い文法のレベル* で改行することである。また、
 
 # 代入でない演算子で改行するときは、シンボルの前で改行する。（これはJavaScriptやC++のような他の言語のGoogleスタイルの慣習とは異なることに注意すること。）
-** このことはドット演算子( @.@ )や、型演算子の＆記号( @<T extends Foo & Bar>@ )や、catch節でのパイプ記号 ( @catch (FooException | BarException e)@ )といった演算子のようなシンボルにも適用される。
+** このことは、以下の「演算子ライクな」シンボルにも適用される。
+*** ドット演算子( @.@ )
+*** メソッド参照でのコロン２個( @::@ )
+*** 型演算子の &amp; 記号( @<T extends Foo & Bar>@ )
+*** catch節でのパイプ記号 ( @catch (FooException | BarException e)@ )
 # 行が代入演算子で改行されるときは、通常シンボルの後ろで改行される。しかしどちらの方法でも問題はない。
 ** このことは拡張 @for@ ("foreach") 文の「代入演算子のような」コロンにも適用される。
 # メソッドやコンストラクタ名に続く開始括弧（ @(@ ）は直後に続いて書かれる。
 # カンマ( @,@ )はその前のトークンの直後に続いて書かれる。
+# 行はラムダの矢印の隣で改行されることはない。但しラムダの本体が単一のカッコなしの式である場合は矢印の直後で改行して良い。
+
+
+例：
+
+<pre>
+MyLambda<String, Long, Object> lambda =
+    (String label, Long value, Object obj) -> {
+        ...
+    };
+
+Predicate<String> predicate = str ->
+    longExpressionInvolving(str);
+</pre>
+
+
+
+*注記：* 改行の第一目的はコードを明確にすることである。行数が小さくなるようにコードを書く必要はない。
 
 h4(#s4-5-2-line-wrapping-indent). 4.5.2 連続する行は少なくとも４文字インデントする
 
@@ -375,11 +379,13 @@ h4(#s4-6-1-vertical-whitespace). 4.6.1 垂直の空白
 
 単一の空行は、以下の場合で使われる。
 
-# クラスの連続するメンバ（あるいは初期化子）の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子。
+
+# クラスの連続するメンバか初期化子の間。フィールド、コンストラクタ、メソッド、ネストしたクラス、static初期化子、インスタンス初期化子。
 ** *例外* ：2個の連続するフィールド（その間にコードがないもの）間での空行は任意である。そのような空行はフィールドの _論理的なグループ分け_ をするのに必要である。
-# メソッド本体内で、文を _論理的にグループ分け_ したい場合。
-# 必要な場合、クラスの最初のメンバーの前と最終メンバーの後。（推奨も禁止もしない）
-# 本文書の別の節で入れるよう求められた場所（3.3節の "インポート文":#s3-3-import-statements など）
+** *例外* ：enum 定数間の改行は 4.8.1. 節で議論される
+# ステートメントの間で、コードを論理的にグループ分けしたいため。
+# 必要な場合、クラスの最初のメンバーあるいは初期化子の前と最終メンバーあるいは初期化子の後。（推奨も禁止もしない）
+# 本文書の別の節で入れるよう求められた場所（3節の "ソースファイル構造":#s3-source-file-structure や、3.3節の "インポート文":#s3-3-import-statements など）
 
 複数の連続した空行を入れて良いが、必須でも推奨でもない。
 
@@ -397,13 +403,17 @@ h4(#s4-6-2-horizontal-whitespace). 4.6.2 水平の空白
 ** 連続する型パラメータ間のアンパサンド。 @<T extends Foo & Bar>@
 ** 複数の例外を処理するcatchブロックでのパイプ。 @catch (FooException | BarException e)@
 ** 拡張for文("foreach") でのコロン。 ( @:@ ) 
+** ラムダ式での矢印。@(String str) ->; str.length()@
+# 以下は除外する。
+** @Object::toString@ と書かれるような、メソッド参照でのコロン２個。
+** @object.toString@ と書かれるような、ドット演算子。 
 # @, : ;@ あるいはキャストの閉じ括弧 （ @)@ ） の後ろ。
 # 行末コメントを開始するスラッシュ２個（ @//@ ）の両側。ここでは複数の空白が許されるが必須ではない。
 # 型と変数の宣言の間。 @List<String> list@
 # 任意で、配列初期化子の両括弧の中。
 ** @new int[] {5, 6}@ と @new int[] { 5, 6 }@ は両方有効。
 
-bq. 注意：このルールは行頭行末の空白について要求も禁止もしない。内側の空白のみについて当てはまる。
+bq. 注意：このルールは行頭行末の空白について要求や禁止をするものと解釈してはならない。内側の空白のみに適用される。
 
 
 h4(#s4-6-3-horizontal-alignment). 4.6.3 水平位置揃え：全く不要
@@ -437,7 +447,22 @@ h3(#s4-8-specific-constructs). 4.8 各構造物
 
 h4(#s4-8-1-enum-classes). 4.8.1 列挙型
 
-列挙定数値後のカンマの後ろの改行は任意である。
+列挙定数値後のカンマの後ろの改行は任意である。追加の空行（大抵はたった一つ）も許可される。
+ありうる可能性は、以下のとおり。
+
+<pre>
+private enum Answer {
+  YES {
+    @Override public String toString() {
+      return "yes";
+    }
+  },
+
+  NO,
+  MAYBE
+}
+</pre>
+
 
 定数値にメソッドもドキュメンテーションもない列挙型は必要に応じて配列の初期化と同様に整形してよい。(4.8.3.1 節 配列の初期化 を参照)
 
@@ -451,7 +476,7 @@ h5. 4.8.2.1 宣言ごとに一個の変数
 
 フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 @int a, b;@ のような宣言は使わない。
 
-h5. 4.8.2.2 必要なときに宣言して速やかに初期化する
+h5. 4.8.2.2 必要なときに宣言する
 
 ローカル変数はそれを含むブロックやブロック様の構造物の先頭で慣習的に宣言されては _ならない。_ 代わりに、ローカル変数はそのスコープを最小化するために(合理的な範囲で)最初に使う場所の近くで宣言される。ローカル変数宣言は通常は初期化がされるか、あるいは宣言されてすぐに初期化される。
 
@@ -482,7 +507,7 @@ h5. 4.8.3.2 Cのような配列宣言は禁止
 
 h4(#s4-8-4-switch). 4.8.4 スイッチ文
 
- *用語についての注釈* スイッチブロックの括弧の内側は一個以上の文グループである。それぞれの文グループは一個以上のスイッチラベル（ @case FOO:@ でも @default:@ であっても）とそれに続く続く一個以上の文である。
+ *用語についての注釈* スイッチブロックの括弧の内側は一個以上の文グループである。それぞれの文グループは一個以上のスイッチラベル（ @case FOO:@ でも @default:@ であっても）とそれに続く一個以上の文であるか、あるいは最後の文グループの場合は0個以上の文である。
 
 
 h5. 4.8.4.1 インデンテーション
@@ -512,9 +537,13 @@ switch (input) {
 }
 </pre>
 
+注意： @case 1@ の後にコメントは必要ない。ステートメントグループの終わりのみに必要である。
+
 h5. 4.8.4.3 default 節は必要
 
 各スイッチ文はたとえコードがない場合でも @default@ ステートメントグループが必須である。
+
+例外：enum型でのswitch文は、その型の全てのあり得る値を明示的に含めているならば、@default@ ステートメントグループを省略して良い。これによりIDEや静的コード分析ツールが何らかの値が漏れていることについて警告を発することが出来るようになる。
 
 h4(#s4-8-5-annotations). 4.8.5 アノテーション
 
@@ -539,9 +568,14 @@ public String getNameIfPresent() { ... }
 @Partial @Mock DataLoader loader;
 </pre>
 
-パラメータや、ローカル変数へのアノテーションについては特にルールはありません。
+パラメータやローカル変数や型についてのアノテーションには特にルールはありません。
 
 h4(#s4-8-6-comments). 4.8.6 コメント
+
+この節では実装コメントについて扱う。Javadocについては7節 Javadoc にて個別に扱われる。
+
+すべての改行の前には任意で空白が入り実装コメントが続く。そのようなコメントは行を非空白にします。
+
 
 h5. 4.8.6.1 ブロックコメントスタイル
 
@@ -563,7 +597,7 @@ h4(#s4-8-7-modifiers). 4.8.7 修飾子
 クラスやメンバの修飾子が出現する場合、Java言語仕様が推奨する順序で出現しなくてはならない。
 
 <pre>
-public protected private abstract static final transient volatile synchronized native strictfp
+public protected private abstract default static final transient volatile synchronized native strictfp
 </pre>
 
 
@@ -577,7 +611,10 @@ h2(#s5-naming). 5 命名
 h3(#s5-1-identifier-names). 5.1 すべての識別子への共通ルール
 
 
-識別子はASCII文字、数字、後述する2つの場合(訳注:5.2.4の "定数名":#s5-2-4-constant-names の場合と、5.2.3の "メソッド名":#s5-2-3-method-names でのUnitのテストメソッド名の場合)はアンダースコアのみを使う。それゆえ、有効な識別子名は正規表現 @\w+@ にマッチする。
+識別子はASCII文字、数字のみを使う。また後述するいくつかの場合ではアンダースコアも使う。それゆえ、有効な識別子名は正規表現 @\w+@ にマッチする。
+
+(訳注:5.2.4の "定数名":#s5-2-4-constant-names の場合と、5.2.3の "メソッド名":#s5-2-3-method-names でのUnitのテストメソッド名の場合)
+
 
 Googleスタイルでは、 @name_@ 、 @mName@ 、 @s_name@ や @kName@ といったような特別な接尾辞・接頭辞は _使わない。_ 
 
@@ -615,14 +652,21 @@ h4(#s5-2-3-method-names). 5.2.3 メソッド名
 
 h4(#s5-2-4-constant-names). 5.2.4 定数名
 
-定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語をアンダースコアで区切る。しかし定数とは一体何だろうか。
+定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語をアンダースコアで区切る。しかし定数とは正確には何だろうか。
 
-すべての定数は @static final@ なフィールドである。しかし、すべての @static final@ なフィールドが定数であるとは限らない。コンスタントケースを選ぶ前に、そのフィールドが定数と感じるか検討すべきだ。例えば、そのインスタンスの可視な状態が変更できるならば、殆どの場合定数ではない。単に絶対にオブジェクトを変更しないことを意図するだけでは大抵は不十分である。
+定数とは、その内容が不変であってそのメソッドは検知可能な副作用を持たないような @static final@ なフィールドである。
+例えば、プリミティブ型、String、不変な型、不変な型の不変なコレクションである。
+もしインスタンスの観測可能な状態が変化できるなら、それは定数ではない。
+単に絶対にオブジェクトを変更しないことを意図するだけでは大抵は不十分である。
+
+例：
+
 
 <pre>
 // 定数である
 static final int NUMBER = 5;
 static final ImmutableList<String> NAMES = ImmutableList.of("Ed", "Ann");
+static final ImmutableMap<String, Integer> AGES = ImmutableMap.of("Ed", 35, "Ann", 32);
 static final Joiner COMMA_JOINER = Joiner.on(',');  // Joiner は不変であるので。
 static final SomeMutableType[] EMPTY_ARRAY = {};
 enum SomeEnum { ENUM_CONSTANT }
@@ -632,6 +676,8 @@ static String nonFinal = "non-final";
 final String nonStatic = "non-static";
 static final Set<String> mutableCollection = new HashSet<String>();
 static final ImmutableSet<SomeMutableType> mutableElements = ImmutableSet.of(mutable);
+static final ImmutableMap<String, SomeMutableType> mutableValues =
+    ImmutableMap.of("Ed", mutableInstance, "Ann", mutableInstance2);
 static final Logger logger = Logger.getLogger(MyClass.getName());
 static final String[] nonEmptyArray = {"these", "can", "change"};
 </pre>
@@ -649,16 +695,14 @@ h4(#s5-2-6-parameter-names). 5.2.6 パラメータ名
 
 パラメータ名は小文字キャメルケース(lowerCamelCase)で命名される。
 
-一文字のパラメータ名は避けるべきである。
+一文字のパラメータ名はpublic なメソッドでは避けるべきである。
 
 
 h4(#s5-2-7-local-variable-names). 5.2.7  ローカル変数名
 
-ローカル変数名は小文字キャメルケース(lowerCamelCase)で命名される。他の種類の命名よりも自由に短縮されてよい。
+ローカル変数名は小文字キャメルケース(lowerCamelCase)で命名される。
 
-しかしながら一文字の名前は一時的なループ変数を除いて避けるべきである。
-
- @final@ で不変であってもローカル変数は定数とは見なされないので定数として命名されるのは避けるべきである。
+@final@ で不変であってもローカル変数は定数とは見なされないので定数として命名されるのは避けるべきである。
 
 h4(#s5-2-8-type-variable-names). 5.2.8 型変数名
 
@@ -725,7 +769,7 @@ return handleTextResponse(response);
 </pre>
 
 
-*例外：* テストにおいて、キャッチされた例外が、 @expected@ と命名されている場合は、コメントなしで無視してよい。以下の例はテスト対象のメソッドが期待した型の例外をスローすることを確認するためのよくあるイディオムであり、コメントは不要である。
+*例外：* テストにおいて、キャッチされた例外が、 @expected@ と命名されているあるいは始まる名前である場合は、コメントなしで無視してよい。以下の例はテスト対象のコードが期待した型の例外をスローすることを確認するためのよくあるイディオムであり、コメントは不要である。
 
 <pre>
 try {
@@ -751,7 +795,7 @@ h3(#s6-4-finalizers). 6.4 ファイナライザ：使わない
 
 @Object@ クラスの @finalize()@ メソッドを使うケースは非常に稀である。
 
-bq. *Tip:* これをやってはならない。絶対的に必要ならば、まず "Effective Java":http://books.google.co.jp/books?id=ka2VUBqHiWkC のItem7「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはならない。
+bq. *Tip:* これをやってはならない。絶対的に必要ならば、まず "Effective JavaのItem7":http://books.google.co.jp/books?id=ka2VUBqHiWkC 「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはならない。
 
 
 h2(#s7-javadoc). 7 Javadoc 
@@ -778,25 +822,24 @@ public int method(String p1) { ... }
 </pre>
 
 
-基本的な形は常に適用される。 Javadocタグがない場合やコメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は一行の形で代用できる。
-
+基本的な形は常に適用される。 一行の形はJavadocブロック全体（コメントマーカを含む）が１行で書ける場合のみ置き換えることができる。これは@returnタグのようなブロックタグが存在しない場合のみ適用可能であることに注意すること。
 
 
 h4(#s7-1-2-javadoc-paragraphs). 7.1.2 段落
 
-一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしJavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
+一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしブロックタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
 
 
-h4(#s7-1-3-javadoc-at-clauses). 7.1.3 Javadoc タグ [3]
+h4(#s7-1-3-javadoc-at-clauses). 7.1.3 ブロックタグ [3]
 
-標準のJavadoc タグで利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。Javadoc タグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
+全ての標準の&amp;ブロックタグで&amp; で、実際に利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。ブロックタグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
 
-fn3. 訳注：Javadoc での @param といった節のこと。原文では"at-clauses"であるが、GoogleJavaStyleでしか使っていない用語なのでJavadocの元文書に基づきJavadoc タグと翻訳した。参照 "Javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
+fn3. 訳注：本家のJavadocの文書 でいうところの 「Javadocタグ」のこと。参照 "Javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
 
 h3(#s7-2-summary-fragment). 7.2 要約の記述
 
 
-クラスとメンバーのJavadocは簡単な *要約の記述* から始まる。この記述はとても重要である。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからである。
+全てのJavadocブロックは簡単な *要約の記述* から始まる。この記述はとても重要である。なぜならクラスやメソッドの索引のような特別な場所に現れる唯一のテキストだからである。
 
 
 この記述は小さな断片の形である。つまり名詞句か動詞句であって、完全な文であってはならない。「このクラス {@code Foo} は…」とか「このメソッドは…を返す。」で始まってはならないし、「結果を保存しなさい。」という命令形であってもならない。他方においてこの断片はあたかも文であるかのように大文字に変えられたり、句読点が付けられる。
@@ -809,7 +852,7 @@ h3(#s7-3-javadoc-where-required). 7.3  Javadocが使われる場所
 
 少なくとも、Javadocは @public@ なクラスとそのクラスの @public@ 、 @protected@ なメンバーに書かれる。但し以下の例外がある。
 
-クラスとメンバー以外にもJavadocは必要に応じて書かれる。クラス、メソッド、フィールドの全体の振る舞いや目的を記述するのに実装コメントが使われている場合は代わりにJavadocで書かれる。（より統一的で、ツールとの親和性も高い。）
+追加のJavadocコメントがある場合がある。7.3.4節 不要なJavadoc にて解説される。
 
 h4(#s7-3-1-javadoc-exception-self-explanatory). 7.3.1  例外：自己叙述的なメソッド
 
@@ -822,5 +865,15 @@ bq. *Tip: 重要：* 典型的な読者が知りたがるような関連情報�
 h4(#s7-3-2-javadoc-exception-overrides). 7.3.2  例外：オーバーライドするメソッド
 
 親クラスのメソッドをオーバーライドするメソッドについてはJavadocは必須ではない。
+
+h4(#s7-3-4-javadoc-exception-overrides). 7.3.4  必須ではないJavadoc
+
+訳注：節番号が飛んでいるが、原文に従う。
+
+他のクラスとメンバーにもJavadocは必要に応じて書かれる。
+
+クラスやメンバの全体の目的を記述するのに実装コメントが使われているならば、そのコメントは代わりにJavadocで書かれる。（ @/**@ ）
+
+必須ではないJavadocは7.1.2, 7.1.3, 7.2 節のフォーマット規則に従うことがもちろん推奨であるが、必ずしも必要ではない。
 
 
