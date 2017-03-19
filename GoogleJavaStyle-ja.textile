@@ -506,7 +506,7 @@ h5. 4.8.3.2 Cのような配列宣言は禁止
 
 h4(#s4-8-4-switch). 4.8.4 スイッチ文
 
- *用語についての注釈* スイッチブロックの括弧の内側は一個以上の文グループである。それぞれの文グループは一個以上のスイッチラベル（ @case FOO:@ でも @default:@ であっても）とそれに続く続く一個以上の文である。
+ *用語についての注釈* スイッチブロックの括弧の内側は一個以上の文グループである。それぞれの文グループは一個以上のスイッチラベル（ @case FOO:@ でも @default:@ であっても）とそれに続く一個以上の文であるか、あるいは最後の文グループの場合は0個以上の文である。
 
 
 h5. 4.8.4.1 インデンテーション
@@ -541,6 +541,8 @@ switch (input) {
 h5. 4.8.4.3 default 節は必要
 
 各スイッチ文はたとえコードがない場合でも @default@ ステートメントグループが必須である。
+
+例外：enum型でのswitch文は、その型の全てのあり得る値を明示的に含めているならば、@default@ ステートメントグループを省略して良い。これによりIDEや静的コード分析ツールが何らかの値が漏れていることについて警告を発することが出来るようになる。
 
 h4(#s4-8-5-annotations). 4.8.5 アノテーション
 
@@ -792,7 +794,7 @@ h3(#s6-4-finalizers). 6.4 ファイナライザ：使わない
 
 @Object@ クラスの @finalize()@ メソッドを使うケースは非常に稀である。
 
-bq. *Tip:* これをやってはならない。絶対的に必要ならば、まず "Effective Java":http://books.google.co.jp/books?id=ka2VUBqHiWkC のItem7「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはならない。
+bq. *Tip:* これをやってはならない。絶対的に必要ならば、まず "Effective JavaのItem7":http://books.google.co.jp/books?id=ka2VUBqHiWkC 「ファイナライザを避ける」を必ず熟読しなくてはならない。そしてこれをやってはならない。
 
 
 h2(#s7-javadoc). 7 Javadoc 
@@ -819,20 +821,19 @@ public int method(String p1) { ... }
 </pre>
 
 
-基本的な形は常に適用される。 Javadocタグがない場合やコメントマーカを含めたJavadocブロック全体において１行で書くほうが体裁が良い場合は一行の形で代用できる。
-
+基本的な形は常に適用される。 一行の形はJavadocブロック全体（コメントマーカを含む）が１行で書ける場合のみ置き換えることができる。これは@returnタグのようなブロックタグが存在しない場合のみ適用可能であることに注意すること。
 
 
 h4(#s7-1-2-javadoc-paragraphs). 7.1.2 段落
 
-一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしJavadocタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
+一つの空行つまり先頭のアスタリスク(*)のみの行が段落と段落の間に挿入される。もしブロックタググループがあるならばその前にも挿入される。最初以外のすべての段落には、最初の単語の前に空白無しで @<p>@ が入れられる。
 
 
-h4(#s7-1-3-javadoc-at-clauses). 7.1.3 Javadoc タグ [3]
+h4(#s7-1-3-javadoc-at-clauses). 7.1.3 ブロックタグ [3]
 
-標準のJavadoc タグで利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。Javadoc タグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
+全ての標準の&amp;ブロックタグで&amp; で、実際に利用されるものは @param, @return, @throws, @deprecatedの順で現れる。これらの４つには記述が必ず存在しなくてはならない。ブロックタグが１行コメントに収まらない場合、２行目以降は @ の位置からスペース４個以上インデントされる。
 
-fn3. 訳注：Javadoc での @param といった節のこと。原文では"at-clauses"であるが、GoogleJavaStyleでしか使っていない用語なのでJavadocの元文書に基づきJavadoc タグと翻訳した。参照 "Javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
+fn3. 訳注：本家のJavadocの文書 でいうところの 「Javadocタグ」のこと。参照 "Javadoc タグ":http://docs.oracle.com/javase/jp/8/docs/technotes/tools/windows/javadoc.html#CHDBEFIF
 
 h3(#s7-2-summary-fragment). 7.2 要約の記述
 
