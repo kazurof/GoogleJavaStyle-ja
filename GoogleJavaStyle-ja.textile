@@ -312,9 +312,8 @@ h3(#s4-4-column-limit). 4.4 1行の文字数制限 100文字
 Java コードの1行の文字数制限は100文字である。文字とは任意のUnicodeコードポイントを意味する。  以下の例外を除き、この制限を超えた行は4.5節 "行の折り返し":#s4-5-line-wrapping で述べるように改行されなくてはならない。
 
 
-bq. *Tip:* 画面表示上の大小が違っていても、それぞれのUnicodeコードポイントを１個と数える。例えば全角文字を使う場合、
-（https://ja.wikipedia.org/wiki/%E5%85%A8%E8%A7%92%E3%81%A8%E5%8D%8A%E8%A7%92）この規約を厳密に守る必要がある場合は
-制限に達する前に改行して良い。
+bq. *Tip:* 画面表示上の大小が違っていても、それぞれのUnicodeコードポイントを１個と数える。例えば全角文字
+（ https://ja.wikipedia.org/wiki/%E5%85%A8%E8%A7%92%E3%81%A8%E5%8D%8A%E8%A7%92 ）を使う場合、この規約を厳密に守る箇所では制限に達する前に改行して良い。
 
 
 
@@ -662,15 +661,10 @@ h4(#s5-2-3-method-names). 5.2.3 メソッド名
 典型的なパターンは @<methodUnderTest>_<state>@ で、例えば  @pop_emptyStack@ である。テストメソッドを命名する正しい唯一の方法はない。
 
 
-Underscores may appear in JUnit test method names to separate logical components of the name, with each component written in lowerCamelCase. 
-One typical pattern is <methodUnderTest>_<state>, for example pop_emptyStack. There is no One Correct Way to name test methods.
-
-
-
 
 h4(#s5-2-4-constant-names). 5.2.4 定数名
 
-定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語を１個のアンダースコアで区切る。しかし定数とは正確には何だろうか。
+定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語を１個のアンダースコアで区切る。しかし定数とは厳密には何だろうか?
 
 定数とは、その内容が不変であってそのメソッドは検知可能な副作用を持たないような @static final@ なフィールドである。
 例えば、プリミティブ型、String、不変な型、不変な型の不変なコレクションである。
