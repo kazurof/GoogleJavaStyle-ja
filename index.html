@@ -11,7 +11,8 @@
 <h1 class="title">Google Java Style Guide(非公式和訳)</h1>
 <hr />
 <h2 style="vertical-align:middle;">この文書について</h2>
-<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> の非公式和訳です。 <a href="https://github.com/google/styleguide/blob/594d91bfbb8dfcbcac0f148af8175f2b7ec9857b/javaguide.html">2017/03/01</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
+<p>本文書はGoogleのJavaコーディング規約であるところの <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> の非公式和訳です。
+ <a href="https://github.com/google/styleguide/commit/911d9f4a7e3020578f4609860d7e5ede422a8f28#diff-b6c9191ee5ccb7a5ef170e98e51d94d8">2017/09/30</a> の版を使っています。技術的に正確である事を意図して訳してありますが、どこかで間違えているかもしれません。本家は随時更新される様子ですが、こちらが追いつかなくなるかもしれません。生暖かく見守ってやってください。誤訳、誤植の指摘を歓迎いたします。</p>
 <p>本文書はCC-By 3.0 Licenseにてライセンスされます。（翻訳元文書に基づく）詳細は <a href="https://creativecommons.org/licenses/by/3.0/">https://creativecommons.org/licenses/by/3.0/</a> をご覧ください。</p>
 <hr />
 <table border="0">
@@ -213,7 +214,11 @@ try {
 <h3 id="s4-3-one-statement-per-line">4.3 1行毎に1個の文</h3>
 <p>各文の末尾は改行でなくてはならない。</p>
 <h3 id="s4-4-column-limit">4.4 1行の文字数制限 100文字</h3>
-<p>Java コードの1行の文字数制限は100文字である。以下の例外を除き、この制限を超えた行は4.5節 <a href="#s4-5-line-wrapping">行の折り返し</a> で述べるように改行されなくてはならない。</p>
+<p>Java コードの1行の文字数制限は100文字である。文字とは任意のUnicodeコードポイントを意味する。  以下の例外を除き、この制限を超えた行は4.5節 <a href="#s4-5-line-wrapping">行の折り返し</a> で述べるように改行されなくてはならない。</p>
+
+<p><strong>Tip:</strong> 画面表示上の大小が違っていても、それぞれのUnicodeコードポイントを１個と数える。例えば<a href="https://ja.wikipedia.org/wiki/%E5%85%A8%E8%A7%92%E3%81%A8%E5%8D%8A%E8%A7%92">全角文字</a>を使う場合、この規約を厳密に守る箇所では制限に達する前に改行して良い。</p>
+
+
 <p><strong>例外：</strong></p>
 <p>1. 文字数制限に従うのが不可能の場合。（例えば、Javadoc内の長いURL、長いJSNIメソッド<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>参照）<br />
 2. パッケージ文とインポート文　（3.2 <a href="#s3-2-package-statement">パッケージ文</a> と 3.3 <a href="#s3-3-import-statements">インポート文</a>  を参照のこと）<br />
@@ -347,6 +352,7 @@ private enum Answer {
 <h4 id="s4-8-2-variable-declarations">4.8.2 変数宣言</h4>
 <h5>4.8.2.1 宣言ごとに一個の変数</h5>
 <p>フィールドでもローカル変数でも変数宣言は一個だけの変数を宣言する。 <code>int a, b;</code> のような宣言は使わない。</p>
+<p>例外： 複数の変数宣言をすることは、forループのヘッダーであれば実施して良い。</p>
 <h5>4.8.2.2 必要なときに宣言する</h5>
 <p>ローカル変数はそれを含むブロックやブロック様の構造物の先頭で慣習的に宣言されては <em>ならない。</em> 代わりに、ローカル変数はそのスコープを最小化するために(合理的な範囲で)最初に使う場所の近くで宣言される。ローカル変数宣言は通常は初期化がされるか、あるいは宣言されてすぐに初期化される。</p>
 <h4 id="s4-8-3-arrays">4.8.3 配列</h4>
@@ -445,9 +451,9 @@ public protected private abstract default static final transient volatile synchr
 <h4 id="s5-2-3-method-names">5.2.3 メソッド名</h4>
 <p>メソッド名は、小文字キャメルケース(lowerCamelCase)で命名される。</p>
 <p>メソッド名は大抵動詞か動詞句である。例えば、 <code>sendMessage</code> や <code>stop</code> である。</p>
-<p>アンダースコアはJUnitのメソッド名において、名前の論理的コンポーネント名を分離するために使ってよい。典型的なパターンは <code>test&lt;MethodUnderTest&gt;_&lt;state&gt;</code> で、例えば  <code>testPop_emptyStack</code> である。テストメソッドを命名する正しい唯一の方法はない。</p>
+<p>アンダースコアはJUnitのメソッド名において、名前の論理的コンポーネント名（lowerCamelCaseで書かれる）を分離するために使ってよい。典型的なパターンは <code>test&lt;MethodUnderTest&gt;_&lt;state&gt;</code> で、例えば  <code>testPop_emptyStack</code> である。テストメソッドを命名する正しい唯一の方法はない。</p>
 <h4 id="s5-2-4-constant-names">5.2.4 定数名</h4>
-<p>定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語をアンダースコアで区切る。しかし定数とは正確には何だろうか。</p>
+<p>定数は コンスタントケース(CONSTANT_CASE)で命名する。すべて大文字で、各単語を１個のアンダースコアで区切る。しかし定数とは正確には何だろうか。</p>
 <p>定数とは、その内容が不変であってそのメソッドは検知可能な副作用を持たないような <code>static final</code> なフィールドである。<br />
 例えば、プリミティブ型、String、不変な型、不変な型の不変なコレクションである。<br />
 もしインスタンスの観測可能な状態が変化できるなら、それは定数ではない。<br />
